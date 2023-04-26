@@ -12,6 +12,8 @@ require 'dbcon.php';
     <!-- Bootstrap CSS -->
     <link href="emp-man.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="images/logo.ico">
+
     <title>View Employee</title>
 </head>
 

@@ -12,6 +12,7 @@ require 'dbcon.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="emp-man.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo.ico">
 
     <title>Employee Edit</title>
 </head>
