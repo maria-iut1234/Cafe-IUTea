@@ -45,7 +45,7 @@ require 'dbcon.php';
                             if (mysqli_num_rows($query_run) > 0) {
                                 $emp = mysqli_fetch_array($query_run);
                         ?>
-                                <form action="code.php" method="POST">
+                                <form action="backend.php" method="POST">
                                     <input type="hidden" name="emp_id" value="<?= $emp['e_id']; ?>">
 
                                     <div class="mb-3">
@@ -58,7 +58,7 @@ require 'dbcon.php';
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>
-                                        <input type="text" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control">
+                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Address</label>

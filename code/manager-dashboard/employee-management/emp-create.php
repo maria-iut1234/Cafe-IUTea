@@ -35,7 +35,7 @@ session_start();
                         <!-- </h4> -->
                     </div>
                     <div class="card-body">
-                        <form action="code.php" method="POST">
+                        <form action="backend.php" method="POST">
 
                             <div class="mb-3">
                                 <label>Name</label>
@@ -47,7 +47,7 @@ session_start();
                             </div>
                             <div class="mb-3">
                                 <label>Date of Birth</label>
-                                <input type="text" name="dob" class="form-control">
+                                <input type="date" name="dob" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label>Address</label>
