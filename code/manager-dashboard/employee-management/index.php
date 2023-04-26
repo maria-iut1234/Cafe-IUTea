@@ -11,12 +11,30 @@ require 'dbcon.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link href="bootstrap.css" rel="stylesheet"> -->
+    
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link href="emp-man.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/logo.ico">
 
     <title>Employee Management</title>
 </head>
 
 <body>
+
+    <input type="checkbox" id="active" />
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+        <ul>
+            <li><img class="iutea-icon" src="images/logo.png"></li>
+            <li><a href="index.php">Employee Management</a></li>
+            <li><a href="#">Menu Management</a></li>
+            <li><a href="#">Inventory Management</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Setting</a></li>
+        </ul>
+    </div>
 
     <div class="container mt-4">
 
@@ -25,15 +43,15 @@ require 'dbcon.php';
         <div class="title">
             <h1>Employee Details</h1>
         </div>
-        
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <!-- <h4>Employee Details -->
-                            <!-- <div class="add-emp"> -->
-                                <a href="emp-create.php" class="btn btn-add float-end">Add Employee</a>
-                            <!-- </div> -->
+                        <!-- <div class="add-emp"> -->
+                        <a href="emp-create.php" class="btn btn-add float-end">Add Employee</a>
+                        <!-- </div> -->
                         <!-- </h4> -->
                     </div>
                     <div class="card-body">
