@@ -12,6 +12,7 @@ session_start();
 
     <!-- Bootstrap CSS -->
     <link href="emp-man.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo.ico">
 
     <title>Employee Create</title>
 </head>
