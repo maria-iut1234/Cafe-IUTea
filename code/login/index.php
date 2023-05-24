@@ -39,7 +39,7 @@
                 }
                 else
                 {
-                    if(password_verify($password,$row['password']))
+                    if(password_verify($password,$row['e_password']))
                     {
                         $_SESSION['email'] = $email;
                         $_SESSION['user_id'] = $row['id'];
@@ -77,39 +77,15 @@
                     echo'<p class="form_email_verify">Your password has been reset.</p>';
                 }
             }
-            if(isset($_GET["user_create"]))
-            {
-                if($_GET["user_create"]=="success"){
-                    echo'<p class="form_email_verify">Check your email for email verification.</p>';
-                }
-            }
-            if(isset($_GET["token"]))
-            {
-                if(isset($_GET["create_user"])){
-                    if($conn -> connect_error){
-                        die('Connection Failed : ' .$conn->connect_error);
-                    }
-                    else{
-                        $user_name = $_GET["create_user"];
-                        $stmt = $conn->prepare("update users set is_verified = 1 where token=? and email = ?");
-                        $stmt ->bind_param("ss",$_GET["token"],$user_name);
-                        $stmt -> execute();
-                        if(mysqli_affected_rows($conn)<=0)
-                            echo'<p class="form_email_unverify">There was an error while creating your account and the link is now Invalid. Try to create your account again!</p>';
-                        else{
-                            echo'<p class="form_email_verify">Your accout has been registered! You may now log in.</p>';
-                        }
-                        $stmt -> close();
-                        $conn -> close();
-                    }
-                }
-            }
+            // if(isset($_GET["user_create"]))
+            // {
+            //     if($_GET["user_create"]=="success"){
+            //         echo'<p class="form_email_verify">Check your email for email verification.</p>';
+            //     }
+            // }
             ?>
             <p class="form__text">
-                <a href="#" class="form__link" class="form__link">Forgot your password?</a>
-            </p>
-            <p class="form__text">
-                <a class="form__link" href="#" id="linkCreateAccount">Don't have an account? Create account</a>
+                <a href="../forgotpassword/index.php" class="form__link" class="form__link">Forgot your password?</a>
             </p>
             <p class="form__text">
                 <a class="form__link" href="#" id="linkHomepage">Go back to Homepage</a>
