@@ -75,8 +75,8 @@ mysqli_close($conn);
 $to = $userEmail;
 $subject = 'Reset your password';
 $message = '<p>We recieved a password reset request. The link to reset your password is given below. If you did not make this request, you can ignore this email</p>';
-$message .= '<p>Here is your password reset link: </br>';
-$message .='<a href="'.$url.'">'.$url.'</a?></p>';
+$message .= '<p>In order to reset your password, </br>';
+$message .='<a href="'.$url.'">Click Here!!!</a?></p>';
 
 if(send_mail($to,$subject,$message))
 {
