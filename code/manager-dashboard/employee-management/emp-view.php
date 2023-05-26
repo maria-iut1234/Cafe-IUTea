@@ -15,9 +15,15 @@ require 'dbcon.php';
     <link rel="shortcut icon" href="images/logo.ico">
 
     <title>View Employee</title>
+
+
 </head>
 
 <body>
+
+    <div class="other-btn">
+        <a href="index.php" class="btn btn-add float-end">BACK</a>
+    </div>
 
     <div class="container mt-5">
 
@@ -27,13 +33,13 @@ require 'dbcon.php';
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <!-- <h4>View Employee Details -->
-                            <a href="index.php" class="btn btn-danger float-end">BACK</a>
-                        <!-- </h4> -->
-                    </div>
-                    <div class="card-body">
+                <div class="card edit-view">
+                    <!-- <div class="card-header"> -->
+                    <!-- <h4>View Employee Details -->
+                    <!-- <a href="index.php" class="btn btn-danger float-end">BACK</a> -->
+                    <!-- </h4> -->
+                    <!-- </div> -->
+                    <div class="card-body edit-view">
 
                         <?php
                         if (isset($_GET['emp_id'])) {
@@ -46,29 +52,28 @@ require 'dbcon.php';
                         ?>
 
                                 <div class="mb-3">
+                                    <label>Employee Profile Picture</label>
+                                    <div class="pfp">
+                                        <img src="./images/default_pfp.png" alt="Avatar">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
                                     <label>Employee Name</label>
-                                    <p class="form-control view-emp">
-                                        <?= $emp['e_name']; ?>
-                                    </p>
+                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label>Employee Email</label>
-                                    <p class="form-control view-emp">
-                                        <?= $emp['e_email']; ?>
-                                    </p>
+                                    <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label>Employee Date of Birth</label>
-                                    <p class="form-control view-emp">
-                                        <?= $emp['e_dob']; ?>
-                                    </p>
+                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label>Employee Address</label>
-                                    <p class="form-control view-emp">
-                                        <?= $emp['e_address']; ?>
-                                    </p>
+                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
                                 </div>
+
 
                         <?php
                             } else {
