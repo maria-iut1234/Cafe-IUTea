@@ -1,6 +1,20 @@
 <?php
 session_start();
 require 'dbcon.php';
+if (isset($_POST['deleteemployeesubmit'])) {
+    $id = $_POST['emp_id'];
+    $query = "SELECT * FROM employee WHERE e_id='$id' ";
+    $query_run = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($query_run) > 0) {
+        $sql = "DELETE FROM employee WHERE e_id = '$id'";
+        $query_run = mysqli_query($con, $sql);
+        $_SESSION['message'] = "Employee Deleted Successfully";
+        header('location: index.php');
+    } else {
+        $_SESSION['message'] = "Employee Could not be Deleted for some reason. The emp id was " . $id;
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -92,7 +106,19 @@ require 'dbcon.php';
                                             <td>
                                                 <a href="emp-view.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-view">View</a>
                                                 <a href="emp-edit.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-edit">Edit</a>
-                                                <a href="emp-delete.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-delete">Delete</a>
+                                                <button class="btn btn-delete" type="button" id="<?= $emp['e_id'] ?> " onclick="openPopup(this.id)"> Delete </button>
+                                                <form method="POST">
+                                                    <div class="popup_delete" id="popup_delete">
+                                                        <h2>Delete?</h2>
+                                                        <p>Are you sure about deleting this employee?</p>
+                                                        <input type="hidden" name="emp_id" id="delete_id">
+                                                        <div class="popup_button_space">
+
+                                                            <button type="submit" class="employee_button_popup" name="deleteemployeesubmit" id="<?= $emp['e_id'] ?>" value="<?= $emp['e_id'] ?>">Confirm</button>
+                                                        </div>
+                                                        <button type="button" class="employee_button_delete_popup" onclick="closePopup()">Cancel</button>
+                                                    </div>
+                                                </form>
                                             </td>
                                         </tr>
                                 <?php
@@ -112,7 +138,19 @@ require 'dbcon.php';
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let popup = document.getElementById("popup_delete");
 
+        function openPopup(empID) {
+            popup.classList.add("open-popup");
+            $('#delete_id').val(empID);
+        }
+
+        function closePopup() {
+            popup.classList.remove("open-popup");
+        }
+    </script>                           
 </body>
 
 </html>
