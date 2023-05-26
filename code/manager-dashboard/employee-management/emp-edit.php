@@ -54,8 +54,10 @@ require 'dbcon.php';
                                         <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Employee Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control">
+                                    <label>Employee Email</label>
+                                    <p class="form-control view-emp">
+                                        <?= $emp['e_email']; ?>
+                                    </p>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>
