@@ -32,26 +32,26 @@ function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2) {
     return $passWord; 
 } 
 
-if(isset($_POST['delete_emp']))
-{
-    $emp_id = mysqli_real_escape_string($con, $_POST['delete_emp']);
+// if(isset($_POST['delete_emp']))
+// {
+//     $emp_id = mysqli_real_escape_string($con, $_POST['delete_emp']);
 
-    $query = "DELETE FROM employee WHERE e_id='$emp_id' ";
-    $query_run = mysqli_query($con, $query);
+//     $query = "DELETE FROM employee WHERE e_id='$emp_id' ";
+//     $query_run = mysqli_query($con, $query);
 
-    if($query_run)
-    {
-        $_SESSION['message'] = "Employee Deleted Successfully";
-        header("Location: index.php");
-        exit(0);
-    }
-    else
-    {
-        $_SESSION['message'] = "Employee Not Deleted";
-        header("Location: index.php");
-        exit(0);
-    }
-}
+//     if($query_run)
+//     {
+//         $_SESSION['message'] = "Employee Deleted Successfully";
+//         header("Location: index.php");
+//         exit(0);
+//     }
+//     else
+//     {
+//         $_SESSION['message'] = "Employee Not Deleted";
+//         header("Location: index.php");
+//         exit(0);
+//     }
+// }
 
 if(isset($_POST['update_emp']))
 {
@@ -61,7 +61,7 @@ if(isset($_POST['update_emp']))
     $dob = mysqli_real_escape_string($con, $_POST['dob']);  
     $dob = date("Y-m-d",strtotime($dob));
     $address = mysqli_real_escape_string($con, $_POST['address']);
-    $query = "UPDATE employee SET e_name='$name', e_email='$email', e_dob='$dob', e_address='$address' WHERE e_id='$emp_id' ";
+    $query = "UPDATE employee SET e_name='$name', e_dob='$dob', e_address='$address' WHERE e_id='$emp_id' ";
     $query_run = mysqli_query($con, $query);
 
     if($query_run)
