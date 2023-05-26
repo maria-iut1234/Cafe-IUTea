@@ -10,7 +10,7 @@
 
 .btn {
   display: inline-block;
-  position: relative;
+  /* position: relative; */
   font-weight: 400;
   line-height: 1.5;
   color: #f2f7f2;
@@ -26,6 +26,14 @@
   font-size: 1rem;
   border-radius: 0.5rem;
   /* margin: 18px; for putting margin on the right side of the button from the edge of the page*/
+}
+
+.other-btn {
+  padding: 0.5rem 1rem;
+  position: absolute;
+  /* margin-bottom: 0; */
+  /* background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
 }
 
 .btn:hover {
@@ -67,28 +75,56 @@
 
 .card {
   position: relative;
-  display: flex;
   /* align-items: center; */
-  flex-direction: column;
+  /* flex-direction: column; */
   min-width: 0;
   word-wrap: break-word;
   background-color: #f2f7f2;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  
 }
 
-.card > .card-header {
-  border-top: 0;
+.card .edit-view {
+  
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #f2f7f2;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  width: 50%;
+  display: fixed;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
+
+.card-body .edit-view {
+  width: 50%;
+  display: fixed;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2%;
+}
+
+
+/* .card > .card-header {
+  border-top: 0;
+} */
 
 .card-body {
-  flex: 1 1 auto;
+  /* flex: 1 1 auto; */
   padding: 1rem 1rem;
 }
 
 .card-header {
   padding: 0.5rem 1rem;
+  position: absolute;
   /* margin-bottom: 0; */
   background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -117,6 +153,25 @@ table {
   vertical-align: top;
   border-color: #dee2e6;
 }
+
+/* .table tbody tr {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table tbody td {
+  flex: 0 0 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+} */
+
+.table tbody tr td {
+  max-width: 250px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+} 
+
 
 .table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;
@@ -224,6 +279,10 @@ tr {
   border: 1px solid #ced4da;
   appearance: none;
   border-radius: 0.5rem;
+  text-overflow: clip !important;
+  /* word-wrap: break-word; */
+  white-space: normal;
+  max-width: 700px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -241,12 +300,13 @@ tr {
 }
 .form-control:disabled,
 .form-control[readonly] {
-  background-color: #6c757d;
+  background-color: #6c757d46;
   opacity: 1;
 }
 
 input {
   margin: 0;
+  overflow-x: visible !important;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
@@ -334,191 +394,14 @@ strong {
   align-items: center;
 } */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.employee_button {
-  width: 100%;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #ffffff;
-  border: none;
-  border-radius: var(--border-radius);
-  border-bottom-right-radius: 8px;
-  border-bottom-left-radius: 8px;
-  outline: none;
-  cursor: pointer;
-  background: #009579;
-  height: 70%;
+.pfp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.employee_button:hover {
-  background: #007f67;
-}
-
-.employee_button:active {
-  transform: scale(0.98);
-}
-
-
-.employee_button_delete {
-width: 100%;
-padding: 1rem 2rem;
-font-weight: bold;
-font-size: 1.1rem;
-color: #ffffff;
-border: none;
-border-bottom-right-radius: 8px;
-border-bottom-left-radius: 8px;
-outline: none;
-cursor: pointer;
-background: #b80101;
-height: 70%;
-}
-
-.employee_button_delete:hover {
-background: #990101;
-}
-
-.employee_button_delete:active {
-transform: scale(0.98);
-}
-.employee_button_popup {
-  width: 100%;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  cursor: pointer;
-  background: #009579;
-  height: 70%;
-}
-
-.employee_button:hover {
-  background: #007f67;
-}
-
-.employee_button:active {
-  transform: scale(0.98);
-}
-
-
-.employee_button_delete_popup {
-width: 100%;
-padding: 1rem 2rem;
-font-weight: bold;
-font-size: 1.1rem;
-color: #ffffff;
-border: none;
-border-radius: 8px;
-outline: none;
-cursor: pointer;
-background: #b80101;
-height: 70%;
-}
-
-.employee_button_delete:hover {
-background: #990101;
-}
-
-.employee_button_delete:active {
-transform: scale(0.98);
-}
-
-
-
-
-
-.popup_delete{
-  width: 400px;
-  background: #ffffff;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  text-align: center;
-  padding: 0 30px 30px;
-  
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-}
-
-.open-popup{
-  visibility: visible;
-  top : 50%;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.popup_delete img{
-  width: 100px;
-  margin-top: -50%;
+.pfp img{
   border-radius: 50%;
-  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
-}
-
-
-.popup_delete h2{
-  font-size: 38px;
-  font-weight: 500;
-  margin: 30px 0 10px;
-}
-
-.popup_button_space{
-  margin-bottom: 5px;
-}
-
-
-.popup_add{
-  width: 400px;
-  background: #ffffff;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  text-align: center;
-  padding: 0 30px 30px;
-  
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-}
-
-.open-popup-add{
-  visibility: visible;
-  top : 50%;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.popup_add img{
-  width: 100px;
-  margin-top: -50%;
-  border-radius: 50%;
-  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
-}
-
-
-.popup_add h2{
-  font-size: 38px;
-  font-weight: 500;
-  margin: 30px 0 10px;
+  width: 200px;
+  height: 200px;
 }

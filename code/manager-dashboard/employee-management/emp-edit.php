@@ -19,6 +19,10 @@ require 'dbcon.php';
 
 <body>
 
+    <div class="other-btn">
+        <a href="index.php" class="btn btn-add float-end">BACK</a>
+    </div>
+
     <div class="container mt-5">
 
         <?php include('message.php'); ?>
@@ -30,11 +34,11 @@ require 'dbcon.php';
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <!-- <h4>Employee Edit -->
-                            <a href="index.php" class="btn btn-danger float-end">BACK</a>
-                        <!-- </h4> -->
-                    </div>
+                    <!-- <div class="card-header"> -->
+                    <!-- <h4>Employee Edit -->
+                    <!-- <a href="index.php" class="btn btn-danger float-end">BACK</a> -->
+                    <!-- </h4> -->
+                    <!-- </div> -->
                     <div class="card-body">
 
                         <?php
@@ -54,10 +58,8 @@ require 'dbcon.php';
                                         <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                    <label>Employee Email</label>
-                                    <p class="form-control view-emp">
-                                        <?= $emp['e_email']; ?>
-                                    </p>
+                                        <label>Employee Email</label>
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>

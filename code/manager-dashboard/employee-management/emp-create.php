@@ -19,6 +19,10 @@ session_start();
 
 <body>
 
+    <div class="other-btn">
+        <a href="index.php" class="btn btn-add float-end">BACK</a>
+    </div>
+
     <div class="container mt-5 create-emp">
 
         <?php include('message.php'); ?>
@@ -30,11 +34,11 @@ session_start();
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <!-- <h4>Employee Add -->
-                            <a href="index.php" class="btn btn-back float-end">BACK</a>
-                        <!-- </h4> -->
-                    </div>
+                    <!-- <div class="card-header"> -->
+                    <!-- <h4>Employee Add -->
+                    <!-- <a href="index.php" class="btn btn-back float-end">BACK</a> -->
+                    <!-- </h4> -->
+                    <!-- </div> -->
                     <div class="card-body">
                         <form action="backend.php" method="POST">
 
