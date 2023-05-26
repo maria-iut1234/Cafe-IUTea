@@ -30,6 +30,12 @@
                 <div class="form__input-error-message">
                     <?php echo $emailError ? $emailError : null; ?>
                 </div>
+            </div>
+            <div class="form__input-group">
+            <select class="form__input" id="type" name="type">
+                <option>Employee</option>
+                <option>Manager</option>
+            </select>
             </div> 
             <button class="form__button" type="submit" name="reset-request-submit">Continue</button>
             <p class="form__text">

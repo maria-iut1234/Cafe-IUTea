@@ -17,7 +17,8 @@
         $newpassword = $_GET['newpassword'];
         $selector =$_GET['selector'];
         $validator = $_GET['validator'];
-        if(empty($selector)||empty($validator)){
+        $type = $_GET['type'];
+        if(empty($selector)||empty($validator)||empty($type)){
             echo"Could not validate your request!";
         }else{
             if(ctype_xdigit($selector)!==false && ctype_xdigit($validator)!==false){
@@ -29,6 +30,7 @@
                 <form action="reset-password.inc.php" method="POST">
                         <input type ="hidden" name="selector" value="<?php echo $selector; ?>">
                         <input type ="hidden" name="validator" value="<?php echo $validator; ?>">
+                        <input type ="hidden" name="type" value="<?php echo $type; ?>">
                         <div class="form__input-group">
                         <div class="form__input-group">
                 <input type="password" class="form__input" autofocus placeholder="Enter a New Password" name="password" required>
