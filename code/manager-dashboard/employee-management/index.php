@@ -84,9 +84,7 @@ require 'dbcon.php';
                                             <td>
                                                 <a href="emp-view.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-view">View</a>
                                                 <a href="emp-edit.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-edit">Edit</a>
-                                                <form action="code.php" method="POST" class="d-inline">
-                                                    <button type="submit" name="delete_emp" value="<?= $emp['e_id']; ?>" class="btn btn-delete">Delete</button>
-                                                </form>
+                                                <a href="emp-delete.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-delete">Delete</a>
                                             </td>
                                         </tr>
                                 <?php
