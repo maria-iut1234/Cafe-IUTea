@@ -327,6 +327,7 @@ body {
 .alert {
   position: absolute;
   padding: 1rem 1rem;
+  margin-top: -5rem;
   margin-bottom: 1rem;
   margin-left: 300px ;
   width:60%;  
@@ -615,7 +616,3 @@ transform: scale(0.98);
   margin: 30px 0 10px;
 }
 
-form + form {
-  display: inline-block;
-  transform:translate(50%,-50%);
-}
