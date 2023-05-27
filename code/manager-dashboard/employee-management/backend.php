@@ -2,6 +2,13 @@
 session_start();
 require 'dbcon.php';
 require "mailer.php";
+$messi = '';
+
+if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+    $messi = $_SESSION['id'];
+else{
+    header("location: ../../login/index.php");
+}
 
 function rand_Pass($upper = 1, $lower = 5, $numeric = 3, $other = 2) { 
     

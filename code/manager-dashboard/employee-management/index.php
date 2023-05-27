@@ -1,6 +1,16 @@
 <?php
 session_start();
 require 'dbcon.php';
+
+$messi = '';
+
+if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+    $messi = $_SESSION['id'];
+else{
+    header("location: ../../login/index.php");
+}
+
+
 if (isset($_POST['deleteemployeesubmit'])) {
     $id = $_POST['emp_id'];
     $query = "SELECT * FROM employee WHERE e_id='$id' ";
@@ -47,8 +57,8 @@ if (isset($_POST['deleteemployeesubmit'])) {
             <li><a href="#">Menu Management</a></li>
             <li><a href="#">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Setting</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
         </ul>
     </div>
 

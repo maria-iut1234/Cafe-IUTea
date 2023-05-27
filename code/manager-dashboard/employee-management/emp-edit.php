@@ -1,6 +1,13 @@
 <?php
 session_start();
 require 'dbcon.php';
+$messi = '';
+
+if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+    $messi = $_SESSION['id'];
+else{
+    header("location: ../../login/index.php");
+}
 ?>
 
 <!doctype html>
@@ -18,6 +25,19 @@ require 'dbcon.php';
 </head>
 
 <body>
+    <input type="checkbox" id="active" />
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+        <ul>
+            <li><img class="iutea-icon" src="images/logo.png"></li>
+            <li><a href="index.php">Employee Management</a></li>
+            <li><a href="#">Menu Management</a></li>
+            <li><a href="#">Inventory Management</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Setting</a></li>
+            <li><a href="<?php echo $mess ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+        </ul>
+    </div>
 
     <div class="other-btn">
         <a href="index.php" class="btn btn-add float-end">BACK</a>

@@ -1,6 +1,7 @@
 <?php
 include "../dbconnect.php";
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -45,8 +46,9 @@ if (isset($_POST['submit'])) {
                     $error = 'Invalid email!';
                 } else {
                     if (password_verify($password, $row['e_password'])) {
-                        $_SESSION['email'] = $email;
-                        $_SESSION['user_id'] = $row['e_id'];
+                        $_SESSION['name'] = $row['e_name'];
+                        $_SESSION['id'] = $row['e_id'];
+                        $_SESSION['type'] = "employee";
                         header('location: success');
                     } else {
                         $error = 'Invalid password!';
@@ -68,8 +70,9 @@ if (isset($_POST['submit'])) {
                     $error = 'Invalid email!';
                 } else {
                     if (password_verify($password, $row['m_password'])) {
-                        $_SESSION['email'] = $email;
-                        $_SESSION['user_id'] = $row['m_id'];
+                        $_SESSION['name'] = $row['m_name'];
+                        $_SESSION['id'] = $row['m_id'];
+                        $_SESSION['type'] = "manager";
                         header('location: ../manager-dashboard/employee-management/index.php');
                     } else {
                         $error = 'Invalid password!';
@@ -108,12 +111,6 @@ if (isset($_POST['submit'])) {
                 echo '<p class="form_email_verify">Your password has been reset.</p>';
             }
         }
-        // if(isset($_GET["user_create"]))
-        // {
-        //     if($_GET["user_create"]=="success"){
-        //         echo'<p class="form_email_verify">Check your email for email verification.</p>';
-        //     }
-        // }
         ?>
         <p class="form__text">
             <a href="../forgotpassword/index.php" class="form__link" class="form__link">Forgot your password?</a>
