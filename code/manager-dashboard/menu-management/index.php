@@ -11,18 +11,18 @@ else{
 }
 
 
-if (isset($_POST['deleteemployeesubmit'])) {
-    $id = $_POST['emp_id'];
-    $query = "SELECT * FROM employee WHERE e_id='$id' ";
+if (isset($_POST['deletemenusubmit'])) {
+    $id = $_POST['menu_id'];
+    $query = "SELECT * FROM menu WHERE menu_id='$id' ";
     $query_run = mysqli_query($con, $query);
 
     if (mysqli_num_rows($query_run) > 0) {
-        $sql = "DELETE FROM employee WHERE e_id = '$id'";
+        $sql = "DELETE FROM menu WHERE menu_id = '$id'";
         $query_run = mysqli_query($con, $sql);
-        $_SESSION['message'] = "Employee Deleted Successfully";
+        $_SESSION['message'] = "menu Deleted Successfully";
         header('location: index.php');
     } else {
-        $_SESSION['message'] = "Employee Could not be Deleted for some reason. The emp id was " . $id;
+        $_SESSION['message'] = "menu Could not be Deleted for some reason. The menu id was " . $id;
     }
 }
 ?>
@@ -38,11 +38,11 @@ if (isset($_POST['deleteemployeesubmit'])) {
 
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link href="emp-man.css" rel="stylesheet">
+    <link href="menu-man.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="images/logo.ico">
 
-    <title>Employee Management</title>
+    <title>Menu Management</title>
 
 </head>
 
@@ -63,7 +63,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
     </div>
 
     <div class="other-btn">
-        <a href="emp-create.php" class="btn btn-add float-end">Add Employee</a>
+        <a href="menu-create.php" class="btn btn-add float-end">Add menu</a>
     </div>
 
     <div class="container mt-4">
@@ -71,7 +71,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
         
 
         <div class="title">
-            <h1>Employee Details</h1>
+            <h1>Menu Details</h1>
         </div>
 
         <?php include('message.php'); ?>
@@ -80,9 +80,9 @@ if (isset($_POST['deleteemployeesubmit'])) {
             <div class="col-md-12">
                 <div class="card">
                     <!-- <div class="card-header"> -->
-                    <!-- <h4>Employee Details -->
-                    <!-- <div class="add-emp"> -->
-                    <!-- <a href="emp-create.php" class="btn btn-add float-end">Add Employee</a> -->
+                    <!-- <h4>menu Details -->
+                    <!-- <div class="add-menu"> -->
+                    <!-- <a href="menu-create.php" class="btn btn-add float-end">Add menu</a> -->
                     <!-- </div> -->
                     <!-- </h4> -->
                     <!-- </div> -->
@@ -91,52 +91,47 @@ if (isset($_POST['deleteemployeesubmit'])) {
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Employee ID</th>
-                                    <th>Employee Name</th>
-                                    <th>Email</th>
-                                    <th>Date of Birth</th>
-                                    <th>Address</th>
+                                    <th>Menu Name</th>
+                                    <th>Menu Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                            <tr>
                                 <?php
-                                $query = "SELECT * FROM employee";
+                                $query = "SELECT * FROM menu";
                                 $query_run = mysqli_query($con, $query);
 
                                 if (mysqli_num_rows($query_run) > 0) {
-                                    foreach ($query_run as $emp) {
+                                    foreach ($query_run as $menu) {
                                 ?>
-                                        <tr>
-                                            <td><?= $emp['e_id']; ?></td>
-                                            <td><?= $emp['e_name']; ?></td>
-                                            <td><?= $emp['e_email']; ?></td>
-                                            <td><?= $emp['e_dob']; ?></td>
-                                            <td><?= $emp['e_address']; ?></td>
+                                        
+                                            <td><?= $menu['menu_name']; ?></td>
+                                            <td><?= $menu['menu_price']; ?></td>
                                             <td>
-                                                <a href="emp-view.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-view">View</a>
-                                                <a href="emp-edit.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-edit">Edit</a>
-                                                <button class="btn btn-delete" type="button" id="<?= $emp['e_id'] ?> " onclick="openPopup(this.id)"> Delete </button>
+                                                <a href="menu-view.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-view">View</a>
+                                                <a href="menu-edit.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-edit">Edit</a>
+                                                <button class="btn btn-delete" type="button" id="<?= $menu['menu_id'] ?> " onclick="openPopup(this.id)"> Delete </button>
                                                 <form method="POST">
                                                     <div class="popup_delete" id="popup_delete">
                                                         <h2>Delete?</h2>
-                                                        <p>Are you sure about deleting this employee?</p>
-                                                        <input type="hidden" name="emp_id" id="delete_id">
+                                                        <p>Are you sure about deleting this menu?</p>
+                                                        <input type="hidden" name="menu_id" id="deletmenu_id">
                                                         <div class="popup_button_space">
-
-                                                            <button type="submit" class="employee_button_popup" name="deleteemployeesubmit" id="<?= $emp['e_id'] ?>" value="<?= $emp['e_id'] ?>">Confirm</button>
+                                                            <button type="submit" class="menu_button_popup" name="deletemenusubmit" id="<?= $menu['menu_id'] ?>" value="<?= $menu['menu_id'] ?>">Confirm</button>
                                                         </div>
-                                                        <button type="button" class="employee_button_delete_popup" onclick="closePopup()">Cancel</button>
+                                                        <button type="button" class="menu_button_deletmenu_popup" onclick="closePopup()">Cancel</button>
                                                     </div>
                                                 </form>
                                             </td>
-                                        </tr>
+                                        
                                 <?php
                                     }
                                 } else {
                                     echo "<h5> No Record Found </h5>";
                                 }
                                 ?>
+                            </tr>
 
                             </tbody>
                         </table>
@@ -152,9 +147,9 @@ if (isset($_POST['deleteemployeesubmit'])) {
     <script>
         let popup = document.getElementById("popup_delete");
 
-        function openPopup(empID) {
+        function openPopup(menuID) {
             popup.classList.add("open-popup");
-            $('#delete_id').val(empID);
+            $('#deletmenu_id').val(menuID);
         }
 
         function closePopup() {

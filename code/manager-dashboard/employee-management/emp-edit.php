@@ -21,6 +21,10 @@ else{
     <link href="emp-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
+    
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <title>Employee Edit</title>
 </head>
 
@@ -30,12 +34,12 @@ else{
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="index.php">Employee Management</a></li>
-            <li><a href="#">Menu Management</a></li>
-            <li><a href="#">Inventory Management</a></li>
+            <li><a href="../employee-management/index.php">Employee Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
+            <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Setting</a></li>
-            <li><a href="<?php echo $mess ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
         </ul>
     </div>
 

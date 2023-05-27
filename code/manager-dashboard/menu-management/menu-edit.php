@@ -9,6 +9,7 @@ else{
     header("location: ../../login/index.php");
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -17,20 +18,14 @@ else{
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="emp-man.css" rel="stylesheet">
-
+    <link href="menu-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
-
-    <!-- <link href="bootstrap.css" rel="stylesheet"> -->
-
+    
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>View Employee</title>
-
-
+    <title>menu Edit</title>
 </head>
 
 <body>
@@ -54,54 +49,49 @@ else{
 
     <div class="container mt-5">
 
+        <?php include('message.php'); ?>
+
         <div class="title">
-            <h1>View Employee</h1>
+            <h1>Edit menu</h1>
         </div>
 
         <div class="row">
             <div class="col-md-12">
-                <div class="card edit-view">
+                <div class="card">
                     <!-- <div class="card-header"> -->
-                    <!-- <h4>View Employee Details -->
+                    <!-- <h4>menu Edit -->
                     <!-- <a href="index.php" class="btn btn-danger float-end">BACK</a> -->
                     <!-- </h4> -->
                     <!-- </div> -->
-                    <div class="card-body edit-view">
+                    <div class="card-body">
 
                         <?php
-                        if (isset($_GET['emp_id'])) {
-                            $emp_id = mysqli_real_escape_string($con, $_GET['emp_id']);
-                            $query = "SELECT * FROM employee WHERE e_id='$emp_id' ";
+                        if (isset($_GET['menu_id'])) {
+                            $menu_id = mysqli_real_escape_string($con, $_GET['menu_id']);
+                            $query = "SELECT * FROM menu WHERE menu_id='$menu_id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($query_run) > 0) {
-                                $emp = mysqli_fetch_array($query_run);
+                                $menu = mysqli_fetch_array($query_run);
                         ?>
+                                <form action="backend.php" method="POST">
+                                    <input type="hidden" name="menu_id" value="<?= $menu['menu_id']; ?>">
 
-                                <div class="mb-3">
-                                    <label>Employee Profile Picture</label>
-                                    <div class="pfp">
-                                        <img src="./images/default_pfp.png" alt="Avatar">
+                                    <div class="mb-3">
+                                        <label>Menu Name</label>
+                                        <input type="text" name="name" value="<?= $menu['menu_name']; ?>" class="form-control">
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Name</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Email</label>
-                                    <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Date of Birth</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Address</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
-                                </div>
+                                    <div class="mb-3">
+                                        <label>Menu Price</label>
+                                        <input type="text" name="name" value="<?= $menu['menu_price']; ?>" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <button type="submit" name="updatmenu_menu" class="btn btn-primary">
+                                            Update Menu
+                                        </button>
+                                    </div>
 
-
+                                </form>
                         <?php
                             } else {
                                 echo "<h4>No Such ID Found</h4>";

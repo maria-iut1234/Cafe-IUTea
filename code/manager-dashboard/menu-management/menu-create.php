@@ -18,14 +18,14 @@ else{
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="emp-man.css" rel="stylesheet">
+    <link href="menu-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
     
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>Employee Create</title>
+    <title>menu Create</title>
 </head>
 
 <body>
@@ -47,18 +47,18 @@ else{
     <div class="other-btn">
         <a href="index.php" class="btn btn-add float-end">BACK</a>
     </div>
-    <div class="container mt-5 create-emp">
+    <div class="container mt-5 create-menu">
 
 
         <div class="title">
-            <h1>Add New Employee</h1>
+            <h1>Add New Menu</h1>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <!-- <div class="card-header"> -->
-                    <!-- <h4>Employee Add -->
+                    <!-- <h4>menu Add -->
                     <!-- <a href="index.php" class="btn btn-back float-end">BACK</a> -->
                     <!-- </h4> -->
                     <!-- </div> -->
@@ -70,19 +70,11 @@ else{
                                 <input type="text" name="name" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label>Email</label>
-                                <input type="email" name="email" class="form-control">
+                                <label>Price</label>
+                                <input type="text" name="price" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label>Date of Birth</label>
-                                <input type="date" name="dob" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label>Address</label>
-                                <input type="text" name="address" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" name="save_emp" class="btn">Save Employee</button>
+                                <button type="submit" name="savmenu_menu" class="btn">Save Menu</button>
                             </div>
 
                         </form>

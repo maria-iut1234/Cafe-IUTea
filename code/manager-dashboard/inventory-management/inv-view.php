@@ -8,6 +8,9 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
 else{
     header("location: ../../login/index.php");
 }
+if (!isset($_GET['in_id'])) {
+    header("location: index.php ");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -55,7 +58,7 @@ else{
     <div class="container mt-5">
 
         <div class="title">
-            <h1>View Employee</h1>
+            <h1><?=$_GET['in_name']?></h1>
         </div>
 
         <div class="row">
@@ -67,47 +70,36 @@ else{
                     <!-- </h4> -->
                     <!-- </div> -->
                     <div class="card-body edit-view">
-
+                    <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Inventory Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Expiration Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                         <?php
-                        if (isset($_GET['emp_id'])) {
-                            $emp_id = mysqli_real_escape_string($con, $_GET['emp_id']);
-                            $query = "SELECT * FROM employee WHERE e_id='$emp_id' ";
+                            $in_id = mysqli_real_escape_string($con, $_GET['in_id']);
+                            $query = "SELECT * FROM inventory_orders WHERE in_id='$in_id' order by e_date asc";
                             $query_run = mysqli_query($con, $query);
+                               if (mysqli_num_rows($query_run) > 0) {
+                                    foreach ($query_run as $inv) {
+                                ?>
+                                        <tr>
+                                            <td><?= $inv['o_amount']; ?></td>
+                                            <td><?= $inv['o_date']; ?></td>
+                                            <td><?= $inv['e_date']; ?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<h5> No Record Found </h5>";
+                                }
+                                ?>
 
-                            if (mysqli_num_rows($query_run) > 0) {
-                                $emp = mysqli_fetch_array($query_run);
-                        ?>
-
-                                <div class="mb-3">
-                                    <label>Employee Profile Picture</label>
-                                    <div class="pfp">
-                                        <img src="./images/default_pfp.png" alt="Avatar">
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Name</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Email</label>
-                                    <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Date of Birth</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Address</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
-                                </div>
-
-
-                        <?php
-                            } else {
-                                echo "<h4>No Such ID Found</h4>";
-                            }
-                        }
-                        ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
