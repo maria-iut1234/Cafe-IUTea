@@ -1,6 +1,9 @@
 <?php
 include "../dbconnect.php";
 session_start();
+if(isset($_SESSION['id'])){
+    include "logout.php";
+}
 
 ?>
 <!DOCTYPE html>
