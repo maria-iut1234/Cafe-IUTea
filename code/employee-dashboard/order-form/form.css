@@ -64,14 +64,14 @@
 }
 
 .form__input-group {
-  /* display: flex; */
+  display: flex;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
   background-color: #bcaa99;
 }
 
 .form__input {
-  /* flex: 1;  */
+  flex: 1; 
   display: block;
   width: 100%;
   padding: 0.75rem;
@@ -83,7 +83,7 @@
   margin-right: 0.5rem;
 }
 
-.menu-items-container .form__input-group .menu-item-name,
+.menu-items-container .form__input-group .menu-name,
 .menu-items-container .form__input-group .menu-item-adds {
   flex-basis: 15%;
 }
