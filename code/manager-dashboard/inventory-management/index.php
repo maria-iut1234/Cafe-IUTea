@@ -98,7 +98,6 @@ else {
                                             <td>
                                                 <a href="inv-view.php?in_id=<?= $inv['in_id']; ?>&in_name=<?= $inv['in_name']; ?>" class="btn btn-view">Check Stock</a>
                                                 <button class="btn btn-edit" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupRestock(this.id)"> Restock</button>
-
                                                 <button class="btn btn-delete" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupDelete(this.id)"> Delete</button>
                                             </td>
                                         </tr>

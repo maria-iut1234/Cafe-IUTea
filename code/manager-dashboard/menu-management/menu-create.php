@@ -25,11 +25,11 @@ else {
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>menu Create</title>
+    <title>Create New Menu Item</title>
 </head>
 
 <body>
-    <?php include('message.php'); ?>
+    
     <input type="checkbox" id="active" />
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
@@ -43,7 +43,7 @@ else {
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
-
+    
     <div class="other-btn">
         <a href="index.php" class="btn btn-add float-end">BACK</a>
     </div>
@@ -51,19 +51,14 @@ else {
 
 
         <div class="title">
-            <h1>Add New Menu</h1>
+            <h1>Add New Menu Item</h1>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <!-- <div class="card-header"> -->
-                    <!-- <h4>menu Add -->
-                    <!-- <a href="index.php" class="btn btn-back float-end">BACK</a> -->
-                    <!-- </h4> -->
-                    <!-- </div> -->
                     <div class="card-body edit-view">
-                        <form action="backend.php" method="POST">
+                        <form action="backend.php" method="POST" enctype="multipart/form-data">
                             <div class="pfp">
                                         <img src="./images/default_pfp.png" alt="Avatar">
                                     </div>
@@ -77,7 +72,7 @@ else {
                             </div>
                             <div class="mb-3">
                                     <label class="file_button">
-                                    <input type="file" name="add_image" accept="image/jpg, image/jpeg, image/png"> Add Menu Image
+                                        <input type="file" name="add_image"> <?php echo isset($_FILES['add_image'])?$_FILES['add_image']['name']:"Add Menu Image";?>
                                     </label>
                             </div>
                             <div class="mb-3">

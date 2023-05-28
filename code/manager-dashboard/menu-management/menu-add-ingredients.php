@@ -55,7 +55,7 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
 
     <div class="container mt-5">
 
-        <?php include('message.php'); 
+        <?php
         $menu_id = mysqli_real_escape_string($con, $_GET['menu_id']);
         $sql = "SELECT * FROM menu WHERE menu_id = $menu_id";
         $query_run = mysqli_query($con, $sql);
@@ -67,6 +67,7 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
         <div class="title">
             <h1>Add Ingredients to <?=$menu['menu_name']?></h1>
         </div>
+        <?php include('message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -80,7 +81,7 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
                                     <input type="hidden" name="menu_id" value="<?= $menu_id; ?>">
                                     <div class="mb-3">
                                         <select id='search'  name ="in_name" class="form-select" >
-                                            <option>Search Ingredient Name</option>
+                                            <option >Search Ingredient Name</option>
                                             <?php
                                             while ($row = mysqli_fetch_array($res)) {
                                                 echo "<option>$row[in_name]</option>";
@@ -119,8 +120,8 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
                                     foreach ($query_run as $ing) {
                                         $in_id = $ing['in_id'];
                                         $sql= "SELECT * FROM inventories WHERE in_id='$in_id'";
-                                        $query_run = mysqli_query($con, $query);
-                                        $name = mysqli_fetch_row($query_run);
+                                        $query_run = mysqli_query($con, $sql);
+                                        $name = mysqli_fetch_array($query_run);
                                 ?>
                                         <tr>
                                             <td><?= $name['in_name']; ?></td>

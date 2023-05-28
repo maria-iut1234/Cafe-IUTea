@@ -3,9 +3,9 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 ?>
@@ -44,7 +44,7 @@ else{
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $mess ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="<?php echo $mess ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -55,7 +55,7 @@ else{
     <div class="container mt-5">
 
         <div class="title">
-            <h1>View menu</h1>
+            <h1>Update Menu</h1>
         </div>
 
         <div class="row">
@@ -75,33 +75,35 @@ else{
                             $query_run = mysqli_query($con, $query);
                             if (mysqli_num_rows($query_run) > 0) {
                                 $menu = mysqli_fetch_array($query_run);
-                        
-
-                               
                         ?>
-                            
-                            <form action ="backend.php" method="POST">
-                                <div class="mb-3">
-                                    <label>Menu Picture</label>
-                                    <div class="pfp">
-                                        <img src="./images/default_pfp.png" alt="Avatar">
+
+                                <form action="backend.php" method="POST" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label>Menu Picture</label>
+                                        <div class="pfp">
+                                            <img src="<?=$menu['menu_pfp']?"../../uploads/".$menu['menu_pfp']:"./images/default_pfp.png"?>" alt="Avatar">
+                                        </div>
                                     </div>
-                                </div>
-                                <input type="hidden" class="form-control view-menu" name= "menu_id" value="<?= $menu['menu_id']; ?>">
-                                <div class="mb-3">
-                                    <label>Menu Name</label>
-                                    <input type="text" class="form-control view-menu" name= "menu_name" value="<?= $menu['menu_name']; ?>">
-                                </div>
-                                <div class="mb-3">
-                                    <label>Menu Price</label>
-                                    <input type="text" class="form-control view-menu" name= "menu_price" value="<?= $menu['menu_price']; ?>">
-                                </div>
-                                <div class="mb-3">
+                                    <input type="hidden" class="form-control view-menu" name="menu_id" value="<?= $menu['menu_id']; ?>">
+                                    <div class="mb-3">
+                                        <label>Menu Name</label>
+                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name']; ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Menu Price</label>
+                                        <input type="text" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="file_button">
+                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image'])?$_FILES['update_image']['name']:"Add Menu Image"?>
+                                        </label>
+                                    </div>
+                                    <div class="mb-3">
                                         <button type="submit" name="update_menu" class="btn btn-primary">
                                             Update Menu
                                         </button>
-                                </div>
-                            </form>
+                                    </div>
+                                </form>
                         <?php
                             } else {
                                 echo "<h4>No Such ID Found</h4>";
