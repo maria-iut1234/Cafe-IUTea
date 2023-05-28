@@ -30,7 +30,7 @@ if (isset($_POST['add_menu'])) {
                 $imageError = $_FILES['add_image']['error'];
                 $default = "default_pfp.png";
                 if ($imageError === 0) {
-                    if ($imageSize > 200000) {
+                    if ($imageSize > 1000000) {
                         $_SESSION['message'] .= " and sorry, the file is too large. Default image has been added";
                         $imageUpdateQuery = mysqli_query($con, "UPDATE menu SET menu_pfp = '$default' WHERE menu_name = '$name'") or die("query failed");
                     } else {
@@ -82,7 +82,7 @@ if (isset($_POST['update_menu'])) {
             $imageError = $_FILES['update_image']['error'];
 
             if ($imageError === 0) {
-                if ($imageSize > 200000) {
+                if ($imageSize > 1000000) {
                     $_SESSION['message'] .= " and sorry, the file is too large.";
                 } else {
                     $image_ex = pathinfo($image, PATHINFO_EXTENSION);
