@@ -16,6 +16,14 @@ $("#add-menu-btn").click(function () {
   // Append the cloned section
   $(".menu-items-container").append(clone);
 
+  // $(document).ready(function () {
+  //   $("#menu-item-name-" + cloneIndex).chosen({
+  //     width: "35%",
+  //   });
+  
+  // });
+  
+
   // Show the cloned section
   clone.show();
 });
@@ -24,6 +32,9 @@ $(document).on("click", ".clear-menu-btn", function () {
   $(this).closest(".add-menu").remove();
 });
 
-$(".form__input .menu-item-name").chosen({
-  width: "95%",
-});
+// $(document).ready(function () {
+//   $(".menu-item-name").chosen({
+//     width: "35%",
+//   });
+// });
+
