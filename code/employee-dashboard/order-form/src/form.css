@@ -1,0 +1,240 @@
+.order-container {
+  --color-primary: #bcaa99;
+  --color-primary-dark: #252323;
+  --color-secondary: #4e3a27;
+  --color-error: #e4818b;
+  --color-success: #88f688;
+  --border-radius: 4px;
+
+  margin: 0;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.order-container .order-form {
+  width: 700px;
+  max-width: 700px;
+  margin: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  background: #bcaa99;
+}
+
+.order-container.order-confirm {
+  float: right;
+  margin-right: 20px;
+}
+
+
+.order-container .form__input,
+.form__button {
+  font-family: "Poppins", sans-serif;
+}
+
+.form--hidden {
+  display: none;
+}
+
+.order-form > *:first-child {
+  margin-top: 0;
+}
+
+.order-form > *:last-child {
+  margin-bottom: 0;
+}
+
+.form__title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form__message {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form__message--success {
+  color: var(--color-success);
+}
+
+.form__message--error {
+  color: var(--color-error);
+}
+
+.menu-items-container {
+  background-color: #bcaa99;
+}
+
+.form__input-group {
+  display: flex;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: #bcaa99;
+}
+
+.form__input {
+  flex: 1;
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 1px solid #dddddd;
+  outline: none;
+  background: #eeeeee;
+  margin-right: 0.5rem;
+}
+
+.menu-items-container .form__input-group .menu-name,
+.menu-items-container .form__input-group .menu-item-adds {
+  flex-basis: 15%;
+}
+
+.clear-menu-btn {
+  background-color: #bcaa99;
+  color: #252323;
+  line-height: 50px;
+  border-color: transparent;
+  font-size: 20px;
+}
+
+.fa {
+  background: transparent;
+}
+
+.form__input:focus {
+  border-color: var(--color-primary);
+  background: #ffffff;
+}
+
+button.form__button.add-menu-btn {
+  width: 30%;
+  margin-bottom: 1rem;
+}
+
+button.form__button.place-order {
+  width: 100%;
+}
+
+button.form__button.place-order:hover {
+  background: #42b684;
+}
+
+.order-con-btn {
+  display: flex;
+  background-color: #bcaa99;
+}
+
+button.form__button.confirm-order {
+  background: #42b684;
+}
+
+button.form__button.confirm-order:hover {
+  background: #89a6fb;
+}
+
+button.form__button {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  background: #252323;
+  margin: 0.5rem;
+}
+
+.form__button:hover {
+  background: #89a6fb;
+}
+
+.form__button:active {
+  transform: scale(0.98);
+}
+
+.form__text {
+  text-align: center;
+}
+
+/*order-con form*/
+
+.menu-items-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table table {
+  width: 60%;
+  border-collapse: collapse;
+}
+
+.info-table table th,
+.info-table table td {
+  padding: 5px;
+  text-align: left;
+  /* border: 5px solid #0000005c; */
+}
+
+.menu-items-table table th,
+.menu-items-table table td {
+  padding: 5px;
+  text-align: left;
+  /* border: 5px solid #0000005c; */
+}
+
+.order-confirm-form * {
+  background-color: #bcaa99;
+}
+
+.menu-items-h2 {
+  margin: 0;
+  padding-bottom: 5px;
+  text-decoration: underline;
+}
+
+.tg {
+  border-collapse: collapse;
+  border-color: #93a1a1;
+  border-spacing: 0;
+}
+.tg td {
+  background-color: #f2f7f2;
+  border-bottom-width: 1px;
+  border-color: #93a1a1;
+  border-style: solid;
+  border-top-width: 1px;
+  border-width: 0px;
+  color: #002b36;
+  overflow: hidden;
+  /* padding: 10px 5px; */
+  word-break: normal;
+}
+.tg th {
+  background-color: #252323;
+  border-bottom-width: 1px;
+  border-color: #93a1a1;
+  border-style: solid;
+  border-top-width: 1px;
+  border-width: 0px;
+  color: #bcaa99;
+  font-weight: normal;
+  overflow: hidden;
+  /* padding: 10px 5px; */
+  word-break: normal;
+}
+.tg .tg-c3ow {
+  border-color: inherit;
+  text-align: center;
+  vertical-align: top;
+}
+.tg .tg-0lax {
+  text-align: left;
+  vertical-align: top;
+}
