@@ -19,10 +19,10 @@ $messi = '';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="chosen.css" rel="stylesheet">
-    <link href="sidebar.css" rel="stylesheet">
-    <link href="form.css" rel="stylesheet">
-    <link href="order-man.css" rel="stylesheet">
+    <link href="src/chosen.css" rel="stylesheet">
+    <link href="src/sidebar.css" rel="stylesheet">
+    <link href="src/form.css" rel="stylesheet">
+    <link href="src/order-man.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -104,10 +104,10 @@ $messi = '';
                     <button class="clear-menu-btn" id="clear-menu-btn" type="button"><i class="fa fa-times"></i></button>
                 </div>
             </div>
-            
+
             <button class="form__button add-menu-btn" id="add-menu-btn" type="button">Add Menu Item</button>
 
-            <button class="form__button place-order" type="submit">Place Order</button>
+            <button action="order-han.php" class="form__button place-order" type="submit">Place Order</button>
         </form>
 
     </div>

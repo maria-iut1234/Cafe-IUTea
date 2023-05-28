@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  background-color: #f2f7f2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header * {
+  background-color: #252323;
+  color: #89A6FB;
+  padding: 20px;
+  margin: 0;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #252323;
+  color: #89A6FB;
+  text-align: center;
+  height: 40px;
+  text-align: right;
+}
+
+footer * {
+  background-color: #252323;
+}
+
+footer p {
+    margin: 0 0 0 0;
+    padding-top: 9px;
+    padding-right: 20px;
+}
+
+footer p small {
+    margin: 0 0 0 0;
+}
+
+
+.title {
+    text-align: center;
+  }
+  
+  .btn {
+    display: inline-block;
+    /* position: relative; */
+    font-weight: 400;
+    line-height: 1.5;
+    color: #f2f7f2;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+  
+    cursor: pointer;
+    background-color: #42B684;
+    border: 1px solid transparent;
+    border-color: #42B684;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    /* margin: 18px; for putting margin on the right side of the button from the edge of the page*/
+  }
+  
+  .other-btn {
+    padding: 0.5rem 1rem;
+    position: absolute;
+    /* margin-bottom: 0; */
+    /* background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
+  }
+  
+  .btn:hover {
+    background-color: #252323;
+    border-color: #252323;
+    color: #f2f7f2;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+  }
