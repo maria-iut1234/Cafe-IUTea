@@ -1,6 +1,9 @@
 <?php
 session_start();
 require 'dbcon.php';
+require 'order-han.php';
+
+$counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'] : 0;
 
 $messi = '';
 
@@ -30,7 +33,7 @@ $messi = '';
     <title>Order Confirmation</title>
 
     <style>
-        
+
     </style>
 
 </head>
@@ -73,47 +76,54 @@ $messi = '';
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Size (Prize)</th>
-                                <th>Add-Ons (Prize)</th>
+                                <th>Size</th>
+                                <th>Add-Ons</th>
                                 <th>Quantity</th>
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Cappuccino</td>
-                                <td>Small (250)</td>
-                                <td>Hazelnut (50)</td>
-                                <td>2</td>
-                                <td>Tk.600</td>
-                            </tr>
-                            <tr>
-                                <td>Cappuccino</td>
-                                <td>Small (250)</td>
-                                <td>Hazelnut (50)</td>
-                                <td>2</td>
-                                <td>Tk.600</td>
-                            </tr>
+                            <?php
+                            for ($i = 0; $i < $counter; $i++) {
+                                $menuArrayName = 'menu' . $i;
+
+                                if (1) {
+                                    $menuItem = $_SESSION[$menuArrayName];
+                                    // echo $$menuArrayName['name'];
+                            ?>
+                                    <tr>
+                                        <td><?php echo $menuItem['name']; ?></td>
+                                        <td><?php echo $menuItem['size']; ?></td>
+                                        <td><?php echo $menuItem['adds']; ?></td>
+                                        <td><?php echo $menuItem['quantity']; ?></td>
+                                        <td><?php echo $menuItem['subtotal']; ?></td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                            ?>
                         </tbody>
 
                     </table>
 
                 </div>
 
+                <?php $order_info = $_SESSION['order-info'] ?>
+
                 <div class="info-table">
                     <table>
                         <thead>
                             <tr>
                                 <th>Total Amount: </th>
-                                <th>Tk.600</th>
+                                <th>Tk.<?php echo $order_info['total']; ?></th>
                             </tr>
                             <tr>
                                 <th>Customer Name: </th>
-                                <th>Shanta Maria</th>
+                                <th><?php echo $order_info['c_name']; ?></th>
                             </tr>
                             <tr>
                                 <th>Employee Name: </th>
-                                <th>Nazz</th>
+                                <th><?php echo $order_info['e_name']; ?></th>
                             </tr>
                             <tr>
                                 <th id="date"></th>
@@ -121,9 +131,6 @@ $messi = '';
                         </thead>
 
                     </table>
-                    <!-- <h3 class="total-amount">Total Amount:</h3><h3 class="align-right">Tk.600</h3>
-                    <h4 class="customer-name">Customer Name:</h4><h4 class="align-right">Shanta Maria</h4>
-                    <h4 class="employee-name">Employee Name:</h4><h4 class="align-right">Nazz</h4> -->
 
                 </div>
 
@@ -133,8 +140,8 @@ $messi = '';
 
 
             <div class="order-con-btn">
-                <button action="order-han.php" class="form__button cancel" type="button">Cancel</button>
-                <button action="order-han.php" class="form__button confirm-order" type="button">Confirm Order</button>
+                <button class="form__button cancel" type="button" onclick="goToOrderMan()">Cancel</button>
+                <button class="form__button confirm-order" name="confirm-order" action="confirm.php" onclick="goToConfirm()">Confirm Order</button>
             </div>
         </form>
 
@@ -156,10 +163,19 @@ $messi = '';
         var year = today.getFullYear();
 
         // Format the date as desired (e.g., "MM/DD/YYYY")
-        var formattedDate = 'Date: ' + month + '/' + day + '/' + year;
+        var formattedDate = month + '/' + day + '/' + year;
+
+        formattedDate = 'Date: ' + formattedDate;
 
         // Display the date in the HTML element with id "date"
         document.getElementById("date").textContent = formattedDate;
+
+        function goToOrderMan() {
+            window.location.href = "order-man.php";
+        }
+        function goToConfirm() {
+            window.location.href = "confirmed-order.php";
+        }
     </script>
 
 </body>
