@@ -19,13 +19,12 @@ $messi = '';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link href="bootstrap.css" rel="stylesheet"> -->
-
+    
     <link href="sidebar.css" rel="stylesheet">
     <link href="form.css" rel="stylesheet">
     <link href="order-man.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
+    <link href="chosen.css" rel="stylesheet" />
     <link rel="shortcut icon" href="images/logo.ico">
 
     <title>Order Management</title>
@@ -59,6 +58,10 @@ $messi = '';
         </div>
     </div>
 
+    <?php
+    $res = mysqli_query($con, "SELECT * FROM menu");
+    ?>
+
     <div class="order-container">
         <form method="POST" class="order-form">
             <div class="form__input-group customer-name">
@@ -68,14 +71,40 @@ $messi = '';
             <div class="form__input-group">
                 <input type="text" class="form__input" autofocus placeholder="Enter Customer Contact">
             </div>
-            <div class="form__input-group">
-                <select class="form__input" id="type" name="type">
-                    <option value="" disabled selected>Add Menu Item</option>
-                    <option>Employee</option>
-                    <option>Manager</option>
-                </select>
+            <div class="menu-items-container">
+                <div class="form__input-group add-menu" id="add-menu-section" style="display: none;">
+                    <select data-placeholder="Add Menu Item" id='menu-item-name' class="form__input menu-item-name">
+                        <?php
+                        while ($row = mysqli_fetch_array($res)) {
+                            echo "<option>$row[menu_name]</option>";
+                        }
+                        ?>
+                    </select>
+                    <!-- <select class="form__input menu-item-name" id="menu-item-name">
+                        <option value="" disabled selected>Add Menu Item</option>
+                        <option>Employee</option>
+                        <option>Manager</option>
+                    </select> -->
+                    <select class="form__input menu-item-size" id="menu-item-size">
+                        <option value="" disabled selected>Size</option>
+                        <option>Small</option>
+                        <option>Medium +Tk.20</option>
+                        <option>Large +Tk.50</option>
+                    </select>
+                    <select class="form__input menu-item-adds" id="menu-item-adds">
+                        <option value="" disabled selected>Select Add-Ons</option>
+                        <option>Caramel +Tk.50</option>
+                        <option>Vanilla +Tk.30</option>
+                        <option>Lactose-Free +Tk.30</option>
+                        <option>Hazelnut +Tk.80</option>
+                    </select>
+                    <input type="text" class="form__input menu-item-quantity" id="menu-item-quantity" autofocus placeholder="Quantity">
+                    <button class="clear-menu-btn" id="clear-menu-btn" type="button"><i class="fa fa-times"></i></button>
+                </div>
             </div>
-            <button class="form__button" type="submit">Place Order</button>
+            <button class="form__button add-menu-btn" id="add-menu-btn" type="button">Add Menu Item</button>
+
+            <button class="form__button place-order" type="submit">Place Order</button>
         </form>
 
     </div>
@@ -84,8 +113,13 @@ $messi = '';
         <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>
     </footer>
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <script src="order-man.js"></script>
 
 </body>
 
