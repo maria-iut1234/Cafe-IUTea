@@ -20,7 +20,6 @@ if (isset($_POST['deleteemployeesubmit'])) {
         $sql = "DELETE FROM employee WHERE e_id = '$id'";
         $query_run = mysqli_query($con, $sql);
         $_SESSION['message'] = "Employee Deleted Successfully";
-        header('location: index.php');
     } else {
         $_SESSION['message'] = "Employee Could not be Deleted for some reason. The emp id was " . $id;
     }
@@ -47,7 +46,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
 </head>
 
 <body>
-
+    <?php include('message.php'); ?>
     <input type="checkbox" id="active" />
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
@@ -73,8 +72,6 @@ if (isset($_POST['deleteemployeesubmit'])) {
         <div class="title">
             <h1>Employee Details</h1>
         </div>
-
-        <?php include('message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">

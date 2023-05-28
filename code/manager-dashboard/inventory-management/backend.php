@@ -1,7 +1,6 @@
 <?php
 session_start();
 require 'dbcon.php';
-require "mailer.php";
 $messi = '';
 
 if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")

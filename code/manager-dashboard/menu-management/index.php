@@ -109,8 +109,8 @@ if (isset($_POST['deletemenusubmit'])) {
                                             <td><?= $menu['menu_name']; ?></td>
                                             <td><?= $menu['menu_price']; ?></td>
                                             <td>
-                                                <a href="menu-view.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-view">View</a>
-                                                <a href="menu-edit.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-edit">Edit</a>
+                                                <a href="menu-update.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-view">Update</a>
+                                                <a href="menu-add-ingredients.php?menu_id=<?= $menu['menu_id']; ?>" class="btn btn-edit">Add Ingredients</a>
                                                 <button class="btn btn-delete" type="button" id="<?= $menu['menu_id'] ?> " onclick="openPopup(this.id)"> Delete </button>
                                                 <form method="POST">
                                                     <div class="popup_delete" id="popup_delete">

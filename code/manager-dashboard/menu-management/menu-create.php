@@ -2,9 +2,9 @@
 session_start();
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 ?>
@@ -21,7 +21,7 @@ else{
     <link href="menu-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
-    
+
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -40,7 +40,7 @@ else{
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -62,21 +62,27 @@ else{
                     <!-- <a href="index.php" class="btn btn-back float-end">BACK</a> -->
                     <!-- </h4> -->
                     <!-- </div> -->
-                    <div class="card-body">
+                    <div class="card-body edit-view">
                         <form action="backend.php" method="POST">
-
+                            <div class="pfp">
+                                        <img src="./images/default_pfp.png" alt="Avatar">
+                                    </div>
                             <div class="mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control view-menu">
                             </div>
                             <div class="mb-3">
                                 <label>Price</label>
-                                <input type="text" name="price" class="form-control">
+                                <input type="text" name="price" class="form-control view-menu">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="savmenu_menu" class="btn">Save Menu</button>
+                                    <label class="file_button">
+                                    <input type="file" name="add_image" accept="image/jpg, image/jpeg, image/png"> Add Menu Image
+                                    </label>
                             </div>
-
+                            <div class="mb-3">
+                                <button type="submit" name="add_menu" class="btn">Save Menu</button>
+                            </div>
                         </form>
                     </div>
                 </div>

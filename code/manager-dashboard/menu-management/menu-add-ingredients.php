@@ -1,0 +1,148 @@
+<?php
+session_start();
+require 'dbcon.php';
+$messi = '';
+
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
+    $messi = $_SESSION['id'];
+else {
+    header("location: ../../login/index.php");
+}
+$res = mysqli_query($con, "SELECT * FROM inventories");
+?>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="menu-man.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/logo.ico">
+
+
+    <link href="sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet">
+    </link>
+
+    <title>Menu Edit</title>
+</head>
+
+<body>
+    <input type="checkbox" id="active" />
+    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <div class="wrapper">
+        <ul>
+            <li><img class="iutea-icon" src="images/logo.png"></li>
+            <li><a href="../employee-management/index.php">Employee Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
+            <li><a href="../inventory-management/index.php">Inventory Management</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
+        </ul>
+    </div>
+
+    <div class="other-btn">
+        <a href="index.php" class="btn btn-add float-end">BACK</a>
+    </div>
+
+    <div class="container mt-5">
+
+        <?php include('message.php'); 
+        $menu_id = mysqli_real_escape_string($con, $_GET['menu_id']);
+        $sql = "SELECT * FROM menu WHERE menu_id = $menu_id";
+        $query_run = mysqli_query($con, $sql);
+        if (mysqli_num_rows($query_run) > 0) {
+            $menu = mysqli_fetch_array($query_run);
+        }
+        ?>
+
+        <div class="title">
+            <h1>Add Ingredients to <?=$menu['menu_name']?></h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                    <div class="bod">
+                        <?php
+                        if (isset($_GET['menu_id'])) {
+                            $menu_id = $_GET['menu_id']
+                        ?>
+                                <form action="backend.php" method="POST">
+                                    <input type="hidden" name="menu_id" value="<?= $menu_id; ?>">
+                                    <div class="mb-3">
+                                        <select id='search'  name ="in_name" class="form-select" >
+                                            <option>Search Ingredient Name</option>
+                                            <?php
+                                            while ($row = mysqli_fetch_array($res)) {
+                                                echo "<option>$row[in_name]</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        <input type="text" name="in_amount" placeholder="Enter an amount" class="form-input">
+                                        <button type="submit" name="add_ing" class="btn btn-primary">
+                                            Add Ingredient
+                                        </button>
+                                    </div>
+                                    <div class="mb-3">
+                                        
+                                    </div>
+
+                                </form>
+                        <?php
+                            } else {
+                                echo "<h4>No Such ID Found</h4>";
+                            }
+                        ?>
+                    </div>
+                    <div class="bod">
+                    <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Ingredient Name</th>
+                                    <th>Ingredient Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        <?php
+                            $query = "SELECT * FROM ingredients WHERE menu_id='$menu_id' order by ing_amount";
+                            $query_run = mysqli_query($con, $query);
+                               if (mysqli_num_rows($query_run) > 0) {
+                                    foreach ($query_run as $ing) {
+                                        $in_id = $ing['in_id'];
+                                        $sql= "SELECT * FROM inventories WHERE in_id='$in_id'";
+                                        $query_run = mysqli_query($con, $query);
+                                        $name = mysqli_fetch_row($query_run);
+                                ?>
+                                        <tr>
+                                            <td><?= $name['in_name']; ?></td>
+                                            <td><?= $ing['ing_amount']; ?></td>
+                                        </tr>
+                                <?php
+                                    }
+                                } else {
+                                    echo "<h5> No Record Found </h5>";
+                                }
+                                ?>
+
+                            </tbody>
+                        </table>
+                            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#search").chosen({width: "20.9%"});
+    </script>
+</body>
+
+</html>
