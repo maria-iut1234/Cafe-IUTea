@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'dbcon.php';
+require 'order-han.php';
 
 $messi = '';
 
@@ -66,16 +67,16 @@ $messi = '';
     <div class="order-container">
         <form method="POST" class="order-form">
             <div class="form__input-group customer-name">
-                <input type="text" class="form__input first-name" autofocus placeholder="Enter First Name">
-                <input type="text" class="form__input last-name" autofocus placeholder="Enter Last Name">
+                <input type="text" class="form__input first-name" name="first-name" autofocus placeholder="Enter First Name">
+                <input type="text" class="form__input last-name" name="last-name" autofocus placeholder="Enter Last Name">
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Enter Customer Contact">
+                <input type="text" class="form__input" name="contact" autofocus placeholder="Enter Customer Contact">
             </div>
             <div class="menu-items-container">
                 <div class="form__input-group add-menu" id="add-menu-section" style="display: none;">
 
-                    <select data-placeholder="Add Menu Item" id='menu-item-name' class="form__input menu-name menu-item-name">
+                    <select data-placeholder="Add Menu Item" name='menu-item-name' class="form__input menu-name menu-item-name">
                         <option value="" disabled selected>Add Menu Item</option>
                         <?php
                         while ($row = mysqli_fetch_array($res)) {
@@ -84,30 +85,32 @@ $messi = '';
                         ?>
                     </select>
 
-                    <select class="form__input menu-item-size" id="menu-item-size">
+                    <select class="form__input menu-item-size" name="menu-item-size">
                         <option value="" disabled selected>Size</option>
-                        <option>Small</option>
-                        <option>Medium +Tk.20</option>
-                        <option>Large +Tk.50</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium +Tk.20</option>
+                        <option value="Large">Large +Tk.50</option>
                     </select>
 
-                    <select class="form__input menu-item-adds" id="menu-item-adds">
+                    <select class="form__input menu-item-adds" name="menu-item-adds">
                         <option value="" disabled selected>Select Add-Ons</option>
-                        <option>Caramel +Tk.50</option>
-                        <option>Vanilla +Tk.30</option>
-                        <option>Lactose-Free +Tk.30</option>
-                        <option>Hazelnut +Tk.80</option>
+                        <option value="Caramel">Caramel +Tk.50</option>
+                        <option value="Vanilla">Vanilla +Tk.30</option>
+                        <option value="Lactose-Free">Lactose-Free +Tk.30</option>
+                        <option value="Hazelnut">Hazelnut +Tk.80</option>
                     </select>
 
-                    <input type="text" class="form__input menu-item-quantity" id="menu-item-quantity" autofocus placeholder="Quantity">
+                    <input type="text" class="form__input menu-item-quantity" name="menu-item-quantity" autofocus placeholder="Quantity">
 
                     <button class="clear-menu-btn" id="clear-menu-btn" type="button"><i class="fa fa-times"></i></button>
                 </div>
             </div>
 
+            <input id="menu-item-counter" name="menu-item-counter" type="hidden" value="">
+
             <button class="form__button add-menu-btn" id="add-menu-btn" type="button">Add Menu Item</button>
 
-            <button action="order-han.php" class="form__button place-order" type="submit">Place Order</button>
+            <button action="order-han.php" class="form__button place-order" type="submit" name="place-order">Place Order</button>
         </form>
 
     </div>
