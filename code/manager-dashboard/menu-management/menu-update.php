@@ -28,7 +28,7 @@ else {
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>View menu</title>
+    <title>Update Menu Item</title>
 
 
 </head>
@@ -55,7 +55,7 @@ else {
     <div class="container mt-5">
 
         <div class="title">
-            <h1>Update Menu</h1>
+            <h1>Update Menu Item</h1>
         </div>
 
         <div class="row">

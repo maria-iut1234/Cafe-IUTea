@@ -65,7 +65,7 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
         ?>
 
         <div class="title">
-            <h1>Add Ingredients to <?=$menu['menu_name']?></h1>
+            <h1><?=$menu['menu_name']?></h1>
         </div>
         <?php include('message.php'); ?>
 

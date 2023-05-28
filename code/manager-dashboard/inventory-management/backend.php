@@ -41,7 +41,7 @@ if (isset($_POST['additem'])) {
         exit(0);
     } else {
         if ($error) {
-            $_SESSION['message'] = "The entered email is Invalid!";
+            $_SESSION['message'] = "Ayy Caramba. The item could not be added due to some error!";
             header("Location: index.php");
         }
         $_SESSION['message'] = "ekhane to ashar kotha na bhai ken ashche Allah janen.";
