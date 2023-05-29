@@ -46,7 +46,7 @@ if (isset($_POST['place-order'])) {
         $$menuArrayName['adds'] = $_POST[$menu_adds] ? $_POST[$menu_adds] : "null";
         $$menuArrayName['size'] = $_POST[$menu_size] ? $_POST[$menu_size] : "null";
 
-        $$menuArrayName['isPossible'] = true;
+        // $$menuArrayName['isPossible'] = true;
 
         $menu_name_value = $$menuArrayName['name'];
         $menu_size_value = $$menuArrayName['size'];
@@ -112,18 +112,18 @@ if (isset($_POST['place-order'])) {
                 $amount = $row_ing['ing_amount'] * $menu_quantity_value;
                 $ingredient_count[$in_id] += $amount;
 
-                //checking if this menu order is possible or not
-                while ($inv = mysqli_fetch_assoc($query_inv_run)) {
-                    if ($inv['in_id'] == $in_id) {
-                        if ($inv['in_amount'] >= $amount) {;
-                        } else {
-                            $$menuArrayName['isPossible'] = false;
-                            $isOrderPossible = false;
-                            // echo $menu_name_value . " " . $amount . "<br>";
-                        }
-                    } else {;
-                    }
-                }
+                // //checking if this menu order is possible or not
+                // while ($inv = mysqli_fetch_assoc($query_inv_run)) {
+                //     if ($inv['in_id'] == $in_id) {
+                //         if ($inv['in_amount'] >= $amount) {;
+                //         } else {
+                //             $$menuArrayName['isPossible'] = false;
+                //             $isOrderPossible = false;
+                //             // echo $menu_name_value . " " . $amount . "<br>";
+                //         }
+                //     } else {;
+                //     }
+                // }
             }
         } else {
             echo "Error executing the query: " . mysqli_error($con);

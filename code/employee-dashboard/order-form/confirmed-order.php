@@ -1,3 +1,18 @@
+<?php
+session_start();
+require 'dbcon.php';
+
+$messi = '';
+
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+    $messi = $_SESSION['id'];
+    $sub_str = substr($messi, -6, -3);   
+// else{
+//     header("location: ../../login/index.php");
+// }
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -20,8 +35,8 @@
 
 <body>
 
-    <header>
-        <h1>Welcome Employee</h1>
+<header>
+        <h1><?=$sub_str?$sub_str:"Employee"?></h1>
     </header>
 
     <input type="checkbox" id="active" />
@@ -29,8 +44,8 @@
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="index.php">Order Management</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="../order-form/order-man.php">Order Management</a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
@@ -43,13 +58,14 @@
     </div>
 
     <div class="lottie-confirmed">
-        <lottie-player src="images/confirmed.json" background="#F2F7F2" speed="1" style="width: 500px; height: 500px;" autoplay></lottie-player>
+        <lottie-player src="images/confirmed.json" background="#F2F7F2" speed="1" style="width: 400px; height: 400px;" autoplay></lottie-player>
+    </div>
+
+    <div class="back-btn">
+        <button class="form__button cancel" type="button" onclick="goToOrderMan()">Back</button>
     </div>
     
-    <!-- <img src="images/confirm-order.png" alt="Description of the image"> -->
-
-    </div>
-
+    
     <footer>
         <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>
     </footer>
@@ -57,6 +73,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="order-con.js"></script>
 
 </body>
 

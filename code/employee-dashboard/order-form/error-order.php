@@ -1,14 +1,14 @@
 <?php
 session_start();
 require 'dbcon.php';
-// require 'order-han.php';
 
 $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'] : 0;
 
 $messi = '';
 
-// if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
-//     $messi = $_SESSION['id'];
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+    $messi = $_SESSION['id'];
+    $sub_str = substr($messi, -6, -3);   
 // else{
 //     header("location: ../../login/index.php");
 // }
@@ -41,7 +41,7 @@ $messi = '';
 <body>
 
     <header>
-        <h1>Welcome Employee</h1>
+        <h1><?=$sub_str?$sub_str:"Employee"?></h1>
     </header>
 
     <input type="checkbox" id="active" />
@@ -49,8 +49,8 @@ $messi = '';
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="index.php">Order Management</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="../order-form/order-man.php">Order Management</a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
@@ -85,7 +85,7 @@ $messi = '';
             ?>
         </ol>
 
-        <h3>Because there is a lack of the following ingrediants:</h3>
+        <h3>Because there is a lack of the following ingredients:</h3>
         <ol>
             <?php
             $ingredients = $_SESSION['ingredients'];
@@ -100,6 +100,10 @@ $messi = '';
         </ol>
     </div>
 
+    <div class="back-btn">
+        <button class="form__button cancel" type="button" onclick="goToOrderMan()">Back</button>
+    </div>
+
     <footer>
         <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>
     </footer>
@@ -107,6 +111,7 @@ $messi = '';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="order-con.js"></script>
 
 </body>
 
