@@ -26,7 +26,7 @@
     line-height: 50px;
     border-radius: 50%;
     font-size: 20px;
-    color: #f2f7f2;
+    color: #252323;
     cursor: pointer;
     background: #89A6FB;
     border-color: #89A6FB;
@@ -35,7 +35,7 @@
   }
   #active:checked ~ .menu-btn {
     background: #89A6FB;
-    color: #f2f7f2;
+    color: #252323;
   }
   #active:checked ~ .menu-btn i:before {
     content: "\f00d";
@@ -81,7 +81,7 @@
     transform: scaleY(1);
   }
   .wrapper ul li a:hover {
-    color: #f2f7f2;
+    color: #252323;
   }
   input[type="checkbox"] {
     display: none;

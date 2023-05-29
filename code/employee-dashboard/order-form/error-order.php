@@ -1,3 +1,19 @@
+<?php
+session_start();
+require 'dbcon.php';
+// require 'order-han.php';
+
+$counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'] : 0;
+
+$messi = '';
+
+// if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+//     $messi = $_SESSION['id'];
+// else{
+//     header("location: ../../login/index.php");
+// }
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -14,7 +30,11 @@
 
     <link rel="shortcut icon" href="images/logo.ico">
 
-    <title>Order Confirmation</title>
+    <title>Order Error</title>
+
+    <style>
+
+    </style>
 
 </head>
 
@@ -37,17 +57,47 @@
 
     <div class="container mt-4">
         <div class="title">
-            <h1>Order Confirmed!</h1>
+            <h1>Order Not Confirmed!</h1>
         </div>
 
     </div>
 
-    <div class="lottie-confirmed">
-        <lottie-player src="images/confirmed.json" background="#F2F7F2" speed="1" style="width: 500px; height: 500px;" autoplay></lottie-player>
-    </div>
-    
-    <!-- <img src="images/confirm-order.png" alt="Description of the image"> -->
+    <div class="lottie-error">
 
+        <lottie-player class="error-sign" src="images/error-sign.json" background="#F2F7F2" speed="1" style="width: 200px; height: 200px;" autoplay></lottie-player>
+
+        <lottie-player class="error-cup" src="images/error-order.json" background="#F2F7F2" speed="1" style="width: 500px; height: 400px;" autoplay loop></lottie-player>
+
+    </div>
+
+    <div class="error-message">
+        <h3>The following menu items are not possible:</h3>
+        <ol>
+            <?php
+            $menu_items = $_SESSION['menu_items'];
+
+            for ($i = 0; $i < count($menu_items); $i++) {
+            ?>
+                <li><?php echo $menu_items[$i]; ?></li>
+            <?php
+
+            }
+            ?>
+        </ol>
+
+        <h3>Because there is a lack of the following ingrediants:</h3>
+        <ol>
+            <?php
+            $ingredients = $_SESSION['ingredients'];
+
+            for ($i = 0; $i < count($ingredients); $i++) {
+            ?>
+                <li><?php echo $ingredients[$i]; ?></li>
+            <?php
+
+            }
+            ?>
+        </ol>
     </div>
 
     <footer>

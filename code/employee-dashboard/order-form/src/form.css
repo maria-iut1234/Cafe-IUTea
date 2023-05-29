@@ -14,6 +14,15 @@
   font-size: 18px;
 }
 
+
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin-left: 50px;
+}
+
 .order-container .order-form {
   width: 700px;
   max-width: 700px;
@@ -26,7 +35,8 @@
 
 .order-container.order-confirm {
   float: right;
-  margin-right: 20px;
+  margin-right: 70px;
+  height: 70vh;
 }
 
 
@@ -116,12 +126,13 @@ button.form__button.add-menu-btn {
   margin-bottom: 1rem;
 }
 
+
 button.form__button.place-order {
   width: 100%;
 }
 
 button.form__button.place-order:hover {
-  background: #42b684;
+  background: #009579;
 }
 
 .order-con-btn {
@@ -130,7 +141,7 @@ button.form__button.place-order:hover {
 }
 
 button.form__button.confirm-order {
-  background: #42b684;
+  background: #009579;
 }
 
 button.form__button.confirm-order:hover {

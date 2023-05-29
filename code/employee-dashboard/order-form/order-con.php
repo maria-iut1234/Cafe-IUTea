@@ -1,7 +1,7 @@
 <?php
 session_start();
 require 'dbcon.php';
-require 'order-han.php';
+// require 'order-han.php';
 
 $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'] : 0;
 
@@ -65,10 +65,11 @@ $messi = '';
         </div>
     </div>
 
-    <img src="images/confirm-order.png" alt="Description of the image">
-
+    <div class="lottie-container">
+        <lottie-player src="images/confirm-order.json" background="#F2F7F2" speed="1" style="width: 500px; height: 500px;" autoplay loop></lottie-player>
+    </div>
     <div class="order-container order-confirm">
-        <form method="POST" class="order-form order-confirm">
+        <form method="POST" action="confirm.php" class="order-form order-confirm">
             <div class="order-confirm-form">
                 <h2 class="menu-items-h2">Menu Items:</h2>
                 <div class="menu-items-table">
@@ -141,7 +142,7 @@ $messi = '';
 
             <div class="order-con-btn">
                 <button class="form__button cancel" type="button" onclick="goToOrderMan()">Cancel</button>
-                <button class="form__button confirm-order" name="confirm-order" action="confirm.php" onclick="goToConfirm()">Confirm Order</button>
+                <button class="form__button confirm-order" name="confirm-order" type="submit">Confirm Order</button>
             </div>
         </form>
 
@@ -153,6 +154,7 @@ $messi = '';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         // Get today's date
         var today = new Date();
@@ -172,9 +174,6 @@ $messi = '';
 
         function goToOrderMan() {
             window.location.href = "order-man.php";
-        }
-        function goToConfirm() {
-            window.location.href = "confirmed-order.php";
         }
     </script>
 
