@@ -1,18 +1,17 @@
 <?php
 session_start();
 require 'dbcon.php';
-// require 'order-han.php';
 
 $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'] : 0;
 
 $messi = '';
 
-// if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
-//     $messi = $_SESSION['id'];
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+    $messi = $_SESSION['id'];
+    $sub_str = substr($messi, -6, -3);   
 // else{
 //     header("location: ../../login/index.php");
 // }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -41,7 +40,7 @@ $messi = '';
 <body>
 
     <header>
-        <h1>Welcome Employee</h1>
+        <h1><?=$sub_str?$sub_str:"Employee"?></h1>
     </header>
 
     <input type="checkbox" id="active" />
@@ -49,8 +48,8 @@ $messi = '';
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="index.php">Order Management</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="../order-form/order-man.php">Order Management</a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
@@ -155,27 +154,7 @@ $messi = '';
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script>
-        // Get today's date
-        var today = new Date();
-
-        // Extract date components
-        var day = today.getDate();
-        var month = today.getMonth() + 1; // Month is zero-based, so add 1
-        var year = today.getFullYear();
-
-        // Format the date as desired (e.g., "MM/DD/YYYY")
-        var formattedDate = month + '/' + day + '/' + year;
-
-        formattedDate = 'Date: ' + formattedDate;
-
-        // Display the date in the HTML element with id "date"
-        document.getElementById("date").textContent = formattedDate;
-
-        function goToOrderMan() {
-            window.location.href = "order-man.php";
-        }
-    </script>
+    <script src="order-con.js"></script>
 
 </body>
 
