@@ -74,12 +74,16 @@ else {
                                     <img src="<?= $man['m_pfp'] ? "../../uploads/" . $man['m_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
                                 </div>
                                 <div class="mb-3">
+                                    <label>ID</label>
+                                    <input type="text" name="id" value="<?= $man['m_id']; ?>" class="form-control view-emp" readonly>
+                                </div>
+                                <div class="mb-3">
                                     <label>Name</label>
                                     <input type="text" name="name" value="<?= $man['m_name']; ?>" class="form-control view-emp">
                                 </div>
                                 <div class="mb-3">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="<?= $man['m_email']; ?>" class="form-control view-emp">
+                                    <input type="email" name="email" value="<?= $man['m_email']; ?>" class="form-control view-emp" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label>Date of Birth</label>
