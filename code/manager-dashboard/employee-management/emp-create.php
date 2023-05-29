@@ -62,24 +62,31 @@ else{
                     <!-- <a href="index.php" class="btn btn-back float-end">BACK</a> -->
                     <!-- </h4> -->
                     <!-- </div> -->
-                    <div class="card-body">
-                        <form action="backend.php" method="POST">
-
+                    <div class="card-body edit-view">
+                        <form action="backend.php" method="POST" enctype="multipart/form-data">
+                            <div class="pfp">
+                                        <img src="../../uploads/avatar-default.png" alt="Avatar">
+                                </div>
                             <div class="mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control">
+                                <input type="text" name="name" class="form-control view-emp" required>
                             </div>
                             <div class="mb-3">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control">
+                                <input type="email" name="email" class="form-control view-emp" required>
                             </div>
                             <div class="mb-3">
                                 <label>Date of Birth</label>
-                                <input type="date" name="dob" class="form-control">
+                                <input type="date" name="dob" class="form-control view-emp" required>
                             </div>
                             <div class="mb-3">
                                 <label>Address</label>
-                                <input type="text" name="address" class="form-control">
+                                <input type="text" name="address" class="form-control view-emp" required>
+                            </div>
+                            <div class="mb-3">
+                                    <label class="file_button">
+                                        <input type="file" name="add_image"> <?php echo isset($_FILES['add_image'])?$_FILES['add_image']['name']:"Add Employee Image";?>
+                                    </label>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="save_emp" class="btn">Save Employee</button>

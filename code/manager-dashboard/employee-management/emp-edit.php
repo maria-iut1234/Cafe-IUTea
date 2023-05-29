@@ -3,9 +3,9 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 ?>
@@ -21,7 +21,7 @@ else{
     <link href="emp-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
-    
+
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -39,7 +39,7 @@ else{
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -63,7 +63,7 @@ else{
                     <!-- <a href="index.php" class="btn btn-danger float-end">BACK</a> -->
                     <!-- </h4> -->
                     <!-- </div> -->
-                    <div class="card-body">
+                    <div class="card-body edit-view">
 
                         <?php
                         if (isset($_GET['emp_id'])) {
@@ -74,24 +74,31 @@ else{
                             if (mysqli_num_rows($query_run) > 0) {
                                 $emp = mysqli_fetch_array($query_run);
                         ?>
-                                <form action="backend.php" method="POST">
+                                <form action="backend.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="emp_id" value="<?= $emp['e_id']; ?>">
-
+                                    <div class="pfp">
+                                            <img src="<?=$emp['e_pfp']?"../../uploads/".$emp['e_pfp']:"../../uploads/avatar-default.png"?>" alt="Avatar">
+                                        </div>
                                     <div class="mb-3">
                                         <label>Employee Name</label>
-                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control">
+                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control">
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>
-                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control">
+                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Address</label>
-                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control">
+                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="file_button">
+                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image'])?$_FILES['update_image']['name']:"Update Employee Image"?>
+                                        </label>
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" name="update_emp" class="btn btn-primary">

@@ -78,24 +78,25 @@ if (isset($_POST['deletemenusubmit'])) {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <?php
+                        $query = "SELECT * FROM menu";
+                        $query_run = mysqli_query($con, $query);
 
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Menu Name</th>
-                                    <th>Menu Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        if (mysqli_num_rows($query_run) > 0) {
+                        ?>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Menu Name</th>
+                                        <th>Menu Price</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                <?php
-                                $query = "SELECT * FROM menu";
-                                $query_run = mysqli_query($con, $query);
-
-                                if (mysqli_num_rows($query_run) > 0) {
+                                    <?php
                                     foreach ($query_run as $menu) {
-                                ?>
+                                    ?>
                                         <tr>
                                             <td><?= $menu['menu_name']; ?></td>
                                             <td><?= $menu['menu_price']; ?></td>
@@ -117,17 +118,18 @@ if (isset($_POST['deletemenusubmit'])) {
                                             </div>
                                         </form>
 
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo "<h5> No Record Found </h5>";
-                                }
-                                ?>
-                                </tr>
+                                    ?>
+                                    </tr>
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+                        <?php
+                        } else {
+                            echo "<h5> No Record Found </h5>";
+                        }
+                        ?>
 
                     </div>
                 </div>

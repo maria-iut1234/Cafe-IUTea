@@ -94,7 +94,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  width: 50%;
+  width: 34%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -104,7 +104,7 @@
 }
 
 .card-body .edit-view {
-  width: 50%;
+  width: 34%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -595,3 +595,29 @@ transform: scale(0.98);
 }
 
 
+.file_button{
+  /* position: relative; */
+  font-weight: 400;
+  margin: auto;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  color: #f2f7f2;
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+.file_button:hover{
+  background-color: #252323;
+  border-color: #252323;
+  color: #f2f7f2;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+}
+input[type="file"] {
+  display: none;
+}

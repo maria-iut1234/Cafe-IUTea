@@ -53,6 +53,33 @@ if(isset($_POST['update_emp']))
     if($query_run)
     {
         $_SESSION['message'] = "Employee Updated Successfully";
+        if (isset($_FILES['update_image'])) {
+            $image = $_FILES['update_image']['name'];
+            $imageSize = $_FILES['update_image']['size'];
+            $imageTempName = $_FILES['update_image']['tmp_name'];
+            $imageError = $_FILES['update_image']['error'];
+
+            if ($imageError === 0) {
+                if ($imageSize > 1000000) {
+                    $_SESSION['message'] .= " and sorry, the file is too large.";
+                } else {
+                    $image_ex = pathinfo($image, PATHINFO_EXTENSION);
+                    $image_ex_lc = strtolower($image_ex);
+                    $allowed_exs = array("jpg", "jpeg", "png");
+                    if (in_array($image_ex_lc, $allowed_exs)) {
+                        $new_image_name = uniqid("IMG-", true) . '.' . $image_ex_lc;
+                        $imageFolder = '../../uploads/' . $new_image_name;
+                        move_uploaded_file($imageTempName, $imageFolder);
+                        $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$new_image_name' WHERE e_id = '$emp_id'") or die("query failed");
+                        $_SESSION['message'] .= " and image has been updated successfully.";
+                    } else {
+                        $_SESSION['message'] .= " and you cannot upload files of this type.";
+                    }
+                }
+            } else {
+                $_SESSION['message'] .= " an unknown error occured 2.";
+            }
+        }
         header("Location: index.php");
         exit(0);
     }
@@ -104,7 +131,7 @@ if(isset($_POST['save_emp']))
     $stmt -> bind_param("sssss",$name,password_hash($password,PASSWORD_DEFAULT),$dob,$address,$email);
     $stmt -> execute();
     $stmt -> close();
-    $con -> close();
+    // $con -> close();
     $to = $email;
     $url = "http://localhost:3000/login/index.php";
     $subject = 'Registration as an Employee of Coffee Cafe is Complete';
@@ -115,6 +142,38 @@ if(isset($_POST['save_emp']))
     $message .='<a href="'.$url.'">'.$url.'</a?></p>';
     send_mail($to,$subject,$message);
     $_SESSION['message'] = "Employee Created Successfully";
+    if (isset($_FILES['add_image'])) {
+        $image = $_FILES['add_image']['name'];
+        $imageSize = $_FILES['add_image']['size'];
+        $imageTempName = $_FILES['add_image']['tmp_name'];
+        $imageError = $_FILES['add_image']['error'];
+        $default = "avatar-default.png";
+        if ($imageError === 0) {
+            if ($imageSize > 1000000) {
+                $_SESSION['message'] .= " and sorry, the file is too large. Default image has been added";
+                $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$default' WHERE e_email = '$email'") or die("query failed");
+            } else {
+                $image_ex = pathinfo($image, PATHINFO_EXTENSION);
+                $image_ex_lc = strtolower($image_ex);
+                $allowed_exs = array("jpg", "jpeg", "png");
+                if (in_array($image_ex_lc, $allowed_exs)) {
+                    $new_image_name = uniqid("IMG-", true) . '.' . $image_ex_lc;
+                    $imageFolder = '../../uploads/' . $new_image_name;
+                    move_uploaded_file($imageTempName, $imageFolder);
+                    $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$new_image_name' WHERE e_email = '$email'") or die("query failed");
+                    $_SESSION['message'] .= " and image has been updated successfully.";
+                } else {
+                    $_SESSION['message'] .= " and you cannot upload files of this type. Default image has been added";
+                    $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$default' WHERE e_email = '$email'") or die("query failed");
+                }
+            }
+        } else {
+            $_SESSION['message'] .= " and Default image has been added";
+            $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$default' WHERE e_email = '$email'") or die("query failed");
+        }
+    } else {
+        $_SESSION['message'] .= " an unknown error occured 1.";
+    }
         header("Location: emp-create.php");
         exit(0);
     }

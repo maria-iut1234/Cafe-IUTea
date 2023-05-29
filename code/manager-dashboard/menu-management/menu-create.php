@@ -64,18 +64,18 @@ else {
                                     </div>
                             <div class="mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control view-menu">
+                                <input type="text" name="name" class="form-control view-menu" required>
                             </div>
                             <div class="mb-3">
                                 <label>Price</label>
-                                <input type="text" name="price" class="form-control view-menu">
+                                <input type="text" name="price" class="form-control view-menu" required>
                             </div>
                             <div class="mb-3">
                                     <label class="file_button">
                                         <input type="file" name="add_image"> <?php echo isset($_FILES['add_image'])?$_FILES['add_image']['name']:"Add Menu Image";?>
                                     </label>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" >
                                 <button type="submit" name="add_menu" class="btn">Save Menu</button>
                             </div>
                         </form>

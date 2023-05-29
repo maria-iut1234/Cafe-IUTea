@@ -17,7 +17,6 @@
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
-
   cursor: pointer;
   background-color: #e4818b;
   border: 1px solid transparent;
@@ -65,6 +64,30 @@
   border-color: #198754;
 }
 
+
+.butt {
+  display: block;
+  /* position: relative; */
+  font-weight: 400;
+  line-height: 1.5;
+  color: #f2f7f2;
+  text-align: center;
+  text-decoration: none;
+  /* vertical-align: middle; */
+  
+  cursor: pointer;
+  background-color: #e4818b;
+  border: 1px solid transparent;
+  border-color: #e4818b;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  /* margin: 18px; for putting margin on the right side of the button from the edge of the page*/
+}
+
+
+
+
 /* .h4 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -94,7 +117,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  width: 50%;
+  width: 35%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -104,7 +127,7 @@
 }
 
 .card-body .edit-view {
-  width: 50%;
+  width: 35%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -694,9 +717,30 @@ transform: scale(0.98);
   padding: 1rem 1rem;
 }
 
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid;
+  text-align: center;
+  padding: 10px;
+}
+
+.adjust {
+  margin: auto;
+  width: 21%;
+  border: 3px solid;
+  text-align: center;
+  padding: 10px;
+}
+.bodbod {
+  /* flex: 1 1 auto; */
+  padding: 1rem 1rem;
+}
+
 .file_button{
   /* position: relative; */
   font-weight: 400;
+  margin: auto;
   line-height: 1.5;
   text-align: center;
   text-decoration: none;
@@ -719,3 +763,4 @@ transform: scale(0.98);
 input[type="file"] {
   display: none;
 }
+

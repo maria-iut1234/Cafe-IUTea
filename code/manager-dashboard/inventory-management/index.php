@@ -75,23 +75,24 @@ else {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <?php
+                        $query = "SELECT * FROM inventories";
+                        $query_run = mysqli_query($con, $query);
 
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Inventory Name</th>
-                                    <th>Inventory Amount</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $query = "SELECT * FROM inventories";
-                                $query_run = mysqli_query($con, $query);
-
-                                if (mysqli_num_rows($query_run) > 0) {
+                        if (mysqli_num_rows($query_run) > 0) {
+                        ?>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Inventory Name</th>
+                                        <th>Inventory Amount</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                     foreach ($query_run as $inv) {
-                                ?>
+                                    ?>
                                         <tr>
                                             <td><?= $inv['in_name']; ?></td>
                                             <td><?= $inv['in_amount']; ?></td>
@@ -130,16 +131,17 @@ else {
                                                 <button type="button" class="employee_button_delete_popup" onclick="closePopupDelete()">Cancel</button>
                                             </div>
                                         </form>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo "<h5> No Record Found </h5>";
-                                }
-                                ?>
+                                    ?>
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+                        <?php
+                        } else {
+                            echo "<h5> No Record Found </h5>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

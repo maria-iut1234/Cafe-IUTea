@@ -3,9 +3,9 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 if (!isset($_GET['in_id'])) {
@@ -47,7 +47,7 @@ if (!isset($_GET['in_id'])) {
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -58,7 +58,7 @@ if (!isset($_GET['in_id'])) {
     <div class="container mt-5">
 
         <div class="title">
-            <h1><?=$_GET['in_name']?></h1>
+            <h1><?= $_GET['in_name'] ?></h1>
         </div>
 
         <div class="row">
@@ -70,36 +70,35 @@ if (!isset($_GET['in_id'])) {
                     <!-- </h4> -->
                     <!-- </div> -->
                     <div class="card-body edit-view">
-                    <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Inventory Amount</th>
-                                    <th>Order Date</th>
-                                    <th>Expiration Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                        <?php
-                            $in_id = mysqli_real_escape_string($con, $_GET['in_id']);
-                            $query = "SELECT * FROM inventory_orders WHERE in_id='$in_id' order by e_date asc";
-                            $query_run = mysqli_query($con, $query);
-                               if (mysqli_num_rows($query_run) > 0) {
+                        <?php $in_id = mysqli_real_escape_string($con, $_GET['in_id']);
+                        $query = "SELECT * FROM inventory_orders WHERE in_id='$in_id' order by e_date asc";
+                        $query_run = mysqli_query($con, $query);
+                        if (mysqli_num_rows($query_run) > 0) { ?>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Inventory Amount</th>
+                                        <th>Order Date</th>
+                                        <th>Expiration Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                     foreach ($query_run as $inv) {
-                                ?>
+                                    ?>
                                         <tr>
                                             <td><?= $inv['o_amount']; ?></td>
                                             <td><?= $inv['o_date']; ?></td>
                                             <td><?= $inv['e_date']; ?></td>
                                         </tr>
-                                <?php
-                                    }
-                                } else {
-                                    echo "<h5> No Record Found </h5>";
-                                }
-                                ?>
-
-                            </tbody>
-                        </table>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        <?php
+                        } else {
+                            echo "<h5> No Record Found </h5>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

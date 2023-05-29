@@ -79,7 +79,6 @@ else {
 
                                 <form action="backend.php" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label>Menu Picture</label>
                                         <div class="pfp">
                                             <img src="<?=$menu['menu_pfp']?"../../uploads/".$menu['menu_pfp']:"./images/default_pfp.png"?>" alt="Avatar">
                                         </div>
@@ -87,11 +86,11 @@ else {
                                     <input type="hidden" class="form-control view-menu" name="menu_id" value="<?= $menu['menu_id']; ?>">
                                     <div class="mb-3">
                                         <label>Menu Name</label>
-                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name']; ?>">
+                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name'];?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Menu Price</label>
-                                        <input type="text" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>">
+                                        <input type="text" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="file_button">

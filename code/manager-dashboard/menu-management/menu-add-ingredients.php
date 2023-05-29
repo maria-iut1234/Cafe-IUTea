@@ -65,47 +65,51 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
         ?>
 
         <div class="title">
-            <h1><?=$menu['menu_name']?></h1>
+            <h1><?= $menu['menu_name'] ?></h1>
         </div>
         <?php include('message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">
 
-                    <div class="bod">
-                        <?php
-                        if (isset($_GET['menu_id'])) {
-                            $menu_id = $_GET['menu_id']
-                        ?>
-                                <form action="backend.php" method="POST">
-                                    <input type="hidden" name="menu_id" value="<?= $menu_id; ?>">
-                                    <div class="mb-3">
-                                        <select id='search'  name ="in_name" class="form-select" >
-                                            <option >Search Ingredient Name</option>
-                                            <?php
-                                            while ($row = mysqli_fetch_array($res)) {
-                                                echo "<option>$row[in_name]</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <input type="text" name="in_amount" placeholder="Enter an amount" class="form-input">
-                                        <button type="submit" name="add_ing" class="btn btn-primary">
-                                            Add Ingredient
-                                        </button>
-                                    </div>
-                                    <div class="mb-3">
-                                        
-                                    </div>
+                <div class="bodbod">
+                    <?php
+                    if (isset($_GET['menu_id'])) {
+                        $menu_id = $_GET['menu_id']
+                    ?>
+                        <form action="backend.php" method="POST">
+                            <input type="hidden" name="menu_id" value="<?= $menu_id; ?>">
+                            <div class="mb-3">
+                                <select id='search' data-placeholder="Search Ingredient Name" name="in_name" class="form-select" required>
+                                    <option disabled selected>Search Ingredient Name</option>
+                                    <?php
+                                    while ($row = mysqli_fetch_array($res)) {
+                                        echo "<option>$row[in_name]</option>";
+                                    }
+                                    ?>
+                                </select>
+                                <input type="text" name="in_amount" placeholder="Enter an amount" class="form-input" required>
+                                <button type="submit" name="add_ing" class="btn btn-primary adjust">
+                                    Add Ingredient
+                                </button>
+                            </div>
+                            <div class="mb-3">
 
-                                </form>
-                        <?php
-                            } else {
-                                echo "<h4>No Such ID Found</h4>";
-                            }
-                        ?>
-                    </div>
-                    <div class="bod">
-                    <table class="table table-bordered table-striped">
+                            </div>
+
+                        </form>
+                    <?php
+                    } else {
+                        echo "<h4>No Such ID Found</h4>";
+                    }
+                    ?>
+                </div>
+                <div class="bod">
+                    <?php $query = "SELECT * FROM ingredients WHERE menu_id='$menu_id' order by ing_amount";
+                    $query_run = mysqli_query($con, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                    ?>
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Ingredient Name</th>
@@ -113,36 +117,37 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
                                 </tr>
                             </thead>
                             <tbody>
-                        <?php
-                            $query = "SELECT * FROM ingredients WHERE menu_id='$menu_id' order by ing_amount";
-                            $query_run = mysqli_query($con, $query);
-                               if (mysqli_num_rows($query_run) > 0) {
-                                    foreach ($query_run as $ing) {
-                                        $in_id = $ing['in_id'];
-                                        $sql= "SELECT * FROM inventories WHERE in_id='$in_id'";
-                                        $query_run = mysqli_query($con, $sql);
-                                        $name = mysqli_fetch_array($query_run);
-                                ?>
-                                        <tr>
-                                            <td><?= $name['in_name']; ?></td>
-                                            <td><?= $ing['ing_amount']; ?></td>
-                                        </tr>
                                 <?php
-                                    }
-                                } else {
-                                    echo "<h5> No Record Found </h5>";
+                                foreach ($query_run as $ing) {
+                                    $in_id = $ing['in_id'];
+                                    $sql = "SELECT * FROM inventories WHERE in_id='$in_id'";
+                                    $query_run = mysqli_query($con, $sql);
+                                    $name = mysqli_fetch_array($query_run);
+                                ?>
+                                    <tr>
+                                        <td><?= $name['in_name']; ?></td>
+                                        <td><?= $ing['ing_amount']; ?></td>
+                                    </tr>
+                                <?php
                                 }
                                 ?>
 
                             </tbody>
                         </table>
-                            </div>
+                    <?php
+                    } else {
+                        echo "<h5> No Record Found </h5>";
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        $("#search").chosen({width: "20.9%"});
+        $("#search").chosen({
+            width: "20.9%"
+        });
     </script>
 </body>
 

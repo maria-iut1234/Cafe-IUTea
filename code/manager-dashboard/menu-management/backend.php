@@ -114,7 +114,7 @@ if (isset($_POST['update_menu'])) {
 if (isset($_POST['add_ing'])) {
     $menu_id = mysqli_real_escape_string($con, $_POST['menu_id']);
     $in_name = mysqli_real_escape_string($con, $_POST['in_name']);
-    if($in_name==="Search Ingredient Name")
+    if($in_name==="Search Ingredient Name" || $in_name==="")
     {
         $_SESSION['message']="Choose an ingredient you idiot.";
         header('location: menu-add-ingredients.php?menu_id='.$menu_id);

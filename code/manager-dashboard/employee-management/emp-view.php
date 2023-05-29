@@ -77,12 +77,11 @@ else{
                             if (mysqli_num_rows($query_run) > 0) {
                                 $emp = mysqli_fetch_array($query_run);
                         ?>
-
+                            <form enctype="multipart/form-data">
                                 <div class="mb-3">
-                                    <label>Employee Profile Picture</label>
-                                    <div class="pfp">
-                                        <img src="./images/default_pfp.png" alt="Avatar">
-                                    </div>
+                                <div class="pfp">
+                                            <img src="<?=$emp['e_pfp']?"../../uploads/".$emp['e_pfp']:"../../uploads/avatar-default.png"?>" alt="Avatar">
+                                </div>
                                 </div>
                                 <div class="mb-3">
                                     <label>Employee Name</label>
@@ -100,7 +99,7 @@ else{
                                     <label>Employee Address</label>
                                     <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
                                 </div>
-
+                            </form>
 
                         <?php
                             } else {

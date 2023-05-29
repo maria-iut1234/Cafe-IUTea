@@ -4,9 +4,9 @@ require 'dbcon.php';
 
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 
@@ -57,7 +57,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -67,7 +67,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
 
     <div class="container mt-4">
 
-        
+
 
         <div class="title">
             <h1>Employee Details</h1>
@@ -76,34 +76,26 @@ if (isset($_POST['deleteemployeesubmit'])) {
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <!-- <div class="card-header"> -->
-                    <!-- <h4>Employee Details -->
-                    <!-- <div class="add-emp"> -->
-                    <!-- <a href="emp-create.php" class="btn btn-add float-end">Add Employee</a> -->
-                    <!-- </div> -->
-                    <!-- </h4> -->
-                    <!-- </div> -->
                     <div class="card-body">
+                        <?php $query = "SELECT * FROM employee";
+                        $query_run = mysqli_query($con, $query);
 
-                        <table class="table table-bordered table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Employee ID</th>
-                                    <th>Employee Name</th>
-                                    <th>Email</th>
-                                    <th>Date of Birth</th>
-                                    <th>Address</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $query = "SELECT * FROM employee";
-                                $query_run = mysqli_query($con, $query);
-
-                                if (mysqli_num_rows($query_run) > 0) {
+                        if (mysqli_num_rows($query_run) > 0) { ?>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Employee ID</th>
+                                        <th>Employee Name</th>
+                                        <th>Email</th>
+                                        <th>Date of Birth</th>
+                                        <th>Address</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
                                     foreach ($query_run as $emp) {
-                                ?>
+                                    ?>
                                         <tr>
                                             <td><?= $emp['e_id']; ?></td>
                                             <td><?= $emp['e_name']; ?></td>
@@ -128,16 +120,15 @@ if (isset($_POST['deleteemployeesubmit'])) {
                                                 </form>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
-                                } else {
-                                    echo "<h5> No Record Found </h5>";
-                                }
-                                ?>
+                                    ?>
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+                        <?php                                 } else {
+                            echo "<h5> No Record Found </h5>";
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -157,7 +148,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
         function closePopup() {
             popup.classList.remove("open-popup");
         }
-    </script>                           
+    </script>
 </body>
 
 </html>
