@@ -7,6 +7,7 @@ $messi = '';
 
 if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
     $messi = $_SESSION['id'];
+    $sub_str = substr($messi, -6, -3);   
 // else{
 //     header("location: ../../login/index.php");
 // }
@@ -36,7 +37,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
 <body>
 
     <header>
-        <h1>Welcome Employee</h1>
+        <h1>Welcome <?=$sub_str?$sub_str:"Employee"?></h1>
     </header>
 
     <input type="checkbox" id="active" />
