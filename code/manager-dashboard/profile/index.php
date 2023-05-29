@@ -3,7 +3,7 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if (isset($_SESSION['type']) && $_SESSION['type'] == "employee")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
 else {
     header("location: ../../login/index.php");
@@ -25,7 +25,7 @@ else {
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>Employee Edit</title>
+    <title>Manager Profile</title>
 </head>
 
 <body>
@@ -43,9 +43,9 @@ else {
         </ul>
     </div>
 
-    <div class="other-btn">
-        <a href="../order-form/order-man.php" class="btn btn-add float-end">BACK</a>
-    </div>
+    <!-- <div class="other-btn">
+        <a href="../employee-management/index.php" class="btn btn-add float-end">BACK</a>
+    </div> -->
 
     <div class="container mt-5">
 
@@ -61,33 +61,33 @@ else {
                     <div class="card-body edit-view">
 
                         <?php
-                        $emp_id = $_SESSION['id'];
-                        $query = "SELECT * FROM employee WHERE e_id='$emp_id' ";
+                        $m_id = $_SESSION['id'];
+                        $query = "SELECT * FROM manager WHERE m_id='$m_id' ";
                         $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {
-                            $emp = mysqli_fetch_array($query_run);
+                            $man = mysqli_fetch_array($query_run);
                         ?>
                             <form action="backend.php" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="emp_id" value="<?= $emp['e_id']; ?>">
+                                <input type="hidden" name="m_id" value="<?= $man['m_id']; ?>">
                                 <div class="pfp">
-                                    <img src="<?= $emp['e_pfp'] ? "../../uploads/" . $emp['e_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
+                                    <img src="<?= $man['m_pfp'] ? "../../uploads/" . $man['m_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
                                 </div>
                                 <div class="mb-3">
                                     <label>Name</label>
-                                    <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" readonly>
+                                    <input type="text" name="name" value="<?= $man['m_name']; ?>" class="form-control view-emp">
                                 </div>
                                 <div class="mb-3">
                                     <label>Email</label>
-                                    <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" readonly>
+                                    <input type="email" name="email" value="<?= $man['m_email']; ?>" class="form-control view-emp">
                                 </div>
                                 <div class="mb-3">
                                     <label>Date of Birth</label>
-                                    <input type="text" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" readonly>
+                                    <input type="date" name="dob" value="<?= $man['m_dob']; ?>" class="form-control view-emp">
                                 </div>
                                 <div class="mb-3">
                                     <label>Address</label>
-                                    <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" readonly>
+                                    <input type="text" name="address" value="<?= $man['m_address']; ?>" class="form-control view-emp">
                                 </div>
                                 <div class="mb-3">
                                     <label class="file_button">
@@ -95,7 +95,7 @@ else {
                                     </label>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="update_emp" class="btn btn-primary">
+                                    <button type="submit" name="update_man" class="btn btn-primary">
                                         Update Profile Information
                                     </button>
                                 </div>

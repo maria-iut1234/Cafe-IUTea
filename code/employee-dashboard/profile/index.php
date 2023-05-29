@@ -25,7 +25,7 @@ else {
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <title>Employee Edit</title>
+    <title>Employee Profile</title>
 </head>
 
 <body>
@@ -72,19 +72,19 @@ else {
                                     </div>
                                     <div class="mb-3">
                                         <label>Name</label>
-                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" readonly>
+                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp">
                                     </div>
                                     <div class="mb-3">
                                         <label>Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" readonly>
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp">
                                     </div>
                                     <div class="mb-3">
                                         <label>Date of Birth</label>
-                                        <input type="text" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" readonly>
+                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp">
                                     </div>
                                     <div class="mb-3">
                                         <label>Address</label>
-                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" readonly>
+                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp">
                                     </div>
                                     <div class="mb-3">
                                         <label class="file_button">
