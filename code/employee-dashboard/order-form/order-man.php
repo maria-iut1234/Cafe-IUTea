@@ -5,8 +5,8 @@ require 'order-han.php';
 
 $messi = '';
 
-// if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
-//     $messi = $_SESSION['id'];
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+    $messi = $_SESSION['id'];
 // else{
 //     header("location: ../../login/index.php");
 // }
@@ -44,8 +44,8 @@ $messi = '';
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="index.php">Order Management</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="../order-form/order-man.php">Order Management</a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>

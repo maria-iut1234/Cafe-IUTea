@@ -53,10 +53,10 @@ if (isset($_POST['deleteemployeesubmit'])) {
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
             <li><a href="../employee-management/index.php">Employee Management</a></li>
-            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Settings</a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>

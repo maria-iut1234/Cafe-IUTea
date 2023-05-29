@@ -40,11 +40,11 @@ else {
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
             <li><a href="../employee-management/index.php">Employee Management</a></li>
-            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $mess ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -80,13 +80,13 @@ else {
                                 <form action="backend.php" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <div class="pfp">
-                                            <img src="<?=$menu['menu_pfp']?"../../uploads/".$menu['menu_pfp']:"./images/default_pfp.png"?>" alt="Avatar">
+                                            <img src="<?= $menu['menu_pfp'] ? "../../uploads/" . $menu['menu_pfp'] : "./images/default_pfp.png" ?>" alt="Avatar">
                                         </div>
                                     </div>
                                     <input type="hidden" class="form-control view-menu" name="menu_id" value="<?= $menu['menu_id']; ?>">
                                     <div class="mb-3">
                                         <label>Menu Name</label>
-                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name'];?>" required>
+                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Menu Price</label>
@@ -94,7 +94,7 @@ else {
                                     </div>
                                     <div class="mb-3">
                                         <label class="file_button">
-                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image'])?$_FILES['update_image']['name']:"Add Menu Image"?>
+                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Add Menu Image" ?>
                                         </label>
                                     </div>
                                     <div class="mb-3">

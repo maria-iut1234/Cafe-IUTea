@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
                         $_SESSION['name'] = $row['e_name'];
                         $_SESSION['id'] = $row['e_id'];
                         $_SESSION['type'] = "employee";
-                        header('location: success');
+                        header('location: ../employee-dashboard/order-form/order-man.php');
                     } else {
                         $error = 'Invalid password!';
                     }

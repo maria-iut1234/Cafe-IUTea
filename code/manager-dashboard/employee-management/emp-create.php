@@ -2,9 +2,9 @@
 session_start();
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 ?>
@@ -21,7 +21,7 @@ else{
     <link href="emp-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
-    
+
     <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -36,11 +36,11 @@ else{
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
             <li><a href="../employee-management/index.php">Employee Management</a></li>
-            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -65,8 +65,8 @@ else{
                     <div class="card-body edit-view">
                         <form action="backend.php" method="POST" enctype="multipart/form-data">
                             <div class="pfp">
-                                        <img src="../../uploads/avatar-default.png" alt="Avatar">
-                                </div>
+                                <img src="../../uploads/avatar-default.png" alt="Avatar">
+                            </div>
                             <div class="mb-3">
                                 <label>Name</label>
                                 <input type="text" name="name" class="form-control view-emp" required>
@@ -84,9 +84,9 @@ else{
                                 <input type="text" name="address" class="form-control view-emp" required>
                             </div>
                             <div class="mb-3">
-                                    <label class="file_button">
-                                        <input type="file" name="add_image"> <?php echo isset($_FILES['add_image'])?$_FILES['add_image']['name']:"Add Employee Image";?>
-                                    </label>
+                                <label class="file_button">
+                                    <input type="file" name="add_image"> <?php echo isset($_FILES['add_image']) ? $_FILES['add_image']['name'] : "Add Employee Image"; ?>
+                                </label>
                             </div>
                             <div class="mb-3">
                                 <button type="submit" name="save_emp" class="btn">Save Employee</button>

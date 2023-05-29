@@ -3,7 +3,7 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "employee")
     $messi = $_SESSION['id'];
 else {
     header("location: ../../login/index.php");
@@ -29,22 +29,19 @@ else {
 </head>
 
 <body>
-    <input type="checkbox" id="active" />
+<input type="checkbox" id="active" />
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
-            <li><a href="../employee-management/index.php">Employee Management</a></li>
-            <li><a href="../inventory-management/index.php">Inventory Management</a></li>
-            <li><a href="../menu-management/index.php">Menu Management</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="../profile/index.php">Settings</a></li>
+            <li><a href="../order-form/order-man.php">Order Management</a></li>
+            <li><a href="../profile/index.php">Profile</a></li>
             <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
     <div class="other-btn">
-        <a href="index.php" class="btn btn-add float-end">BACK</a>
+        <a href="../order-form/order-man.php" class="btn btn-add float-end">BACK</a>
     </div>
 
     <div class="container mt-5">
@@ -52,22 +49,16 @@ else {
         <?php include('message.php'); ?>
 
         <div class="title">
-            <h1>Edit Employee</h1>
+            <h1>Profile</h1>
         </div>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <!-- <div class="card-header"> -->
-                    <!-- <h4>Employee Edit -->
-                    <!-- <a href="index.php" class="btn btn-danger float-end">BACK</a> -->
-                    <!-- </h4> -->
-                    <!-- </div> -->
                     <div class="card-body edit-view">
 
                         <?php
-                        if (isset($_GET['emp_id'])) {
-                            $emp_id = mysqli_real_escape_string($con, $_GET['emp_id']);
+                            $emp_id = $_SESSION['id'];
                             $query = "SELECT * FROM employee WHERE e_id='$emp_id' ";
                             $query_run = mysqli_query($con, $query);
 
@@ -77,32 +68,32 @@ else {
                                 <form action="backend.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="emp_id" value="<?= $emp['e_id']; ?>">
                                     <div class="pfp">
-                                        <img src="<?= $emp['e_pfp'] ? "../../uploads/" . $emp['e_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
+                                            <img src="<?=$emp['e_pfp']?"../../uploads/".$emp['e_pfp']:"../../uploads/avatar-default.png"?>" alt="Avatar">
                                     </div>
                                     <div class="mb-3">
-                                        <label>Employee Name</label>
-                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" required>
+                                        <label>Name</label>
+                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label>Employee Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" required>
+                                        <label>Email</label>
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label>Employee Date of Birth</label>
-                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" required>
+                                        <label>Date of Birth</label>
+                                        <input type="text" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label>Employee Address</label>
-                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" required>
+                                        <label>Address</label>
+                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label class="file_button">
-                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Update Employee Image" ?>
+                                            <input type="file" name="update_image"> <?php echo isset($_FILES['update_image'])?$_FILES['update_image']['name']:"Update Profile Image"?>
                                         </label>
                                     </div>
                                     <div class="mb-3">
                                         <button type="submit" name="update_emp" class="btn btn-primary">
-                                            Update Employee
+                                            Update Profile Information
                                         </button>
                                     </div>
 
@@ -111,7 +102,6 @@ else {
                             } else {
                                 echo "<h4>No Such ID Found</h4>";
                             }
-                        }
                         ?>
                     </div>
                 </div>

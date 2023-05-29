@@ -3,9 +3,9 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     $messi = $_SESSION['id'];
-else{
+else {
     header("location: ../../login/index.php");
 }
 ?>
@@ -40,11 +40,11 @@ else{
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>
             <li><a href="../employee-management/index.php">Employee Management</a></li>
-            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="../inventory-management/index.php">Inventory Management</a></li>
+            <li><a href="../menu-management/index.php">Menu Management</a></li>
             <li><a href="#">Analytics</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php';?>"><?php echo $messi ? 'Log Out' : 'Log In';?></a></li>
+            <li><a href="../profile/index.php">Settings</a></li>
+            <li><a href="<?php echo $messi ? '../../login/logout.php' : '../../login/index.php'; ?>"><?php echo $messi ? 'Log Out' : 'Log In'; ?></a></li>
         </ul>
     </div>
 
@@ -77,29 +77,29 @@ else{
                             if (mysqli_num_rows($query_run) > 0) {
                                 $emp = mysqli_fetch_array($query_run);
                         ?>
-                            <form enctype="multipart/form-data">
-                                <div class="mb-3">
-                                <div class="pfp">
-                                            <img src="<?=$emp['e_pfp']?"../../uploads/".$emp['e_pfp']:"../../uploads/avatar-default.png"?>" alt="Avatar">
-                                </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Name</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Email</label>
-                                    <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Date of Birth</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
-                                </div>
-                                <div class="mb-3">
-                                    <label>Employee Address</label>
-                                    <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
-                                </div>
-                            </form>
+                                <form enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <div class="pfp">
+                                            <img src="<?= $emp['e_pfp'] ? "../../uploads/" . $emp['e_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Employee Name</label>
+                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Employee Email</label>
+                                        <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Employee Date of Birth</label>
+                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Employee Address</label>
+                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
+                                    </div>
+                                </form>
 
                         <?php
                             } else {

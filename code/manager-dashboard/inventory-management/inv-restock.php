@@ -39,6 +39,3 @@ else{
     $_SESSION['message']="Successfully Restocked on ".$inv['in_name'];
     header("location: index.php");
 }
-
-
-?>
