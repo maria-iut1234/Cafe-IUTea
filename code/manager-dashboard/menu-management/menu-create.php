@@ -68,7 +68,7 @@ else {
                             </div>
                             <div class="mb-3">
                                 <label>Price</label>
-                                <input type="text" name="price" class="form-control view-menu" required>
+                                <input type="number" name="price" class="form-control view-menu" required>
                             </div>
                             <div class="mb-3">
                                 <label class="file_button">

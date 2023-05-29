@@ -106,7 +106,7 @@ else {
                                         <form action="inv-restock.php" method="POST">
                                             <div class="popup_restock" id="popup_restock">
                                                 <h2>How many Units?</h2>
-                                                <input type="text" class="form-control" name="in_qty" id="in_qty" placeholder="Enter amount..." required>
+                                                <input type="number" class="form-control" name="in_qty" id="in_qty" placeholder="Enter amount..." required>
                                                 <div class="mb-3">
                                                     <label>Expiration Date</label>
                                                     <input type="date" name="expiration" class="form-control" required>

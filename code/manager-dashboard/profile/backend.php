@@ -10,6 +10,33 @@ else{
     header("location: ../../login/index.php");
 }
 
+if(isset($_POST['chng_pass'])){
+    $m_id=$_POST['id'];
+    $password = $_POST["pass"];
+    $confirmPassword = $_POST["con_pass"];
+
+    if ($password != $confirmPassword) {
+        $_SESSION['message']="The Passwords Do Not Match.";
+        header("location: ../profile/index.php");
+        exit();
+    } else if (strlen($password) < 8) {
+        $_SESSION['message']="The Password must be atleast 8 characters.";
+        header("location: ../profile/index.php");
+        exit();
+    } else if (ctype_upper($password) || ctype_lower($password)) {
+        $_SESSION['message']="The Password must have a mixture of uppercase and lowercase letters.";
+        header("location: ../profile/index.php");
+        exit();
+    }
+    $hashedPass= password_hash($password,PASSWORD_DEFAULT);
+    $sql="UPDATE manager SET m_password = '$hashedPass' WHERE m_id = '$m_id'";
+    $query = mysqli_query($con, $sql);
+    $_SESSION['message']="Updated Password Successfully";
+    header("location: ../profile/index.php");
+    exit();
+
+}
+
 if(isset($_POST['update_man']))
 {
     $m_id = mysqli_real_escape_string($con, $_POST['m_id']);

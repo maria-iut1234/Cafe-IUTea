@@ -90,7 +90,7 @@ else {
                                     </div>
                                     <div class="mb-3">
                                         <label>Menu Price</label>
-                                        <input type="text" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>" required>
+                                        <input type="number" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label class="file_button">

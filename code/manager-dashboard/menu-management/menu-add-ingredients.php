@@ -88,7 +88,7 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
                                     }
                                     ?>
                                 </select>
-                                <input type="text" name="in_amount" placeholder="Enter an amount" class="form-input" required>
+                                <input type="number" name="in_amount" placeholder="Enter an amount" class="form-input" required>
                                 <button type="submit" name="add_ing" class="btn btn-primary adjust">
                                     Add Ingredient
                                 </button>

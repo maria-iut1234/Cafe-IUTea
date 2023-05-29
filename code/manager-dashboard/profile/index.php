@@ -74,6 +74,9 @@ else {
                                     <img src="<?= $man['m_pfp'] ? "../../uploads/" . $man['m_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
                                 </div>
                                 <div class="mb-3">
+                                    <button class="btn btn-edit" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupRestock()"> Chage Password</button>
+                                </div>
+                                <div class="mb-3">
                                     <label>ID</label>
                                     <input type="text" name="id" value="<?= $man['m_id']; ?>" class="form-control view-emp" readonly>
                                 </div>
@@ -95,7 +98,7 @@ else {
                                 </div>
                                 <div class="mb-3">
                                     <label class="file_button">
-                                        <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Update Profile Image" ?>
+                                        <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "New Profile Image" ?>
                                     </label>
                                 </div>
                                 <div class="mb-3">
@@ -110,6 +113,25 @@ else {
                             echo "<h4>No Such ID Found</h4>";
                         }
                         ?>
+                        <form action="backend.php" method="POST">
+                            <div class="popup_delete" id="popup_delete">
+                                <h2>Change Password?</h2>
+
+                                <div class="mb-3">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="pass" id="pass" placeholder="Enter Password..." required>
+                                </div>
+                                <div class="mb-3">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" name="con_pass" id="con_pass" placeholder="Enter Confirm Password..." required>
+                                </div>
+                                <input type="hidden" name="id" id="id" value = <?=$_SESSION['id']?>>
+                                <div class="popup_button_space">
+                                    <button type="submit" class="employee_button_popup" name="chng_pass">Confirm</button>
+                                </div>
+                                <button type="button" class="employee_button_delete_popup" onclick="closePopupRestock()">Cancel</button>
+                                </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -117,6 +139,17 @@ else {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let popupOpen = document.getElementById("popup_delete");
+
+        function openPopupRestock() {
+            popupOpen.classList.add("open-popup");
+        }
+
+        function closePopupRestock() {
+            popupOpen.classList.remove("open-popup");
+        }
+    </script>
 </body>
 
 </html>
