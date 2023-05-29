@@ -16,10 +16,6 @@
 
     <title>Order Confirmation</title>
 
-    <style>
-
-    </style>
-
 </head>
 
 <body>
@@ -43,9 +39,14 @@
         <div class="title">
             <h1>Order Confirmed!</h1>
         </div>
+
     </div>
 
-    <img src="images/confirm-order.png" alt="Description of the image">
+    <div class="lottie-confirmed">
+        <lottie-player src="images/confirmed.json" background="#F2F7F2" speed="1" style="width: 500px; height: 500px;" autoplay></lottie-player>
+    </div>
+    
+    <!-- <img src="images/confirm-order.png" alt="Description of the image"> -->
 
     </div>
 
@@ -55,6 +56,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
 
