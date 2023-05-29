@@ -115,5 +115,14 @@ footer p small {
   font-size: 20px;
 }
 
-
+.back-btn {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
