@@ -76,7 +76,7 @@ else {
                 <div class="card">
                     <div class="card-body">
                         <?php
-                        $query = "SELECT * FROM inventories";
+                        $query = "SELECT * FROM inventories ORDER BY in_amount asc";
                         $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {
