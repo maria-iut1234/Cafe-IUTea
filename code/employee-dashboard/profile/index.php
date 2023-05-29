@@ -71,35 +71,35 @@ else {
                                     <img src="<?= $emp['e_pfp'] ? "../../uploads/" . $emp['e_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
                                 </div>
                                 <div class="mb-3">
-                                    <button class="btn btn-edit" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupRestock()"> Chage Password</button>
+                                    <button class="btn btn-edit adjust" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupRestock()"> Chage Password</button>
                                 </div>
                                 <div class="mb-3">
-                                    <label>ID</label>
-                                    <input type="text" name="id" value="<?= $emp['e_id']; ?>" class="form-control view-emp" readonly>
+                                    <label class="mb-4">ID</label>
+                                    <input type="text" name="id" value="<?= $emp['e_id']; ?>" class="form-control fix" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label>Name</label>
-                                    <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp">
+                                    <label class="mb-4">Name</label>
+                                    <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control fix">
                                 </div>
                                 <div class="mb-3">
-                                    <label>Email</label>
-                                    <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" readonly>
+                                    <label class="mb-4">Email</label>
+                                    <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control fix" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label>Date of Birth</label>
-                                    <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp">
+                                    <label  class="mb-4">Date of Birth</label>
+                                    <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control fix">
                                 </div>
                                 <div class="mb-3">
-                                    <label>Address</label>
-                                    <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp">
+                                    <label class="mb-4">Address</label>
+                                    <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control fix">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="file_button">
+                                    <label class="file_button adj">
                                         <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "New Profile Image" ?>
                                     </label>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" name="update_emp" class="btn btn-primary">
+                                    <button type="submit" name="update_emp" class="btn btn-primary adjust">
                                         Update Profile Information
                                     </button>
                                 </div>
@@ -115,11 +115,9 @@ else {
                                 <h2>Change Password?</h2>
 
                                 <div class="mb-3">
-                                    <label>Password</label>
                                     <input type="password" class="form-control" name="pass" id="pass" placeholder="Enter Password..." required>
                                 </div>
                                 <div class="mb-3">
-                                    <label>Confirm Password</label>
                                     <input type="password" class="form-control" name="con_pass" id="con_pass" placeholder="Enter Confirm Password..." required>
                                 </div>
                                 <input type="hidden" name="id" id="id" value=<?= $_SESSION['id'] ?>>

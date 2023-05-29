@@ -551,7 +551,11 @@ transform: scale(0.98);
 .popup_delete h2{
   font-size: 38px;
   font-weight: 500;
+  background: #ffffff;
   margin: 30px 0 10px;
+}
+.popup_delete p{
+  background: #ffffff;
 }
 
 .popup_button_space{
@@ -620,4 +624,30 @@ transform: scale(0.98);
 }
 input[type="file"] {
   display: none;
+}
+
+.adjust {
+  margin: auto;
+  width: 100%;
+  border: 3px solid;
+  text-align: center;
+  padding: 10px;
+}
+.adj {
+  margin: auto 0.2rem;
+  width: 92.5%;
+  /* border: 3px solid; */
+  text-align: center;
+  /* padding: 10px; */
+}
+.fix {
+  margin: auto;
+  width: 95.5%;
+  /* border: 3px solid; */
+  /* text-align: center; */
+  /* padding: 10px; */
+}
+.mb-4 {
+  margin-bottom: 1rem;
+  margin: 0 0.3rem;
 }

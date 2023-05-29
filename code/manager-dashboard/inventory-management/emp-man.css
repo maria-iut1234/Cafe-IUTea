@@ -532,7 +532,6 @@ transform: scale(0.98);
   transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
   padding: 0 30px 30px;
-  
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
 }
@@ -549,8 +548,13 @@ transform: scale(0.98);
 .popup_add h2{
   font-size: 38px;
   font-weight: 500;
+  background: #ffffff;
   margin: 30px 0 10px;
 }
+.popop_add p{
+  background-color: #ffffff;
+}
+
 
 .popup_button_space{
   margin-bottom: 5px;
@@ -576,15 +580,27 @@ transform: scale(0.98);
   visibility: visible;
   top : 60%;
   transform: translate(-50%, -50%) scale(1);
+  background: #ffffff;
 }
 
 .popup_restock h2{
   font-size: 28px;
+  background: #ffffff;
   font-weight: 500;
   margin: 30px 0 10px;
 }
+.popup_restock p{
+  font-size: 28px;
+  background: #ffffff;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+.popup_restock div{
+  background: #ffffff;
+}
 .popup_restock label{
   font-size: 22px;
+  background: #ffffff;
   font-weight: 500;
 }
 
@@ -599,9 +615,13 @@ transform: scale(0.98);
   transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
   padding: 0 30px 30px;
-  
+  background: #ffffff;
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
+}
+
+.popup_delete div{
+  background: #ffffff;
 }
 
 .open-popup-delete{
@@ -613,6 +633,10 @@ transform: scale(0.98);
 .popup_delete h2{
   font-size: 38px;
   font-weight: 500;
+  background: #ffffff;
   margin: 30px 0 10px;
 }
 
+.popup_delete p{
+  background: #ffffff;
+}

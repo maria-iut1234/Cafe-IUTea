@@ -85,19 +85,19 @@ else {
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Name</label>
-                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_name']; ?>" readonly>
+                                        <input type="text" class="form-control fix" value="<?= $emp['e_name']; ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Email</label>
-                                        <input type="email" class="form-control view-emp" value="<?= $emp['e_email']; ?>" readonly>
+                                        <input type="email" class="form-control fix" value="<?= $emp['e_email']; ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>
-                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_dob']; ?>" readonly>
+                                        <input type="text" class="form-control fix" value="<?= $emp['e_dob']; ?>" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Address</label>
-                                        <input type="text" class="form-control view-emp" value="<?= $emp['e_address']; ?>" readonly>
+                                        <input type="text" class="form-control fix" value="<?= $emp['e_address']; ?>" readonly>
                                     </div>
                                 </form>
 

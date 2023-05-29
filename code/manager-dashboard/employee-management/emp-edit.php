@@ -81,27 +81,27 @@ else {
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Name</label>
-                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control view-emp" required>
+                                        <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control fix" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control view-emp" required>
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control fix" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>
-                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control view-emp" required>
+                                        <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control fix" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Address</label>
-                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control view-emp" required>
+                                        <input type="text" name="address" value="<?= $emp['e_address']; ?>" class="form-control fix" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="file_button">
+                                        <label class="file_button adj">
                                             <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Update Employee Image" ?>
                                         </label>
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name="update_emp" class="btn btn-primary">
+                                        <button type="submit" name="update_emp" class="btn btn-primary adjust">
                                             Update Employee
                                         </button>
                                     </div>

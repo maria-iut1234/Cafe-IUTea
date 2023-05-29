@@ -550,8 +550,13 @@ transform: scale(0.98);
 
 .popup_delete h2{
   font-size: 38px;
+  background: #ffffff;
   font-weight: 500;
   margin: 30px 0 10px;
+}
+
+.popup_delete p{
+  background: #ffffff;
 }
 
 .popup_button_space{
@@ -591,6 +596,7 @@ transform: scale(0.98);
 .popup_add h2{
   font-size: 38px;
   font-weight: 500;
+  background: #ffffff;
   margin: 30px 0 10px;
 }
 
@@ -620,4 +626,26 @@ transform: scale(0.98);
 }
 input[type="file"] {
   display: none;
+}
+
+.adjust {
+  margin: auto;
+  width: 100%;
+  border: 3px solid;
+  text-align: center;
+  padding: 10px;
+}
+.adj {
+  margin: auto 0.15rem;
+  width: 92.5%;
+  /* border: 3px solid; */
+  text-align: center;
+  /* padding: 10px; */
+}
+.fix {
+  margin: auto 0rem;
+  width: 95.5%;
+  /* border: 3px solid; */
+  /* text-align: center; */
+  /* padding: 10px; */
 }

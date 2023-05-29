@@ -51,7 +51,6 @@ else {
         <form action="backend.php" method="POST">
             <div class="popup_add" id="popup_add">
                 <h2>Add New Item?</h2>
-                <p>What is the Name of the Item You Want to Add?</p>
                 <input type="text" class="form-control" name="in_name" id="in_name" placeholder="Enter Name..." required>
                 <div class="popup_button_space">
                     <button type="submit" class="employee_button_popup" name="additem">Confirm</button>

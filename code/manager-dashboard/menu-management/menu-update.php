@@ -86,19 +86,19 @@ else {
                                     <input type="hidden" class="form-control view-menu" name="menu_id" value="<?= $menu['menu_id']; ?>">
                                     <div class="mb-3">
                                         <label>Menu Name</label>
-                                        <input type="text" class="form-control view-menu" name="menu_name" value="<?= $menu['menu_name']; ?>" required>
+                                        <input type="text" class="form-control fix " name="menu_name" value="<?= $menu['menu_name']; ?>" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Menu Price</label>
-                                        <input type="number" class="form-control view-menu" name="menu_price" value="<?= $menu['menu_price']; ?>" required>
+                                        <input type="number" class="form-control fix " name="menu_price" value="<?= $menu['menu_price']; ?>" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="file_button">
+                                        <label class="file_button adj">
                                             <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Add Menu Image" ?>
                                         </label>
                                     </div>
                                     <div class="mb-3">
-                                        <button type="submit" name="update_menu" class="btn btn-primary">
+                                        <button type="submit" name="update_menu" class="btn btn-primary adjust">
                                             Update Menu
                                         </button>
                                     </div>

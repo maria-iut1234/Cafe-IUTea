@@ -69,27 +69,27 @@ else {
                             </div>
                             <div class="mb-3">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control view-emp" required>
+                                <input type="text" name="name" class="form-control fix" required>
                             </div>
                             <div class="mb-3">
                                 <label>Email</label>
-                                <input type="email" name="email" class="form-control view-emp" required>
+                                <input type="email" name="email" class="form-control fix" required>
                             </div>
                             <div class="mb-3">
                                 <label>Date of Birth</label>
-                                <input type="date" name="dob" class="form-control view-emp" required>
+                                <input type="date" name="dob" class="form-control fix" required>
                             </div>
                             <div class="mb-3">
                                 <label>Address</label>
-                                <input type="text" name="address" class="form-control view-emp" required>
+                                <input type="text" name="address" class="form-control fix" required>
                             </div>
                             <div class="mb-3">
-                                <label class="file_button">
+                                <label class="file_button adj">
                                     <input type="file" name="add_image"> <?php echo isset($_FILES['add_image']) ? $_FILES['add_image']['name'] : "Add Employee Image"; ?>
                                 </label>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" name="save_emp" class="btn">Save Employee</button>
+                                <button type="submit" name="save_emp" class="btn adjust">Save Employee</button>
                             </div>
 
                         </form>
