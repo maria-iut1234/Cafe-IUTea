@@ -6,9 +6,9 @@ $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'
 
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+if (isset($_SESSION['type']) && $_SESSION['type'] == "employee")
     $messi = $_SESSION['id'];
-    $sub_str = substr($messi, -6, -3);   
+$sub_str = substr($messi, -6, -3);
 // else{
 //     header("location: ../../login/index.php");
 // }
@@ -41,7 +41,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
 <body>
 
     <header>
-        <h1><?=$sub_str?$sub_str:"Employee"?></h1>
+        <h1><?= $sub_str ? $sub_str : "Employee" ?></h1>
     </header>
 
     <input type="checkbox" id="active" />
@@ -57,7 +57,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
 
     <div class="container mt-4">
         <div class="title">
-            <h1>Order Not Confirmed!</h1>
+            <h1>Order Can't Be Completed!</h1>
         </div>
 
     </div>
@@ -70,39 +70,55 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
 
     </div>
 
-    <div class="error-message">
-        <h3>The following menu items are not possible:</h3>
-        <ol>
-            <?php
-            $menu_items = $_SESSION['menu_items'];
+    <div class="order-container order-confirm error-order">
+        <form class="order-form order-confirm err" method="POST">
 
-            for ($i = 0; $i < count($menu_items); $i++) {
-            ?>
-                <li><?php echo $menu_items[$i]; ?></li>
-            <?php
+            <div class="error-message">
+                <h3>The following menu items are not possible:</h3>
+                <ol>
+                    <?php
+                    $menu_items = $_SESSION['menu_items'];
 
-            }
-            ?>
-        </ol>
+                    for ($i = 0; $i < count($menu_items); $i++) {
+                    ?>
+                        <li><?php echo $menu_items[$i]; ?></li>
+                    <?php
 
-        <h3>Because there is a lack of the following ingredients:</h3>
-        <ol>
-            <?php
-            $ingredients = $_SESSION['ingredients'];
+                    }
+                    ?>
+                </ol>
 
-            for ($i = 0; $i < count($ingredients); $i++) {
-            ?>
-                <li><?php echo $ingredients[$i]; ?></li>
-            <?php
+                <h3>Because there is a lack of the following ingredients:</h3>
+                <ol>
+                    <?php
+                    $ingredients = $_SESSION['ingredients'];
 
-            }
-            ?>
-        </ol>
+                    for ($i = 0; $i < count($ingredients); $i++) {
+                    ?>
+                        <li><?php echo $ingredients[$i]; ?></li>
+                    <?php
+
+                    }
+                    ?>
+                </ol>
+            </div>
+
+
+
+            <div class="order-err-btn">
+                <button class="form__button back" type="button" onclick="goToOrderMan()">Back</button>
+                <button class="form__button restock" name="confirm-order" type="button" onclick="goToRequest()">Request Restock</button>
+            </div>
+        </form>
+
     </div>
 
-    <div class="back-btn">
-        <button class="form__button cancel" type="button" onclick="goToOrderMan()">Back</button>
-    </div>
+
+
+    <!-- <div class="back-btn">
+        <button class="form__button cancel restock" type="button">Send Restock Request</button>
+        <button class="form__button cancel back" type="button" onclick="goToOrderMan()">Back</button>
+    </div> -->
 
     <footer>
         <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>

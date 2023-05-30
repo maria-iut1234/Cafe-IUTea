@@ -14,7 +14,6 @@
   font-size: 18px;
 }
 
-
 .lottie-container {
   display: flex;
   justify-content: center;
@@ -38,7 +37,6 @@
   margin-right: 70px;
   height: 70vh;
 }
-
 
 .order-container .form__input,
 .form__button {
@@ -125,7 +123,6 @@ button.form__button.add-menu-btn {
   width: 30%;
   margin-bottom: 1rem;
 }
-
 
 button.form__button.place-order {
   width: 100%;
@@ -248,4 +245,43 @@ button.form__button {
 .tg .tg-0lax {
   text-align: left;
   vertical-align: top;
+}
+
+.order-container.order-confirm.error-order {
+  float: left;
+  margin: 0;
+  margin-left: 3.5%;
+  height: 65vh;
+}
+
+.order-form.order-confirm.err {
+  background: #b0c1f3;
+}
+
+.error-message * {
+  background-color: #b0c1f3;
+}
+
+.error-message {
+  padding: 20px;
+  font-size: 20px;
+  background-color: #b0c1f3;
+}
+
+
+.order-err-btn {
+  display: flex;
+  background-color: #b0c1f3;
+}
+
+.form__button.restock {
+  background-color: #252323;
+}
+
+.form__button.restock:hover {
+  background-color: #009579;
+}
+
+.form__button.back:hover {
+  background-color: #bcaa99;
 }
