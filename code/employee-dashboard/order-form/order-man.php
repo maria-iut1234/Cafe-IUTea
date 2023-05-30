@@ -89,8 +89,8 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
                     <select class="form__input menu-item-size" name="menu-item-size">
                         <option value="" disabled selected>Size</option>
                         <option value="Small">Small</option>
-                        <option value="Medium">Medium +Tk.20</option>
-                        <option value="Large">Large +Tk.50</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
                     </select>
 
                     <select class="form__input menu-item-adds" name="menu-item-adds">

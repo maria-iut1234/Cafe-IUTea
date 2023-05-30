@@ -115,7 +115,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
                         <thead>
                             <tr>
                                 <th>Total Amount: </th>
-                                <th>Tk.<?php echo $order_info['total']; ?></th>
+                                <th>Tk.<?php echo $order_info['total_price']; ?></th>
                             </tr>
                             <tr>
                                 <th>Customer Name: </th>
