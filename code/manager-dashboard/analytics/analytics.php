@@ -71,40 +71,85 @@ $sub_str = substr($messi, -6, -3);
     </div>
 
     <div class="order-container order-confirm">
-        <form method="POST" action="confirm.php" class="order-form order-confirm">
+        <form method="POST" class="order-form order-confirm">
             <div class="order-confirm-form">
-                <h2 class="menu-items-h2">Menu Items:</h2>
-                <div class="menu-items-table">
-                    <table class="tg">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Size</th>
-                                <th>Add-Ons</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>hi</td>
-                                <td>sometding</td>
-                                <td>analytics</td>
-                                <td>profit</td>
-                                <td>expense</td>
-                            </tr>
-                        </tbody>
+                <div class="top-part">
+                    <h2 class="menu-items-h2">Analytics:</h2>
+                    <select class="form__input menu-item-size analytics" name="menu-item-size" onchange="handleAnalyticsOption(this.value)">
+                        <option value="null" disabled selected>Select Analytics</option>
+                        <option value="daily-revenue">Daily Revenue</option>
+                        <option value="daily-expense">Daily Expense</option>
+                        <option value="daily-profit">Daily Profit</option>
+                    </select>
+                </div>
 
+                <div class="null-option" id="nothing-selected">
+                    <h1>Select an option please...</h1>
+                </div>
 
-                    </table>
+                <div class="menu-items-table revenue" id="table-daily-revenue" style="display: none;">
+                    <div class="table-align">
+                        <table class="tg">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>hi</td>
+                                    <td>sometding</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="info-table table-align">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Total Revenue: </th>
+                                    <th>Tk.150000</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
 
                 </div>
 
+                <div class="menu-items-table expense" id="table-daily-expense" style="display: none;">
+                    <div class="table-align">
+                        <table class="tg">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>this</td>
+                                    <td>is</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
+                    <div class="info-table table-align">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Total Expense: </th>
+                                    <th>Tk.150000</th>
+                                </tr>
+                            </thead>
 
+                        </table>
 
-
-            </div>
+                    </div>
+                </div>
 
 
 
@@ -112,9 +157,9 @@ $sub_str = substr($messi, -6, -3);
 
     </div>
 
-    <div>
+    <!-- <div>
         <button class="form__button back-btn" type="button">Back</button>
-    </div>
+    </div> -->
 
     <footer>
         <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>
@@ -123,7 +168,35 @@ $sub_str = substr($messi, -6, -3);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="order-con.js"></script>
+    <!-- <script src="order-con.js"></script> -->
+    <script>
+        function handleAnalyticsOption(value) {
+            const revenueTable = document.getElementById("table-daily-revenue");
+            const expenseTable = document.getElementById("table-daily-expense");
+            const nothing = document.getElementById("nothing-selected");
+
+            if (value === "daily-revenue") {
+                revenueTable.style.display = "block";
+                expenseTable.style.display = "none";
+                nothing.style.display = "none";
+
+            } else if (value === "daily-expense") {
+                revenueTable.style.display = "none";
+                expenseTable.style.display = "block";
+                nothing.style.display = "none";
+
+            } else if (value === "null") {
+                revenueTable.style.display = "none";
+                expenseTable.style.display = "none";
+                nothing.style.display = "block";
+
+            } else {
+                revenueTable.style.display = "none";
+                expenseTable.style.display = "none";
+                nothing.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 
