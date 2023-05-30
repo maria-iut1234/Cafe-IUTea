@@ -93,6 +93,10 @@ else {
                                         <input type="number" class="form-control fix " name="menu_price" value="<?= $menu['menu_price']; ?>" required>
                                     </div>
                                     <div class="mb-3">
+                                        <label>Menu Cost</label>
+                                        <input type="number" class="form-control fix " name="menu_cost" value="<?= $menu['menu_cost']; ?>" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="file_button adj">
                                             <input type="file" name="update_image"> <?php echo isset($_FILES['update_image']) ? $_FILES['update_image']['name'] : "Add Menu Image" ?>
                                         </label>

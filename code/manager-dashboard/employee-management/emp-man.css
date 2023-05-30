@@ -377,7 +377,7 @@ strong {
   opacity: 0.5;
 }
 .btn-close:hover {
-  color: #000;
+  color: #e4818b;
   text-decoration: none;
   opacity: 0.75;
 }
@@ -649,3 +649,4 @@ input[type="file"] {
   /* text-align: center; */
   /* padding: 10px; */
 }
+

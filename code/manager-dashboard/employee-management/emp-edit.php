@@ -30,7 +30,7 @@ else {
 
 <body>
     <input type="checkbox" id="active" />
-    <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
+    <label for="active" class="menu-btn "><i class="fas fa-bars"></i></label>
     <div class="wrapper">
         <ul>
             <li><img class="iutea-icon" src="images/logo.png"></li>

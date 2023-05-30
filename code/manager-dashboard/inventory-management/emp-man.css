@@ -232,7 +232,7 @@ tr {
   border-color: inherit;
   border-style: solid;
   border-width: 10;
-  width: 30%;
+  width: 20%;
 }
 
 .d-inline {
@@ -639,4 +639,7 @@ transform: scale(0.98);
 
 .popup_delete p{
   background: #ffffff;
+}
+.ad{
+  background: #e4818b;
 }

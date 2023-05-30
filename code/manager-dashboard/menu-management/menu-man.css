@@ -745,7 +745,7 @@ transform: scale(0.98);
   /* padding: 10px; */
 }
 .fix {
-  margin: auto;
+  /* margin: auto; */
   width: 95.5%;
   /* border: 3px solid; */
   /* text-align: center; */
@@ -781,5 +781,8 @@ transform: scale(0.98);
 }
 input[type="file"] {
   display: none;
+}
+.ad{
+  background: #e4818b;
 }
 

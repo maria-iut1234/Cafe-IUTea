@@ -47,11 +47,16 @@ else {
     </div>
 
     <div>
-        <button class="btn other-btn" type="button" onclick="openPopup()"> Add Invetory Item</button>
+        <button class="btn other-btn" type="button" onclick="openPopup()"> Add / Update Item</button>
         <form action="backend.php" method="POST">
             <div class="popup_add" id="popup_add">
-                <h2>Add New Item?</h2>
-                <input type="text" class="form-control" name="in_name" id="in_name" placeholder="Enter Name..." required>
+                <h2>Add / Update Item?</h2>
+                <div>
+                <input type="text" class="form-control" name="in_name" id="in_name" placeholder="Enter Item Name..." required>
+                </div>
+                <div>
+                <input type="number" class="form-control" name="in_price" id="in_price" placeholder="Enter Item Price..." required>
+                </div>
                 <div class="popup_button_space">
                     <button type="submit" class="employee_button_popup" name="additem">Confirm</button>
                 </div>
@@ -85,6 +90,7 @@ else {
                                     <tr>
                                         <th>Inventory Name</th>
                                         <th>Inventory Amount</th>
+                                        <th>Inventory Unit Price</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -95,6 +101,7 @@ else {
                                         <tr>
                                             <td><?= $inv['in_name']; ?></td>
                                             <td><?= $inv['in_amount']; ?></td>
+                                            <td><?= $inv['in_price']; ?></td>
                                             <td>
                                                 <a href="inv-view.php?in_id=<?= $inv['in_id']; ?>&in_name=<?= $inv['in_name']; ?>" class="btn btn-view">Check Stock</a>
                                                 <button class="btn btn-edit" type="button" id="<?= $inv['in_id'] ?> " onclick="openPopupRestock(this.id)"> Restock</button>
