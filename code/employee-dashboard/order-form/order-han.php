@@ -17,7 +17,8 @@ if (isset($_POST['place-order'])) {
     $not_possible_items = [];
     $ingredient_count = array_fill(0, 100, 0);
 
-    $total = 0;
+    $total_price = 0;
+    $total_cost = 0;
     $isOrderPossible = true;
 
     // echo "First Name: " . $first_name . "<br>";
@@ -27,6 +28,8 @@ if (isset($_POST['place-order'])) {
 
     for ($i = 0; $i < $counter; $i++) {
         $subtotal = 0;
+        $expense = 0;
+        $size_multiplier = 1;
 
         $menuArrayName = 'menu' . $i;
         $$menuArrayName = array();
@@ -57,9 +60,9 @@ if (isset($_POST['place-order'])) {
 
         //checking size values
         if ($menu_size_value == "Medium") {
-            $subtotal += 20;
+            $size_multiplier = 2;
         } elseif ($menu_size_value == "Large") {
-            $subtotal += 50;
+            $size_multiplier = 4;
         } else {;
         }
 
@@ -76,23 +79,30 @@ if (isset($_POST['place-order'])) {
         }
 
         //fetching price and id of menu item
-        $query = "SELECT menu_price, menu_id FROM menu WHERE menu_name='$menu_name_value'";
+        $query = "SELECT * FROM menu WHERE menu_name='$menu_name_value'";
         $query_run = mysqli_query($con, $query);
 
         if ($query_run) {
             $row = mysqli_fetch_assoc($query_run);
             $menu_price = $row['menu_price'];
+            $menu_cost = $row['menu_cost'];
             $$menuArrayName['menuID'] = $row['menu_id'];
             $menu_id_value = $row['menu_id'];
 
-            $subtotal += $menu_price;
+            $subtotal += ($menu_price * $size_multiplier);
+            $expense += ($menu_cost * $size_multiplier);
             // echo $subtotal;
         } else {
             echo "Error executing the query: " . mysqli_error($con);
         }
 
+        //multiplying according to quantity
         $subtotal = $subtotal * $menu_quantity_value;
-        $total += $subtotal;
+        $expense = $expense * $menu_quantity_value;
+
+        //updating total cost and price
+        $total_price += $subtotal;
+        $total_cost += $expense;
 
         $$menuArrayName['subtotal'] = $subtotal ? $subtotal : 0;
 
@@ -109,7 +119,7 @@ if (isset($_POST['place-order'])) {
             //adding ingredient amount needed
             while ($row_ing = mysqli_fetch_assoc($query_ing_run)) {
                 $in_id = $row_ing['in_id'];
-                $amount = $row_ing['ing_amount'] * $menu_quantity_value;
+                $amount = $row_ing['ing_amount'] * $size_multiplier * $menu_quantity_value;
                 $ingredient_count[$in_id] += $amount;
 
                 // //checking if this menu order is possible or not
@@ -144,19 +154,33 @@ if (isset($_POST['place-order'])) {
     //checking total ingrediants
     for ($i = 0; $i < count($ingredient_count); $i++) {
         if ($ingredient_count[$i] > 0) {
-            // echo "Index $i: " . $ingredient_count[$i] . "\n";
+
             while ($inv = mysqli_fetch_assoc($query_inv_run)) {
                 if ($inv['in_id'] == $i) {
-                    if ($inv['in_amount'] >= $ingredient_count[$i]) {;
+
+                    if ($inv['in_amount'] >= $ingredient_count[$i]) {
                     } else {
                         $isOrderPossible = false;
                         array_push($ingredients, $inv['in_name']);
                     }
+                    break;
                 } else {;
                 }
             }
         }
     }
+
+    // $new_inv_amount = $inv['in_amount'] - $ingredient_count[$i];
+
+    // $update = "UPDATE inventories SET in_amount = '$new_inv_amount' WHERE in_id = '$i'";
+    // $update_run = mysqli_query($con, $update);
+
+    // if ($update_run) {
+    //     echo "Successful" . " " . $new_inv_amount . " " . $i . "<br>";
+    // } else {
+    //     echo "Error executing the query: " . mysqli_error($con);
+    // }
+
 
     //checking menu items
     foreach ($menu_items_list as $key => $value) {
@@ -178,15 +202,16 @@ if (isset($_POST['place-order'])) {
     if ($isOrderPossible) {
         $order_info = array();
 
-        $order_info['total'] = $total;
+        $order_info['total_price'] = $total_price;
+        $order_info['total_cost'] = $total_cost;
         $order_info['c_name'] = $first_name . " " . $last_name;
         $order_info['c_contact'] = $contact;
         $order_info['e_name'] = "NazzzzZ";
 
         $_SESSION['order-info'] = $order_info;
+        $_SESSION['ingredient-count'] = $ingredient_count;
 
         header("Location: order-con.php");
-
     } else {
 
         $_SESSION['ingredients'] = $ingredients;
