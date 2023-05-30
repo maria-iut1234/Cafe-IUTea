@@ -28,13 +28,12 @@
     font-size: 20px;
     color: #f2f7f2;
     cursor: pointer;
-    background: #42B684;
-    border-color: #42B684;
+    background: #e4818b;
     /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
     transition: all 0.3s ease-in-out;
   }
   #active:checked ~ .menu-btn {
-    background: #42B684;
+    background: #e4818b;
     color: #f2f7f2;
   }
   #active:checked ~ .menu-btn i:before {
@@ -59,7 +58,7 @@
     font-size: 30px;
     font-weight: 500;
     padding: 5px 30px;
-    color: #42B684;
+    color: #e4818b;
     position: relative;
     line-height: 50px;
     transition: all 0.3s ease;

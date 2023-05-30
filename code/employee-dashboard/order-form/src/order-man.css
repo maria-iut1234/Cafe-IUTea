@@ -109,15 +109,36 @@ footer p small {
   margin-right: 250px;
 }
 
-.error-message {
-  padding-left: 100px;
-  padding-top: 40px;
-  font-size: 20px;
+.lottie-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
 }
+
+.lottie-loading.success {
+  padding-top: 20px;
+  margin: 0;
+}
+
+.loading-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  color: #252323;
+  padding-top: 20px;
+}
+
+.loading-text.success {
+  padding-top: 5px;
+}
+
 
 .back-btn {
   width: 20%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -125,4 +146,5 @@ footer p small {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 

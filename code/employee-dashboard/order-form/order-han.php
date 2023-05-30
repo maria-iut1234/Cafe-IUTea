@@ -191,7 +191,9 @@ if (isset($_POST['place-order'])) {
         if ($query_ing_run) {
             while ($row_ing = mysqli_fetch_assoc($query_ing_run)) {
                 if (in_array($row_ing['in_name'], $ingredients)) {
-                    array_push($not_possible_items, $value);
+                    if (!in_array($value, $not_possible_items)) {
+                        array_push($not_possible_items, $value);
+                    }
                 }
             }
         } else {

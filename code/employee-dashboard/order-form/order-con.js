@@ -17,3 +17,7 @@ document.getElementById("date").textContent = formattedDate;
 function goToOrderMan() {
     window.location.href = "order-man.php";
 }
+
+function goToRequest() {
+    window.location.href = "send-request.php";
+}
