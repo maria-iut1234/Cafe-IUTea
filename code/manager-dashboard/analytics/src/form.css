@@ -30,7 +30,7 @@
   padding: 2rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
-  background: #bcaa99;
+  background: #efacb3;
 }
 
 .order-container.order-confirm {
@@ -175,10 +175,21 @@ button.form__button {
 }
 
 /*order-con form*/
+.table-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .menu-items-table table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
+  
+}
+
+.info-table {
+  padding-top: 30px;
 }
 
 .info-table table {
@@ -189,25 +200,25 @@ button.form__button {
 .info-table table th,
 .info-table table td {
   padding: 5px;
-  text-align: left;
+  text-align: center;
   /* border: 5px solid #0000005c; */
 }
 
 .menu-items-table table th,
 .menu-items-table table td {
   padding: 5px;
-  text-align: left;
+  text-align: center;
   /* border: 5px solid #0000005c; */
 }
 
 .order-confirm-form * {
-  background-color: #bcaa99;
+  background-color: #efacb3
 }
 
 .menu-items-h2 {
   margin: 0;
-  padding-bottom: 5px;
   text-decoration: underline;
+  margin-right: 14rem;
 }
 
 .tg {
@@ -248,4 +259,27 @@ button.form__button {
 .tg .tg-0lax {
   text-align: left;
   vertical-align: top;
+}
+
+
+
+.top-part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.form__input.menu-item-size.analytics {
+  width: 40%;
+  background-color: #f2f7f2;
+}
+
+.form__input.menu-item-size.analytics option {
+  background-color: #f2f7f2;
+}
+
+.null-option h1 {
+  background-color: #efacb3 ;
+  margin: 0;
 }
