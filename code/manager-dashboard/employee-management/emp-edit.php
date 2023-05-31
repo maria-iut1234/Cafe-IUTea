@@ -80,12 +80,16 @@ else {
                                         <img src="<?= $emp['e_pfp'] ? "../../uploads/" . $emp['e_pfp'] : "../../uploads/avatar-default.png" ?>" alt="Avatar">
                                     </div>
                                     <div class="mb-3">
+                                        <label>Employee ID</label>
+                                        <input type="text" name="name" value="<?= $emp['e_id']; ?>" class="form-control fix" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label>Employee Name</label>
                                         <input type="text" name="name" value="<?= $emp['e_name']; ?>" class="form-control fix" required>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Email</label>
-                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control fix" required>
+                                        <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control fix" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label>Employee Date of Birth</label>

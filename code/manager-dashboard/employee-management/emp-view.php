@@ -84,6 +84,10 @@ else {
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <label>Employee ID</label>
+                                        <input type="text" name="name" value="<?= $emp['e_id']; ?>" class="form-control fix" readonly>
+                                    </div>
+                                    <div class="mb-3">
                                         <label>Employee Name</label>
                                         <input type="text" class="form-control fix" value="<?= $emp['e_name']; ?>" readonly>
                                     </div>
