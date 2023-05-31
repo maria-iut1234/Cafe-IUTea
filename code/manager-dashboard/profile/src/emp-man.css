@@ -320,6 +320,7 @@ input {
 label {
   display: inline-block;
   margin-bottom: 5px;
+  background: transparent;
 }
 
 body {
