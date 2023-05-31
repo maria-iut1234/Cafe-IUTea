@@ -7,11 +7,13 @@ $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'
 $messi = '';
 
 if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+{
     $messi = $_SESSION['id'];
     $sub_str = substr($messi, -6, -3);   
-// else{
-//     header("location: ../../login/index.php");
-// }
+    
+} else{
+    header("location: ../../login/index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">

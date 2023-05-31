@@ -4,12 +4,14 @@ require 'dbcon.php';
 
 $messi = '';
 
-if (isset($_SESSION['type']) && $_SESSION['type'] == "employee")
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+{
     $messi = $_SESSION['id'];
-$sub_str = substr($messi, -6, -3);
-// else{
-//     header("location: ../../login/index.php");
-// }
+    $sub_str = substr($messi, -6, -3);   
+    
+} else{
+    header("location: ../../login/index.php");
+}
 
 $ingredients = $_SESSION['ingredients'];
 
