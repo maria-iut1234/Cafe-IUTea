@@ -97,15 +97,15 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="form__input-group">
             <input type="password" id="password" class="form__input" autofocus placeholder="Enter Password" name="password" required>
-            <div class="form__input-error-message">
-                <?php echo $error ? $error : null; ?>
-            </div>
         </div>
         <div class="form__input-group">
             <select class="form__input" id="type" name="type">
                 <option>Employee</option>
                 <option>Manager</option>
             </select>
+            <div class="form__input-error-message">
+                <?php echo $error ? $error : null; ?>
+            </div>
         </div>
         <button class="form__button" type="submit" name="submit">Continue</button>
         <?php

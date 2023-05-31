@@ -19,9 +19,9 @@ if (isset($_POST['deleteemployeesubmit'])) {
     if (mysqli_num_rows($query_run) > 0) {
         $sql = "DELETE FROM employee WHERE e_id = '$id'";
         $query_run = mysqli_query($con, $sql);
-        $_SESSION['message'] = "Employee Deleted Successfully";
+        $_SESSION['message'] = "Employee Fired Successfully";
     } else {
-        $_SESSION['message'] = "Employee Could not be Deleted for some reason. The emp id was " . $id;
+        $_SESSION['message'] = "Employee Could not be Fired for some reason. The emp id was " . $id;
     }
 }
 ?>
@@ -105,11 +105,11 @@ if (isset($_POST['deleteemployeesubmit'])) {
                                             <td>
                                                 <a href="emp-view.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-view">View</a>
                                                 <a href="emp-edit.php?emp_id=<?= $emp['e_id']; ?>" class="btn btn-edit">Edit</a>
-                                                <button class="btn btn-delete" type="button" id="<?= $emp['e_id'] ?> " onclick="openPopup(this.id)"> Delete </button>
+                                                <button class="btn btn-delete" type="button" id="<?= $emp['e_id'] ?> " onclick="openPopup(this.id)"> Fire </button>
                                                 <form method="POST">
                                                     <div class="popup_delete" id="popup_delete">
-                                                        <h2>Delete?</h2>
-                                                        <p>Are you sure about deleting this employee?</p>
+                                                        <h2>Fire?</h2>
+                                                        <p>Are you sure about firing this employee?</p>
                                                         <input type="hidden" name="emp_id" id="delete_id">
                                                         <div class="popup_button_space">
 

@@ -4,7 +4,7 @@ require 'dbcon.php';
 $messi = '';
 
 if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
-    //     $messi = $_SESSION['id'];
+        $messi = $_SESSION['id'];
     // else {
     //     header("location: ../../login/index.php");
     // }
@@ -31,7 +31,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
 </head>
 
 <body>
-    <input type="checkbox" id="active" />
+<input type="checkbox" id="active" />
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
         <ul>
@@ -45,11 +45,17 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
         </ul>
     </div>
 
+    <div class="other-btn">
+        <a href="../inventory-management/index.php" class="btn btn-add float-end">BACK</a>
+    </div>
+
     <div class="container mt-5">
 
         <div class="title">
             <h1>Notifications</h1>
         </div>
+
+        <?php include('message.php'); ?>
 
         <div class="row">
             <div class="col-md-12">
@@ -63,7 +69,6 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                       
                                         <th>Restock Ingredient</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -75,22 +80,36 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                                     foreach ($query_run as $notif) {
                                     ?>
                                         <tr>
-                                            
                                             <td><?= $notif['n_desc']; ?></td>
                                             <td><?= $notif['n_status'] ? "Restocked" : "Not Restocked"; ?></td>
                                             <td>
-                                                <button class="btn  <?= $notif['n_status'] ? 'btn-edit' : 'btn-delete'; ?> " type="button" id="<?= $notif['n_id'] ?> " onclick="openPopupDelete(this.id)">Change Status</button>
+                                                <button class="btn  <?= $notif['n_status'] ? 'btn-delete' : 'btn-edit' ?> " name="<?=$notif['n_status'] ? 'btn-delete' : 'btn-restock'?>" type="button" id="<?=$notif['n_desc']?>" onclick="openPopupDelete(this.id,this.name)"><?=$notif['n_status'] ? "Remove" : "Restock" ?></button>
                                             </td>
                                         </tr>
                                         <!-- Popup -->
-                                        <form action="notif-update.php" method="POST">
+                                        <form action="notif-delete.php" method="POST">
                                             <div class="popup_delete" id="popup_delete">
-                                                <h2>Change Status?</h2>
-                                                <p>Are you sure about changing the status to Restocked?</p>
-                                                <input type="hidden" name="_id" id="_id" value="<?= $notif['n_id'] ?>">
+                                                <h2>Remove Notification?</h2>
+                                                <p>Are you sure about removing this Notification?</p>
+                                                <input type="text" name="in_name" id="in_name">
                                                 <div class="popup_button_space">
+                                                    <button type="submit" class="employee_button_popup" name="confirmremove">Confirm</button>
+                                                </div>
+                                                <button type="button" class="employee_button_delete_popup" onclick="closePopupDelete()">Cancel</button>
+                                            </div>
+                                        </form>
 
-                                                    <button type="submit" class="employee_button_popup" name="confirmdelete" id="<?= $notif['n_id'] ?>" value="<?= $notif['n_id'] ?>">Confirm</button>
+                                        <form action="notif-update.php" method="POST">
+                                            <div class="popup_restock" id="popup_restock">
+                                                <h2>Restock Units?</h2>
+                                                <input type="number" class="form-control" name="in_qty" id="in_qty" placeholder="Enter amount..." required>
+                                                <div class="mb-3">
+                                                    <label>Expiration Date</label>
+                                                    <input type="date" name="expiration" class="form-control" required>
+                                                </div>
+                                                <input type="text" name="i_name" id="i_name">
+                                                <div class="popup_button_space">
+                                                    <button type="submit" class="employee_button_popup" name="confirmrestock">Confirm</button>
                                                 </div>
                                                 <button type="button" class="employee_button_delete_popup" onclick="closePopupDelete()">Cancel</button>
                                             </div>
@@ -111,15 +130,28 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         let popupDelete = document.getElementById("popup_delete");
+        let popup = document.getElementById("popup_restock");
 
-        function openPopupDelete(invID) {
-            popupDelete.classList.add("open-popup-delete");
-            $('#_id').val(invID);
+
+        function openPopupDelete(id, status) {
+            console.log(id);
+            if (status === "btn-delete") {
+                popupDelete.classList.add("open-popup-delete");
+                $('#in_name').val(id);
+
+
+            } else if (status === "btn-restock") {
+
+                popup.classList.add("open-popup-restock");
+                $('#i_name').val(id);
+            } 
+            
         }
-
         function closePopupDelete() {
+            popup.classList.remove("open-popup-restock");
             popupDelete.classList.remove("open-popup-delete");
         }
     </script>
