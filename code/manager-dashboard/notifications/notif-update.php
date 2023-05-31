@@ -32,11 +32,16 @@ else{
     $curr_qty = intval($inv['in_amount'])+intval($in_qty); 
     $sql = "UPDATE inventories SET in_amount = $curr_qty WHERE in_id = '$in_id'";
     $query_run = mysqli_query($con, $sql);
-    echo $in_id;
-    header("location: notif.php?id=".$in_id);
-    $sql = "INSERT INTO inventory_orders (in_id, o_amount, o_date, e_date) VALUES ('$in_id', $in_qty, $in_order, $in_expiration)";
+    $sql = "INSERT INTO inventory_orders (in_id, o_amount, o_date, e_date) VALUES ('$in_id', $in_qty, CURDATE(), DATE('$in_expiration'))";
     $query = mysqli_query($con,$sql);
-    $sql = "UPDATE notifications SET n_status = 1";
+
+    $sql2 = "SELECT * FROM inventories WHERE in_id = $in_id";
+    $query_run2 = mysqli_query($con, $sql2);
+    $r = mysqli_fetch_array($query_run2);
+    $in_name = $r['in_name'];
+
+
+    $sql = "UPDATE notifications SET n_status = 1 WHERE n_desc = '$in_name'";
     $query = mysqli_query($con,$sql);
     $con->close();
     $_SESSION['message']="Successfully Restocked on ".$inv['in_name'];

@@ -71,6 +71,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                                     <tr>
                                         <th>Restock Ingredient</th>
                                         <th>Status</th>
+                                        <th>Description</th>
                                         <th>Action</th>
 
                                     </tr>
@@ -82,6 +83,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                                         <tr>
                                             <td><?= $notif['n_desc']; ?></td>
                                             <td><?= $notif['n_status'] ? "Restocked" : "Not Restocked"; ?></td>
+                                            <td><?= $notif['n_reason']; ?></td>
                                             <td>
                                                 <button class="btn  <?= $notif['n_status'] ? 'btn-delete' : 'btn-edit' ?> " name="<?=$notif['n_status'] ? 'btn-delete' : 'btn-restock'?>" type="button" id="<?=$notif['n_desc']?>" onclick="openPopupDelete(this.id,this.name)"><?=$notif['n_status'] ? "Remove" : "Restock" ?></button>
                                             </td>
@@ -91,7 +93,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                                             <div class="popup_delete" id="popup_delete">
                                                 <h2>Remove Notification?</h2>
                                                 <p>Are you sure about removing this Notification?</p>
-                                                <input type="text" name="in_name" id="in_name">
+                                                <input type="hidden" name="in_name" id="in_name">
                                                 <div class="popup_button_space">
                                                     <button type="submit" class="employee_button_popup" name="confirmremove">Confirm</button>
                                                 </div>
@@ -107,7 +109,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager")
                                                     <label>Expiration Date</label>
                                                     <input type="date" name="expiration" class="form-control" required>
                                                 </div>
-                                                <input type="text" name="i_name" id="i_name">
+                                                <input type="hidden" name="i_name" id="i_name">
                                                 <div class="popup_button_space">
                                                     <button type="submit" class="employee_button_popup" name="confirmrestock">Confirm</button>
                                                 </div>
