@@ -31,6 +31,7 @@
 .other-btn {
   padding: 0.5rem 1rem;
   position: absolute;
+  background-color: transparent;
   /* margin-bottom: 0; */
   /* background-color: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
@@ -49,8 +50,8 @@
 
 .btn-delete {
   color: #f2f7f2;
-  background-color: #b80101;
-  border-color: #b80101;
+  background-color: #ea263a;
+  border-color: #ea263a;
 }
 
 .btn-view {
@@ -94,7 +95,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  width: 90%;
+  width: 34%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -104,7 +105,7 @@
 }
 
 .card-body .edit-view {
-  width: 50%;
+  width: 34%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -157,9 +158,9 @@ table {
 /* .table tbody tr {
   display: flex;
   flex-wrap: wrap;
-} */
+}
 
-/* .table tbody td {
+.table tbody td {
   flex: 0 0 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -231,8 +232,7 @@ thead,
 tr {
   border-color: inherit;
   border-style: solid;
-  border-width: 10;
-  width: 20%;
+  border-width: 2;
 }
 
 .d-inline {
@@ -266,11 +266,14 @@ tr {
 .mb-3 {
   margin-bottom: 1rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+  margin: 0 0.3rem;
+}
 
 .form-control {
   display: block;
-  width: 93.5%;
-  margin-bottom: 0.75rem;
+  width: 97%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -327,7 +330,6 @@ body {
 .alert {
   position: absolute;
   padding: 1rem 1rem;
-  margin-top: -5rem;
   margin-bottom: 1rem;
   margin-left: 300px ;
   width:60%;  
@@ -522,46 +524,7 @@ transform: scale(0.98);
 
 
 
-.popup_add{
-  width: 400px;
-  background: #ffffff;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  text-align: center;
-  padding: 0 30px 30px;
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-}
-
-.open-popup{
-  position: absolute;
-  visibility: visible;
-  top : 50%;
-  z-index: 999;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-
-.popup_add h2{
-  font-size: 38px;
-  font-weight: 500;
-  background: #ffffff;
-  margin: 30px 0 10px;
-}
-.popop_add p{
-  background-color: #ffffff;
-}
-
-
-.popup_button_space{
-  margin-bottom: 5px;
-}
-
-
-.popup_restock{
+.popup_delete{
   width: 400px;
   background: #ffffff;
   border-radius: 6px;
@@ -576,36 +539,36 @@ transform: scale(0.98);
   transition: transform 0.4s, top 0.4s;
 }
 
-.open-popup-restock{
+.open-popup{
   visibility: visible;
-  top : 60%;
+  top : 50%;
   transform: translate(-50%, -50%) scale(1);
-  background: #ffffff;
 }
 
-.popup_restock h2{
-  font-size: 28px;
-  background: #ffffff;
+.popup_delete img{
+  width: 100px;
+  margin-top: -50%;
+  border-radius: 50%;
+  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
+}
+
+
+.popup_delete h2{
+  font-size: 38px;
   font-weight: 500;
+  background: #ffffff;
   margin: 30px 0 10px;
 }
-.popup_restock p{
-  font-size: 28px;
-  background: #ffffff;
-  font-weight: 500;
-  margin: 30px 0 10px;
-}
-.popup_restock div{
+.popup_delete p{
   background: #ffffff;
 }
-.popup_restock label{
-  font-size: 22px;
-  background: #ffffff;
-  font-weight: 500;
+
+.popup_button_space{
+  margin-bottom: 5px;
 }
 
 
-.popup_delete{
+.popup_add{
   width: 400px;
   background: #ffffff;
   border-radius: 6px;
@@ -615,31 +578,77 @@ transform: scale(0.98);
   transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
   padding: 0 30px 30px;
-  background: #ffffff;
+  
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
 }
 
-.popup_delete div{
-  background: #ffffff;
-}
-
-.open-popup-delete{
+.open-popup-add{
   visibility: visible;
-  top : 60%;
+  top : 50%;
   transform: translate(-50%, -50%) scale(1);
 }
 
-.popup_delete h2{
+.popup_add img{
+  width: 100px;
+  margin-top: -50%;
+  border-radius: 50%;
+  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
+}
+
+
+.popup_add h2{
   font-size: 38px;
   font-weight: 500;
-  background: #ffffff;
   margin: 30px 0 10px;
 }
 
-.popup_delete p{
-  background: #ffffff;
+
+.file_button{
+  /* position: relative; */
+  font-weight: 400;
+  margin: auto;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  color: #f2f7f2;
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+  cursor: pointer;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 0.5rem;
 }
-.ad{
-  background: #e4818b;
+.file_button:hover{
+  background-color: #252323;
+  border-color: #252323;
+  color: #f2f7f2;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+}
+input[type="file"] {
+  display: none;
+}
+
+.adjust {
+  margin: auto;
+  width: 100%;
+  border: 3px solid;
+  text-align: center;
+  padding: 10px;
+}
+.adj {
+  margin: auto 0.2rem;
+  width: 92.5%;
+  /* border: 3px solid; */
+  text-align: center;
+  /* padding: 10px; */
+}
+.fix {
+  /* margin: auto; */
+  width: 95.5%;
+  /* border: 3px solid; */
+  /* text-align: center; */
+  /* padding: 10px; */
 }
