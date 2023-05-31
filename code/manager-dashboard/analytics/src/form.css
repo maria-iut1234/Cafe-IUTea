@@ -89,7 +89,7 @@
 .form__input {
   flex: 1;
   display: block;
-  width: 100%;
+  width: 40%;
   padding: 0.75rem;
   box-sizing: border-box;
   border-radius: 0.5rem;
@@ -225,6 +225,7 @@ button.form__button {
   border-collapse: collapse;
   border-color: #93a1a1;
   border-spacing: 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
 }
 .tg td {
   background-color: #f2f7f2;
@@ -251,6 +252,11 @@ button.form__button {
   /* padding: 10px 5px; */
   word-break: normal;
 }
+
+.an-r th {
+  font-size: 1.4rem;
+}
+
 .tg .tg-c3ow {
   border-color: inherit;
   text-align: center;
@@ -282,4 +288,22 @@ button.form__button {
 .null-option h1 {
   background-color: #efacb3 ;
   margin: 0;
+}
+
+.form__input.date {
+  background-color: #f2f7f2;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.date-input {
+  padding-top: 30px;
+}
+
+.analytics-bottom-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
 }
