@@ -144,3 +144,52 @@ BEGIN
     	CALL MENU_COST_UPDATE_ING_PRICE_CHNG(OLD.in_id, NEW.in_price, OLD.in_price); 
     END IF;
 END;
+
+
+inventory_order update based on expiration date
+
+procedure
+DELIMITER //
+CREATE OR REPLACE PROCEDURE INVENTORY_UPDATE_EXPIRATION_DATE (I_ID INTEGER, NEW_QTY INTEGER, PREV_QTY INTEGER)
+BEGIN
+    DECLARE DIFF INTEGER;
+    DECLARE O_ID INTEGER;
+    DECLARE QNTY INTEGER;
+    DECLARE TEMP INTEGER;
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE C CURSOR FOR SELECT in_ord_id , o_amount FROM inventory_orders WHERE in_id = I_ID ORDER BY e_date ASC;
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+    SET DIFF = PREV_QTY - NEW_QTY;
+    
+    OPEN C;
+    
+    cursor_loop: LOOP
+        FETCH C INTO O_ID, QNTY;
+        IF (DIFF = 0) THEN
+            LEAVE cursor_loop;
+        END IF;
+    
+        IF (DIFF >= QNTY) THEN
+            SET DIFF = DIFF - QNTY;
+            DELETE FROM inventory_orders WHERE in_ord_id = O_ID;
+        ELSE
+            SET TEMP = QNTY - DIFF;
+            SET DIFF = 0;
+            UPDATE inventory_orders SET o_amount = TEMP WHERE in_ord_id = O_ID;
+        END IF;
+    END LOOP;
+    CLOSE C;
+    
+END;
+
+trigger
+DELIMITER //
+CREATE OR REPLACE TRIGGER INVENTORY_UPDATE_ON_DECREASE
+BEFORE UPDATE 
+ON inventories
+FOR EACH ROW
+BEGIN
+    IF NEW.in_amount<OLD.in_amount THEN
+    	CALL INVENTORY_UPDATE_EXPIRATION_DATE(OLD.in_id, NEW.in_amount, OLD.in_amount);
+    END IF;
+END;
