@@ -1,7 +1,7 @@
 <?php
 include "../dbconnect.php";
 session_start();
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
     include "logout.php";
 }
 
@@ -15,6 +15,7 @@ if(isset($_SESSION['id'])){
     <link rel="stylesheet" href="./src/emp-man.css" />
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/logo.ico">
 </head>
 
 <?php
@@ -32,9 +33,7 @@ if (isset($_POST['submit'])) {
 
     if ($conn->connect_error) {
         die('Connection Failed : ' . $conn->connect_error);
-    } 
-    else 
-    {
+    } else {
         if ($type == "Employee") {
             $sql = "SELECT * FROM employee WHERE `e_email` = ? LIMIT 1";
             $stmt = mysqli_stmt_init($conn);
@@ -58,8 +57,7 @@ if (isset($_POST['submit'])) {
                     }
                 }
             }
-        } else 
-        {
+        } else {
             $sql = "SELECT * FROM manager WHERE `m_email` = ? LIMIT 1";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -86,43 +84,63 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<!--Login form-->
-<div class="container">
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form" id="login">
-        <h1 class="form__title">Login</h1>
-        <div class="form__message form__message--error"></div>
-        <div class="form__input-group">
-            <input type="text" id="email" class="form__input" autofocus placeholder="Enter Email" name="email" required>
-            <div class="form__input-error-message"></div>
-        </div>
-        <div class="form__input-group">
-            <input type="password" id="password" class="form__input" autofocus placeholder="Enter Password" name="password" required>
-        </div>
-        <div class="form__input-group">
-            <select class="form__input" id="type" name="type">
-                <option>Employee</option>
-                <option>Manager</option>
-            </select>
-            <div class="form__input-error-message">
-                <?php echo $error ? $error : null; ?>
-            </div>
-        </div>
-        <button class="form__button" type="submit" name="submit">Continue</button>
-        <?php
-        if (isset($_GET["newpassword"])) {
-            if ($_GET["newpassword"] == "passwordUpdated") {
-                echo '<p class="form_email_verify">Your password has been reset.</p>';
-            }
-        }
-        ?>
-        <p class="form__text">
-            <a href="../forgotpassword/index.php" class="form__link" class="form__link">Forgot your password?</a>
-        </p>
-        <p class="form__text">
-            <a class="form__link" href="#" id="linkHomepage">Go back to Homepage</a>
-        </p>
-    </form>
 
-</div>
+<body>
+    <div class="typing-anim">
+        <div class="wrapper">
+            <div class="static-txt">Welcome </div>
+            <ul class="dynamic-txts">
+                <li class="manager"><span>Manager</span></li>
+                <li class="employee"><span class="employee">Employee</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="left-side">
+        <div class="lottie-login">
+            <lottie-player src="images/login.json" background="#25232" speed="1" style="width: 400px; height: 400px;" autoplay loop></lottie-player>
+        </div>
+
+        <div class="align-form">
+            <!--Login form-->
+            <div class="container">
+                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="form" id="login">
+                    <h1 class="form__title">Login</h1>
+                    <div class="form__message form__message--error"></div>
+                    <div class="form__input-group">
+                        <input type="text" id="email" class="form__input" autofocus placeholder="Enter Email" name="email" required>
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="password" id="password" class="form__input" autofocus placeholder="Enter Password" name="password" required>
+                    </div>
+                    <div class="form__input-group">
+                        <select class="form__input" id="type" name="type">
+                            <option>Employee</option>
+                            <option>Manager</option>
+                        </select>
+                        <div class="form__input-error-message">
+                            <?php echo $error ? $error : null; ?>
+                        </div>
+                    </div>
+                    <button class="form__button" type="submit" name="submit">Continue</button>
+                    <?php
+                    if (isset($_GET["newpassword"])) {
+                        if ($_GET["newpassword"] == "passwordUpdated") {
+                            echo '<p class="form_email_verify">Your password has been reset.</p>';
+                        }
+                    }
+                    ?>
+                    <p class="form__text">
+                        <a href="../forgotpassword/index.php" class="form__link" class="form__link">Forgot your password?</a>
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
 
 </body>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
