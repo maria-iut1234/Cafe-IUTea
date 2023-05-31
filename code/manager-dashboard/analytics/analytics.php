@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
 
     <div class="container mt-4">
         <div class="title">
-            <h1>Analytics</h1>
+            <h1 style="color:#F2F7F2">Analytics</h1>
         </div>
     </div>
 
@@ -101,7 +101,7 @@ if (isset($_POST['submit'])) {
         <form method="POST" class="order-form order-confirm">
             <div class="order-confirm-form">
                 <div class="top-part">
-                    <h2 class="menu-items-h2">Analytics:</h2>
+                    <h2 class="menu-items-h2">Analytics</h2>
                     <select class="form__input menu-item-size analytics" name="menu-item-size" onchange="handleAnalyticsOption(this.value)">
                         <option value="null" <?php if ($selectedValue == "null") echo "selected"; ?>>Select Analytics</option>
                         <option value="daily-revenue" <?php if ($selectedValue == "daily-revenue") echo "selected"; ?>>Daily Revenue</option>
