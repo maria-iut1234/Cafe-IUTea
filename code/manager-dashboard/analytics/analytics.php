@@ -136,26 +136,27 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($daily_revenue_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($daily_revenue_query_run)) { ?>
 
+                                <?php
+                                if (mysqli_num_rows($daily_revenue_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($daily_revenue_query_run)) { ?>
+                                        <tr>
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_price']; ?></td>
+                                        </tr>
 
-                                        <?php $total_revenue += $row['total_price'];
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                    <?php $total_revenue += $row['total_price'];
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -205,26 +206,26 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($daily_expense_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($daily_expense_query_run)) { ?>
 
+                                <?php
+                                if (mysqli_num_rows($daily_expense_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($daily_expense_query_run)) { ?>
+                                        <tr>
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_cost']; ?></td>
-
-                                        <?php $total_expense += $row['total_cost'];
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                        </tr>
+                                    <?php $total_expense += $row['total_cost'];
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -274,26 +275,26 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($daily_profit_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($daily_profit_query_run)) { ?>
 
+                                <?php
+                                if (mysqli_num_rows($daily_profit_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($daily_profit_query_run)) { ?>
+                                        <tr>
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_price'] - $row['total_cost']; ?></td>
-
-                                        <?php $total_profit += ($row['total_price'] - $row['total_cost']);
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                        </tr>
+                                    <?php $total_profit += ($row['total_price'] - $row['total_cost']);
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -346,26 +347,27 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($monthly_revenue_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($monthly_revenue_query_run)) { ?>
+
+                                <?php
+                                if (mysqli_num_rows($monthly_revenue_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($monthly_revenue_query_run)) { ?>
+                                        <tr>
 
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_price']; ?></td>
-
-                                        <?php $total_revenue_monthly += $row['total_price'];
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                        </tr>
+                                    <?php $total_revenue_monthly += $row['total_price'];
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -415,26 +417,26 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($monthly_expense_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($monthly_expense_query_run)) { ?>
 
+                                <?php
+                                if (mysqli_num_rows($monthly_expense_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($monthly_expense_query_run)) { ?>
+                                        <tr>
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_cost']; ?></td>
-
-                                        <?php $total_expense_monthly += $row['total_cost'];
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                        </tr>
+                                    <?php $total_expense_monthly += $row['total_cost'];
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -484,26 +486,26 @@ if (isset($_POST['submit'])) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php
-                                    if (mysqli_num_rows($monthly_profit_query_run) > 0) {
-                                        while ($row = mysqli_fetch_assoc($monthly_profit_query_run)) { ?>
 
+                                <?php
+                                if (mysqli_num_rows($monthly_profit_query_run) > 0) {
+                                    while ($row = mysqli_fetch_assoc($monthly_profit_query_run)) { ?>
+                                        <tr>
                                             <td><?php echo $row['order_id']; ?></td>
                                             <td><?php echo $row['total_price'] - $row['total_cost']; ?></td>
-
-                                        <?php $total_profit_monthly += ($row['total_price'] - $row['total_cost']);
-                                        }
-                                    } else { ?>
-
-                                        <td>No data found</td>
-                                        <td>No data found</td>
-
-                                    <?php
+                                        </tr>
+                                    <?php $total_profit_monthly += ($row['total_price'] - $row['total_cost']);
                                     }
-                                    ?>
+                                } else { ?>
 
-                                </tr>
+                                    <td>No data found</td>
+                                    <td>No data found</td>
+
+                                <?php
+                                }
+                                ?>
+
+
                             </tbody>
                         </table>
                     </div>
