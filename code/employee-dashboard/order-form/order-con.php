@@ -26,6 +26,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
     <link href="src/sidebar.css" rel="stylesheet">
     <link href="src/form.css" rel="stylesheet">
     <link href="src/order-man.css" rel="stylesheet">
+    <link href="src/basic.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 

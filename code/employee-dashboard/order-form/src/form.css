@@ -251,7 +251,8 @@ button.form__button {
   float: left;
   margin: 0;
   margin-left: 3.5%;
-  height: 65vh;
+  height: 70vh;
+  padding: 0;
 }
 
 .order-form.order-confirm.err {
@@ -263,8 +264,8 @@ button.form__button {
 }
 
 .error-message {
-  padding: 20px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 17px;
   background-color: #b0c1f3;
 }
 
