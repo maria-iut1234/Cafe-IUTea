@@ -204,11 +204,16 @@ if (isset($_POST['place-order'])) {
     if ($isOrderPossible) {
         $order_info = array();
 
+        $e_id = $_SESSION['id'];
+        $sql = "SELECT * FROM employee WHERE e_id = '$e_id'";
+        $query = mysqli_query($con,$sql);
+        $res = mysqli_fetch_array($query);
+
         $order_info['total_price'] = $total_price;
         $order_info['total_cost'] = $total_cost;
         $order_info['c_name'] = $first_name . " " . $last_name;
         $order_info['c_contact'] = $contact;
-        $order_info['e_name'] = "NazzzzZ";
+        $order_info['e_name'] = $res['e_name'];
 
         $_SESSION['order-info'] = $order_info;
         $_SESSION['ingredient-count'] = $ingredient_count;

@@ -75,7 +75,7 @@ if(isset($_POST['update_man']))
                     }
                 }
             } else {
-                $_SESSION['message'] .= " but an unknown error occured.";
+
             }
         }
         header("Location: index.php");

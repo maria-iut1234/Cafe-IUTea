@@ -77,7 +77,6 @@ if(isset($_POST['update_emp']))
                     }
                 }
             } else {
-                $_SESSION['message'] .= " an unknown error occured 2.";
             }
         }
         header("Location: index.php");

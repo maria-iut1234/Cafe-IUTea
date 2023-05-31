@@ -46,7 +46,7 @@ $username = $email = $passError = $passError1 = $emailError = $userError = $pass
         <?php
         if (isset($_GET["reset"])) {
             if ($_GET["reset"] == "success") {
-                echo '<p class="form__message form__message--error">Check your Email</p>';
+                echo '<p class="form__message form__message--success">Check your Email</p>';
             } else if ($_GET["reset"] == "tokenExpired") {
                 echo '<p class="form__message form__message--error">You need re-submit your reset request. The validation period is over.</p>';
             } else if ($_GET["reset"] == "userdoesnotexist") {

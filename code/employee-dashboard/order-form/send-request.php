@@ -24,7 +24,8 @@ for ($i = 0; $i < count($ingredients); $i++) {
     if ($check_run) {
         if (mysqli_fetch_assoc($check_run) > 0) {
         } else {
-            $query = "INSERT INTO notifications (n_desc) VALUES ('$desc')";
+            $reason = "Restock Popular Item Ingredient";
+            $query = "INSERT INTO notifications (n_desc,n_reason) VALUES ('$desc','$reason')";
             $query_run = mysqli_query($con, $query);
 
             if ($query_run) {

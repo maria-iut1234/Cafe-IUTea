@@ -70,11 +70,11 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
     <div class="order-container">
         <form method="POST" class="order-form">
             <div class="form__input-group customer-name">
-                <input type="text" class="form__input first-name" name="first-name" autofocus placeholder="Enter First Name">
+                <input type="text" class="form__input first-name" name="first-name" autofocus placeholder="Enter First Name" required>
                 <input type="text" class="form__input last-name" name="last-name" autofocus placeholder="Enter Last Name">
             </div>
             <div class="form__input-group">
-                <input type="text" class="form__input" name="contact" autofocus placeholder="Enter Customer Contact">
+                <input type="text" class="form__input" name="contact" autofocus placeholder="Enter Customer Contact" required>
             </div>
             <div class="menu-items-container">
                 <div class="form__input-group add-menu" id="add-menu-section" style="display: none;">
