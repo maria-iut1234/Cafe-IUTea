@@ -53,6 +53,7 @@ if (isset($_POST['add_menu'])) {
                     $imageUpdateQuery = mysqli_query($con, "UPDATE menu SET menu_pfp = '$default' WHERE menu_name = '$name'") or die("query failed");
                 }
             } else {
+                $_SESSION['message'] .= " an unknown error occured.";
             }
             header("Location: index.php");
             exit(0);
@@ -98,6 +99,7 @@ if (isset($_POST['update_menu'])) {
                     }
                 }
             } else {
+                $_SESSION['message'] .= " an unknown error occured.";
             }
         }
         header("Location: index.php");

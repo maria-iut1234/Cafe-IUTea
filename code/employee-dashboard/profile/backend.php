@@ -7,9 +7,8 @@ $messi = '';
 if(isset($_SESSION['type']) && $_SESSION['type']=="manager")
     $messi = $_SESSION['id'];
 else{
-    
+    header("location: ../../login/index.php");
 }
-header("location: ../../login/index.php");
 
 if(isset($_POST['chng_pass'])){
     $e_id=$_POST['id'];
@@ -78,7 +77,7 @@ if(isset($_POST['update_emp']))
                     }
                 }
             } else {
-
+                $_SESSION['message'] .= " an unknown error occured 2.";
             }
         }
         header("Location: index.php");

@@ -6,12 +6,10 @@ $counter = isset($_SESSION['menu-item-counter']) ? $_SESSION['menu-item-counter'
 
 $messi = '';
 
-if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
-{
+if (isset($_SESSION['type']) && $_SESSION['type'] == "employee") {
     $messi = $_SESSION['id'];
-    $sub_str = substr($messi, -6, -3);   
-    
-} else{
+    $sub_str = substr($messi, -6, -3);
+} else {
     header("location: ../../login/index.php");
 }
 
@@ -27,6 +25,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
     <link href="src/sidebar.css" rel="stylesheet">
     <link href="src/form.css" rel="stylesheet">
     <link href="src/order-man.css" rel="stylesheet">
+    <link href="src/basic.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 

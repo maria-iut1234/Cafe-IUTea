@@ -23,7 +23,7 @@ if (!isset($_GET['in_id'])) {
     <!-- Bootstrap CSS -->
     <link href="src/emp-man.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="src/images/logo.ico">
+    <link rel="shortcut icon" href="images/logo.ico">
 
 
     <!-- <link href="bootstrap.css" rel="stylesheet"> -->
