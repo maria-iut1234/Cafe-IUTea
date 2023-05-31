@@ -77,7 +77,6 @@ if(isset($_POST['update_emp']))
                     }
                 }
             } else {
-                $_SESSION['message'] .= " an unknown error occured 2.";
             }
         }
         header("Location: index.php");
@@ -172,7 +171,6 @@ if(isset($_POST['save_emp']))
             $imageUpdateQuery = mysqli_query($con, "UPDATE employee SET e_pfp = '$default' WHERE e_email = '$email'") or die("query failed");
         }
     } else {
-        $_SESSION['message'] .= " an unknown error occured 1.";
     }
         header("Location: emp-create.php");
         exit(0);
