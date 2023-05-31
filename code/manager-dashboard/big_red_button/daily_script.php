@@ -67,6 +67,5 @@ foreach($query6 as $res6){
         echo "Has expired Insert".$in_name;
     }
 }
-
-// header('location: ../../manager-dashboard/inventory-management/index.php');
+header('location: index.php');
 ?>

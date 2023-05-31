@@ -18,11 +18,11 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="emp-man.css" rel="stylesheet">
+    <link href="../employee-management/src/emp-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
 
-    <link href="sidebar.css" rel="stylesheet">
+    <link href="../employee-management/src/sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Employee Edit</title>

@@ -21,14 +21,14 @@ if (!isset($_GET['in_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="emp-man.css" rel="stylesheet">
+    <link href="src/emp-man.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="images/logo.ico">
+    <link rel="shortcut icon" href="src/images/logo.ico">
 
 
     <!-- <link href="bootstrap.css" rel="stylesheet"> -->
 
-    <link href="sidebar.css" rel="stylesheet">
+    <link href="src/sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>View Inventory</title>

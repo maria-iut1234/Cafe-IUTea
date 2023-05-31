@@ -19,16 +19,16 @@ $res = mysqli_query($con, "SELECT * FROM inventories");
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="menu-man.css" rel="stylesheet">
+    <link href="src/menu-man.css" rel="stylesheet">
     <link rel="shortcut icon" href="images/logo.ico">
 
 
-    <link href="sidebar.css" rel="stylesheet">
+    <link href="src/sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-    <link href="chosen.css" rel="stylesheet">
+    <link href="src/chosen.css" rel="stylesheet">
     </link>
 
     <title>Menu Edit</title>
