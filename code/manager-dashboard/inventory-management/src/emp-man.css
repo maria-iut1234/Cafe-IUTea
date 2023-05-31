@@ -28,6 +28,14 @@
   /* margin: 18px; for putting margin on the right side of the button from the edge of the page*/
 }
 
+.rt {
+  background: transparent;
+  background-color: transparent;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+
 .other-btn {
   padding: 0.5rem 1rem;
   position: absolute;
@@ -94,7 +102,7 @@
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
-  width: 34%;
+  width: 50%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -104,7 +112,7 @@
 }
 
 .card-body .edit-view {
-  width: 34%;
+  width: 50%;
   display: fixed;
   align-items: center;
   justify-content: center;
@@ -157,9 +165,9 @@ table {
 /* .table tbody tr {
   display: flex;
   flex-wrap: wrap;
-}
+} */
 
-.table tbody td {
+/* .table tbody td {
   flex: 0 0 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -231,7 +239,8 @@ thead,
 tr {
   border-color: inherit;
   border-style: solid;
-  border-width: 2;
+  border-width: 10;
+  width: 20%;
 }
 
 .d-inline {
@@ -268,7 +277,8 @@ tr {
 
 .form-control {
   display: block;
-  width: 97%;
+  width: 93.5%;
+  margin-bottom: 0.75rem;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -325,6 +335,7 @@ body {
 .alert {
   position: absolute;
   padding: 1rem 1rem;
+  margin-top: -5rem;
   margin-bottom: 1rem;
   margin-left: 300px ;
   width:60%;  
@@ -377,7 +388,7 @@ strong {
   opacity: 0.5;
 }
 .btn-close:hover {
-  color: #e4818b;
+  color: #000;
   text-decoration: none;
   opacity: 0.75;
 }
@@ -519,51 +530,6 @@ transform: scale(0.98);
 
 
 
-.popup_delete{
-  width: 400px;
-  background: #ffffff;
-  border-radius: 6px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.1);
-  text-align: center;
-  padding: 0 30px 30px;
-  
-  visibility: hidden;
-  transition: transform 0.4s, top 0.4s;
-}
-
-.open-popup{
-  visibility: visible;
-  top : 50%;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.popup_delete img{
-  width: 100px;
-  margin-top: -50%;
-  border-radius: 50%;
-  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
-}
-
-
-.popup_delete h2{
-  font-size: 38px;
-  background: #ffffff;
-  font-weight: 500;
-  margin: 30px 0 10px;
-}
-
-.popup_delete p{
-  background: #ffffff;
-}
-
-.popup_button_space{
-  margin-bottom: 5px;
-}
-
-
 .popup_add{
   width: 400px;
   background: #ffffff;
@@ -574,22 +540,16 @@ transform: scale(0.98);
   transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
   padding: 0 30px 30px;
-  
   visibility: hidden;
   transition: transform 0.4s, top 0.4s;
 }
 
-.open-popup-add{
+.open-popup{
+  position: absolute;
   visibility: visible;
   top : 50%;
+  z-index: 999;
   transform: translate(-50%, -50%) scale(1);
-}
-
-.popup_add img{
-  width: 100px;
-  margin-top: -50%;
-  border-radius: 50%;
-  box-shadow: 0 2px 5 px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -599,54 +559,95 @@ transform: scale(0.98);
   background: #ffffff;
   margin: 30px 0 10px;
 }
+.popop_add p{
+  background-color: #ffffff;
+}
 
 
-.file_button{
-  /* position: relative; */
-  font-weight: 400;
-  margin: auto;
-  line-height: 1.5;
+.popup_button_space{
+  margin-bottom: 5px;
+}
+
+
+.popup_restock{
+  width: 400px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
   text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  color: #f2f7f2;
-  background-color: #0dcaf0;
-  border-color: #0dcaf0;
-  cursor: pointer;
-  border: 1px solid transparent;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 0.5rem;
-}
-.file_button:hover{
-  background-color: #252323;
-  border-color: #252323;
-  color: #f2f7f2;
-  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
-}
-input[type="file"] {
-  display: none;
+  padding: 0 30px 30px;
+  
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
 }
 
-.adjust {
-  margin: auto;
-  width: 100%;
-  border: 3px solid;
-  text-align: center;
-  padding: 10px;
-}
-.adj {
-  margin: auto 0.15rem;
-  width: 92.5%;
-  /* border: 3px solid; */
-  text-align: center;
-  /* padding: 10px; */
-}
-.fix {
-  margin: auto 0rem;
-  width: 95.5%;
-  /* border: 3px solid; */
-  /* text-align: center; */
-  /* padding: 10px; */
+.open-popup-restock{
+  visibility: visible;
+  top : 60%;
+  transform: translate(-50%, -50%) scale(1);
+  background: #ffffff;
 }
 
+.popup_restock h2{
+  font-size: 28px;
+  background: #ffffff;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+.popup_restock p{
+  font-size: 28px;
+  background: #ffffff;
+  font-weight: 500;
+  margin: 30px 0 10px;
+}
+.popup_restock div{
+  background: #ffffff;
+}
+.popup_restock label{
+  font-size: 22px;
+  background: #ffffff;
+  font-weight: 500;
+}
+
+
+.popup_delete{
+  width: 400px;
+  background: #ffffff;
+  border-radius: 6px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  background: #ffffff;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.popup_delete div{
+  background: #ffffff;
+}
+
+.open-popup-delete{
+  visibility: visible;
+  top : 60%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup_delete h2{
+  font-size: 38px;
+  font-weight: 500;
+  background: #ffffff;
+  margin: 30px 0 10px;
+}
+
+.popup_delete p{
+  background: #ffffff;
+}
+.ad{
+  background: #e4818b;
+}
