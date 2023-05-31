@@ -58,7 +58,7 @@ if (isset($_POST["reset-request-submit"])) {
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
     $binToken = bin2hex($token);
-    $url = "http://localhost:3000/code/forgotpassword/create-new-password.php?newpassword=nothing&selector=" .  urlencode($selector) ."&type=" . urlencode($type). "&validator=" . urlencode($binToken);
+    $url = "http://localhost/code/forgotpassword/create-new-password.php?newpassword=nothing&selector=" .  urlencode($selector) ."&type=" . urlencode($type). "&validator=" . urlencode($binToken);
     $expires = date("U") + 300;
 
     if (!$conn) {
