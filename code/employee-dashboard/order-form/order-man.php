@@ -6,12 +6,13 @@ require 'order-han.php';
 $messi = '';
 
 if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+{
     $messi = $_SESSION['id'];
     $sub_str = substr($messi, -6, -3);   
-// else{
-//     header("location: ../../login/index.php");
-// }
-
+    
+} else{
+    header("location: ../../login/index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,6 +23,7 @@ if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="src/chosen.css" rel="stylesheet">
+    <link href="src/basic.css" rel="stylesheet">
     <link href="src/sidebar.css" rel="stylesheet">
     <link href="src/form.css" rel="stylesheet">
     <link href="src/order-man.css" rel="stylesheet">

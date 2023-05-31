@@ -3,9 +3,12 @@ session_start();
 require 'dbcon.php';
 $messi = '';
 
-if (isset($_SESSION['type']) && $_SESSION['type'] == "employee")
+if(isset($_SESSION['type']) && $_SESSION['type']=="employee")
+{
     $messi = $_SESSION['id'];
-else {
+    $sub_str = substr($messi, -6, -3);   
+    
+} else{
     header("location: ../../login/index.php");
 }
 ?>
@@ -18,17 +21,22 @@ else {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="emp-man.css" rel="stylesheet">
+    <link href="src/emp-man.css" rel="stylesheet">
+    <link href="src/basic.css" rel="stylesheet">
+    <link href="src/sidebar.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="images/logo.ico">
-
-
-    <link href="sidebar.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
     <title>Employee Profile</title>
 </head>
 
 <body>
+
+    <header>
+        <h1>Welcome <?= $sub_str ? $sub_str : "Employee" ?></h1>
+    </header>
+
     <input type="checkbox" id="active" />
     <label for="active" class="menu-btn"><i class="fas fa-bars"></i></label>
     <div class="wrapper">
@@ -86,7 +94,7 @@ else {
                                     <input type="email" name="email" value="<?= $emp['e_email']; ?>" class="form-control fix" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label  class="mb-4">Date of Birth</label>
+                                    <label class="mb-4">Date of Birth</label>
                                     <input type="date" name="dob" value="<?= $emp['e_dob']; ?>" class="form-control fix">
                                 </div>
                                 <div class="mb-3">
@@ -132,6 +140,10 @@ else {
             </div>
         </div>
     </div>
+
+    <footer>
+        <p><small>&copy; Copyright 2023 IUTea. All Rights Reserved</small> </p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
