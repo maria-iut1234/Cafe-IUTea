@@ -35,6 +35,15 @@ else{
     $stmt -> bind_param("ssss",$in_id,$in_qty,$in_order,$in_expiration);
     $stmt -> execute();
     $stmt -> close();
+
+    $sql2 = "SELECT * FROM inventories WHERE in_id = $in_id";
+    $query_run2 = mysqli_query($con, $sql2);
+    $r = mysqli_fetch_array($query_run2);
+    $in_name = $r['in_name'];
+
+
+    $sql = "UPDATE notifications SET n_status = 1 WHERE n_desc = '$in_name'";
+    $query = mysqli_query($con,$sql);
     $con -> close();
     $_SESSION['message']="Successfully Restocked on ".$inv['in_name'];
     header("location: index.php");
