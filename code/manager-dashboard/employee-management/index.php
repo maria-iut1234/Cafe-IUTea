@@ -86,7 +86,7 @@ if (isset($_POST['deleteemployeesubmit'])) {
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <?php $query = "SELECT * FROM employee";
+                        <?php $query = "SELECT * FROM emp_man_view";
                         $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) { ?>

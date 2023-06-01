@@ -111,7 +111,7 @@ if (isset($_POST['place-order'])) {
         $query_ing_run = mysqli_query($con, $query_ing);
 
         //fetching inventory details
-        $query_inv = "SELECT * FROM inventories";
+        $query_inv = "SELECT * FROM inventories_view";
         $query_inv_run = mysqli_query($con, $query_inv);
 
         if ($query_ing_run and $query_inv_run) {
@@ -148,7 +148,7 @@ if (isset($_POST['place-order'])) {
     }
 
     //fetching inventory details
-    $query_inv = "SELECT * FROM inventories";
+    $query_inv = "SELECT * FROM inventories_view";
     $query_inv_run = mysqli_query($con, $query_inv);
 
     //checking total ingrediants

@@ -23,7 +23,7 @@ if (mysqli_query($con, $query)) {
 }
 
 //fetching inventory details
-$query_inv = "SELECT * FROM inventories";
+$query_inv = "SELECT * FROM inventories_view";
 $query_inv_run = mysqli_query($con, $query_inv);
 
 $inventory = array();
