@@ -87,7 +87,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager") {
                 <div class="card">
                     <div class="card-body">
                         <?php
-                        $query = "SELECT * FROM inventories ORDER BY in_amount asc";
+                        $query = "SELECT * FROM inv_man_view";
                         $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {

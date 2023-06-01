@@ -86,7 +86,7 @@ if (isset($_POST['deletemenusubmit'])) {
                 <div class="card ">
                     <div class="card-body ">
                         <?php
-                        $query = "SELECT * FROM menu";
+                        $query = "SELECT * FROM menu_man_view";
                         $query_run = mysqli_query($con, $query);
 
                         if (mysqli_num_rows($query_run) > 0) {

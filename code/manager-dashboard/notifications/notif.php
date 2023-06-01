@@ -68,7 +68,7 @@ if (isset($_SESSION['type']) && $_SESSION['type'] == "manager") {
 
                     <div class="card-body edit-view">
                         <?php
-                        $query = "SELECT * FROM notifications";
+                        $query = "SELECT * FROM notif_view";
                         $query_run = mysqli_query($con, $query);
                         if (mysqli_num_rows($query_run) > 0) { ?>
                             <table class="table table-bordered table-striped">
