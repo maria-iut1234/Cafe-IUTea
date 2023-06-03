@@ -338,7 +338,7 @@ if (isset($_POST['submit'])) {
                 ?>
 
                 <div class="menu-items-table revenue" id="table-monthly-revenue" style="display: none;">
-                    <div class="table-align">
+                    <div class="table-align" style="display: none;">
                         <table class="tg">
                             <thead>
                                 <tr>
@@ -408,7 +408,7 @@ if (isset($_POST['submit'])) {
                 ?>
 
                 <div class="menu-items-table expense" id="table-monthly-expense" style="display: none;">
-                    <div class="table-align">
+                    <div class="table-align" style="display: none;">
                         <table class="tg">
                             <thead>
                                 <tr>
@@ -477,7 +477,7 @@ if (isset($_POST['submit'])) {
                 ?>
 
                 <div class="menu-items-table profit" id="table-monthly-profit" style="display: none;">
-                    <div class="table-align">
+                    <div class="table-align" style="display: none;">
                         <table class="tg">
                             <thead>
                                 <tr>
