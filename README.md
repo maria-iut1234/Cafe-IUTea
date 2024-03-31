@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/maria-iut1234/Cafe-IUTea">
-    <img src="code/login/images/logo.png" alt="Logo" width="40" height="70">
+    <img src="code/login/images/logo.png" alt="Logo" width="60" height="70">
   </a>
 
   <h3 align="center">Cafe IUTea</h3>
@@ -183,6 +183,16 @@ This project is licensed under the [MIT License](LICENSE).
 * [GitHub ReadMe Template](https://github.com/othneildrew/Best-README-Template/tree/master)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
+[JQuery-url]: https://jquery.com 
+
+[MySQL-url]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
+[HTML5-url]: https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white
+[Javascript-url]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[PHP-url]: https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white
 
 
 [MySQL-url]: https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white
